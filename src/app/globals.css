@@ -660,6 +660,13 @@ p {
   font-size: 2rem;
 }
 
+.case__logo {
+  display: block;
+  height: 42px;
+  width: auto;
+  margin-bottom: var(--space-4);
+}
+
 .case__block {
   margin-bottom: var(--space-8);
 }

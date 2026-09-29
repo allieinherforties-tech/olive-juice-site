@@ -22,9 +22,36 @@ export default function CaseStudiesPage() {
           {CASE_STUDIES.map((study) => (
             <article key={study.slug} id={study.slug} className="case">
               <div className="case__aside">
+                {study.clientLogo ? (
+                  study.clientUrl ? (
+                    <a href={study.clientUrl} target="_blank" rel="noopener noreferrer">
+                      <img
+                        src={study.clientLogo}
+                        alt={`${study.client} logo`}
+                        className="case__logo"
+                        width={180}
+                        height={42}
+                      />
+                    </a>
+                  ) : (
+                    <img
+                      src={study.clientLogo}
+                      alt={`${study.client} logo`}
+                      className="case__logo"
+                      width={180}
+                      height={42}
+                    />
+                  )
+                ) : null}
                 <p className="card__meta">{study.sector}</p>
                 <h2>
-                  <Fill value={study.client} />
+                  {study.clientUrl ? (
+                    <a href={study.clientUrl} target="_blank" rel="noopener noreferrer">
+                      <Fill value={study.client} />
+                    </a>
+                  ) : (
+                    <Fill value={study.client} />
+                  )}
                 </h2>
                 <ul className="tag-list" aria-label="What it connects">
                   {study.stack.map((s) => (

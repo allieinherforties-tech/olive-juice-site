@@ -44,12 +44,18 @@ export type CaseStudy = {
   build: string;
   outcome: string;
   stack: readonly string[];
+  /** Client's own site, when they've given sign-off to be linked. */
+  clientUrl?: string;
+  /** Local static asset path for the client's logo, when they've given sign-off to display it. */
+  clientLogo?: string;
 };
 
 export const CASE_STUDIES: readonly CaseStudy[] = [
   {
     slug: "restaurant",
     client: "Oliver’s",
+    clientUrl: "https://www.eatatolivers.com/",
+    clientLogo: "/logos/olivers.png",
     sector: "Chicago restaurant · Craft-led local business",
     headline: "Calmer mornings for a restaurant GM",
     summary:
