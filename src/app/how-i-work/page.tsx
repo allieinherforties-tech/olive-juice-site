@@ -15,7 +15,7 @@ export default function HowIWorkPage() {
       <PageHero
         eyebrow="How I work"
         title="Learn how you think. Then build to fit."
-        lede="Most AI projects start with the technology and ask you to rearrange your work around it. I start with your work — the routines, the tools, the decisions — and shape the technology around that."
+        lede="Most AI projects start with the technology and ask you to rearrange your work around it. I'm not selling a system or asking you to adopt a tool. I start with your work and shape the technology around the routines, the tools and the decisions your business requires."
       />
 
       <section className="section">
@@ -24,7 +24,7 @@ export default function HowIWorkPage() {
             <p className="eyebrow">Principles</p>
             <h2>What I believe about AI for small, serious teams.</h2>
           </div>
-          <div className="grid grid--2">
+          <div className="grid grid--3">
             {PRINCIPLES.map((p) => (
               <div key={p.title} className="card">
                 <h3>{p.title}</h3>
@@ -40,10 +40,7 @@ export default function HowIWorkPage() {
           <div className="section-head">
             <p className="eyebrow">The engagement</p>
             <h2>Discovery, sprint, retainer.</h2>
-            <p>
-              A craft business or a small nonprofit doesn&rsquo;t want a six-month transformation program. So every
-              engagement starts small and paid, and only grows if it earns it.
-            </p>
+            <p>Every engagement starts small and paid. It only grows after I earn it.</p>
           </div>
           <StepList steps={ENGAGEMENT_STEPS} />
         </div>
@@ -53,12 +50,19 @@ export default function HowIWorkPage() {
         <div className="container">
           <div className="pull">
             <HeartMark className="pull__heart" />
-            <p>You keep doing the work you&rsquo;re good at. I make the grind around it lighter.</p>
+            <p>
+              The strategy and the implementation develop together. That means the plan is constrained by
+              what&rsquo;s buildable, and the build reflects the strategy. And it all happens while you keep doing
+              the work you&rsquo;re good at.
+            </p>
           </div>
         </div>
       </section>
 
-      <CtaBand />
+      <CtaBand
+        title="Let's make a plan."
+        body="Start with a paid discovery sprint: a defined scope, a defined end date, and a clear answer on where AI workflows can help your business."
+      />
     </>
   );
 }

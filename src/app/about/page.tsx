@@ -21,7 +21,7 @@ export default function AboutPage() {
       <PageHero
         eyebrow="About"
         title={`Hi, I'm ${SITE.owner.split(" ")[0]}.`}
-        lede="I've spent a decade at the intersection of Product, Content and Culture at organizations like Netflix, Google and Obvious. I've consulted for new ventures at Vice and Major League Baseball."
+        lede="I've spent a decade at the intersection of Product, Content and Culture at organizations like Netflix, Google and Hatch. I've consulted for new ventures at Vice, Obvious and Major League Baseball. And I've helped half a dozen founders launch their businesses as an Entrepreneur-in-Residence at Oneday."
       />
 
       <section className="section">
@@ -61,7 +61,10 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <CtaBand title="Let's see if we're a fit." />
+      <CtaBand
+        title="Let's see if we're a fit."
+        body="Start with a paid discovery sprint: a defined scope, a defined end date, and a clear answer on where AI can help you."
+      />
     </>
   );
 }

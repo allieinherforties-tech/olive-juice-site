@@ -124,19 +124,15 @@ export type Principle = { title: string; body: string };
 
 export const PRINCIPLES: readonly Principle[] = [
   {
-    title: "Start from your mental model",
-    body: "Most AI projects hand you a template and ask you to reorganize around it. I work the other way: learn how you already make decisions, then build the tool to fit that.",
-  },
-  {
     title: "5% of the model is enough",
-    body: "You don't need the frontier of what AI can do. A small, well-chosen slice of a model's capability — pointed at the right problem — does more for a restaurant or a research team than the flashiest demo.",
+    body: "You don't need the frontier of what AI can do. A small, well-chosen slice of a model's capability pointed at the right problem does more for a restaurant or a research team than the flashiest demo.",
   },
   {
-    title: "No hype, no post-human speeches",
-    body: "A lot of AI consulting is people geeking out about the future and selling a tool nobody asked for. I'd rather talk about your Tuesday mornings.",
+    title: "No hype",
+    body: "A lot of AI consulting is people geeking out about the future and selling a tool nobody asked for. I'd rather talk about your Tuesday mornings and show you what a new way of working means for your week.",
   },
   {
-    title: "Outcome on the outside",
-    body: "The deliverable can be AI-shaped on the inside. What you see should be an outcome: a calmer morning, a faster search, a decision made earlier.",
+    title: "Outcomes > Deliverables",
+    body: "If you want to geek out about the tool stack and token efficiency, we can. But our metrics will be defined by the outcomes of the tools and workflows we develop: calmer mornings, easier routines, or value generated via time-back and revenue gained.",
   },
 ];
