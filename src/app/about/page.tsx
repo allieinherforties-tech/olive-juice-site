@@ -21,40 +21,22 @@ export default function AboutPage() {
       <PageHero
         eyebrow="About"
         title={`Hi, I'm ${SITE.owner.split(" ")[0]}.`}
-        lede="I spent a decade in product and content organizations at Netflix, Google, and Obvious. Olive Juice Digital is what I do with that now: build AI tools for people who already run something well."
+        lede="I've spent a decade at the intersection of Product, Content and Culture at organizations like Netflix, Google and Obvious. I've consulted for new ventures at Vice and Major League Baseball."
       />
 
       <section className="section">
         <div className="container about-grid">
           <div className="prose">
-            <h2>I work alongside you, not at a distance.</h2>
-            <p>
-              I bring a team-sports mindset to client work. The best teammates don&rsquo;t diagnose you
-              from the sidelines and hand you a report — they get on the field. That&rsquo;s the job as I see it:
-              sitting next to the GM or the research lead, learning how they actually make decisions, and building
-              something that fits.
-            </p>
-            <p>
-              It&rsquo;s also why I don&rsquo;t lead with the technology. The restaurant GM I worked with wanted to
-              think about food, not dashboards. A research team wants to accelerate a cure, not learn a new interface.
-              My job is to translate — to take what AI can do and turn it into something that feels like the way you
-              already work.
-            </p>
-
             <h2>Depth over volume, on purpose.</h2>
             <p>
-              I have three young kids at home. That&rsquo;s the honest reason Olive Juice is built around a small
-              number of clients, worked with deeply, rather than a big roster worked lightly. It isn&rsquo;t a
-              limitation I work around — it&rsquo;s a discipline. It forces every engagement to be scoped tightly,
-              to prove itself quickly, and to keep running without me hovering over it. That&rsquo;s exactly the
-              shape a small business or nonprofit needs anyway.
+              Olive Juice is built around an intentional roster of clients that I can invest into with my time and
+              resources. With a wife and three sons at home, I think of growth as a discipline within the practice.
+              I scope every engagement tightly, so that it will prove itself quickly.
             </p>
-
-            <h2>Why &ldquo;Olive Juice&rdquo;?</h2>
             <p>
-              Say &ldquo;olive juice&rdquo; without making a sound, and it looks almost exactly like &ldquo;I love
-              you.&rdquo; It&rsquo;s a reminder of what good translation does: the words on the surface can be
-              different, as long as the meaning lands.
+              I bring a team-sports mindset to client work. The best teammates don&rsquo;t diagnose from the
+              sidelines. We&rsquo;re going to work together to make sure that everything works as you need it to.
+              Nothing is out of the box because the idea that AI consulting comes from a playbook is ridiculous.
             </p>
           </div>
 

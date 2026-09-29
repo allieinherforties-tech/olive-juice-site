@@ -14,7 +14,7 @@ const WALK_AWAY_WITH = [
   "A map of how your team already works — the routines, tools, and decisions that eat the week",
   "A short, ranked list of where AI would genuinely lighten the load (and where it wouldn't)",
   "A scoped plan for the first project sprint, with a defined end date",
-  "An honest recommendation — including \u201cdon't build this\u201d if that's the right answer",
+  "A framework for how to prioritize the capabilities against your goals",
 ];
 
 const FAQ = [
@@ -24,7 +24,7 @@ const FAQ = [
   },
   {
     q: "What happens after discovery?",
-    a: "If there's a problem worth solving, we scope a project sprint to build it. If the tool earns its keep, it can roll into a retainer that keeps it running and builds the next piece. Every step is optional.",
+    a: "If there's a problem worth solving, we scope a project sprint to build it. The tool is yours to keep. If you want to keep building, we'll roll into a retainer and start the next phase. Every step is designed to capitalize on the momentum of the completed work.",
   },
   {
     q: "Who is this for?",
