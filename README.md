@@ -39,7 +39,18 @@ npm run build      # static output in ./out
 
 ### Custom domain: olivejuice.digital
 
-`public/CNAME` already contains `olivejuice.digital`. At the domain registrar, add:
+`public/CNAME` already contains `olivejuice.digital`.
+
+**Before adding records:** as of 2026-09-29 the apex has two existing A records
+(`76.223.105.230`, `13.248.243.5`) and `www` is a CNAME to the apex. Delete those A records
+(and any registrar domain forwarding/parking) and edit the `www` record. GitHub Pages fails its
+DNS check if other A records remain on `@`.
+
+**Do not touch the MX record** (`olivejuice-digital.mail.protection.outlook.com`) or any
+TXT/CNAME records for email (SPF, DKIM, autodiscover). They carry mail for
+`hello@olivejuice.digital`.
+
+At the domain registrar, set:
 
 | Type  | Host / Name | Value                                  |
 |-------|-------------|----------------------------------------|

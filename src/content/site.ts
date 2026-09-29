@@ -16,9 +16,8 @@ export const SITE = {
   name: "Olive Juice Digital",
   domain: "olivejuice.digital",
   url: "https://olivejuice.digital",
-  // Uses the project owner's address so the CTA works on day one.
-  // Swap for a domain inbox (e.g. hello@olivejuice.digital) once one exists.
-  email: "allie.esslinger@gmail.com",
+  // Public contact inbox. The domain's mail routes through Microsoft 365 (MX record).
+  email: "hello@olivejuice.digital",
   owner: "Allie Esslinger",
   tagline: "AI tools built for how you already work.",
   description:
