@@ -7,10 +7,7 @@
  * so a missed swap is visible rather than silently wrong.
  * `npm run placeholders` lists every one still in the codebase.
  */
-export const PLACEHOLDERS = {
-  sprintPrice: "[Sprint price]",
-  sprintLength: "[Sprint length]",
-} as const;
+export const PLACEHOLDERS = {} as const;
 
 export const SITE = {
   name: "Olive Juice Digital",

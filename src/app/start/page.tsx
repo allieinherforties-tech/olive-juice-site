@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { Fill, PageHero } from "@/components/Blocks";
+import { PageHero } from "@/components/Blocks";
 import { HeartMark } from "@/components/Marks";
-import { PLACEHOLDERS, SITE } from "@/content/site";
+import { SITE } from "@/content/site";
 import { buildInquiryMailto } from "@/lib/inquiry";
 
 export const metadata: Metadata = {
@@ -28,7 +28,7 @@ const FAQ = [
   },
   {
     q: "Who is this for?",
-    a: "Mission-driven nonprofits and local, craft-led businesses — teams that already run something well and want the grind around it to get lighter.",
+    a: "I love to work with mission-driven nonprofits and local, craft-led businesses that are looking to give themselves some breathing room. Teams that already run something well and want to make sure they're leveraging AI in ways that will keep their work at the center of their workweek.",
   },
 ];
 
@@ -66,16 +66,12 @@ export default function StartPage() {
             <p className="eyebrow" id="offer-title">
               Discovery sprint
             </p>
-            <p className="offer__price">
-              <Fill value={PLACEHOLDERS.sprintPrice} />
-            </p>
-            <p className="offer__terms">
-              <Fill value={PLACEHOLDERS.sprintLength} /> · fixed scope · defined end date
-            </p>
+            <p className="offer__price">Discovery Sprint</p>
+            <p className="offer__terms">Fixed Scope · Defined End Date</p>
             <ol className="check-list">
               <li>Send a short note about your organization</li>
               <li>We talk through whether it&rsquo;s a fit</li>
-              <li>If it is, the sprint starts</li>
+              <li>If it is, we&rsquo;ll get the start date scheduled</li>
             </ol>
             <a href={mailto} className="btn btn--primary">
               Email to start

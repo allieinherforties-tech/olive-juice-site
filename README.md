@@ -20,7 +20,7 @@ site with a yellow highlight, so a missed swap is visible rather than silently w
 npm run placeholders   # lists what's left; exits 1 while any remain
 ```
 
-Currently open: sprint price and sprint length (Start a Project page).
+Currently none open.
 
 ## Local development
 
