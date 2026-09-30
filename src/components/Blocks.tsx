@@ -61,8 +61,8 @@ export function StepList({ steps }: { steps: readonly Step[] }) {
 }
 
 export function CtaBand({
-  title = "Tell me what's eating your week.",
-  body = "Start with a paid discovery sprint: a defined scope, a defined end date, and a clear answer on where AI actually helps — and where it doesn't.",
+  title = "Let's make a plan.",
+  body = "Start with a paid discovery sprint: a defined scope, a defined end date, and a clear answer on where AI workflows can help your business.",
   withForm = false,
 }: {
   title?: string;
