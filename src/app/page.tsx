@@ -180,17 +180,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section section--tight">
-        <div className="container">
-          <div className="pull">
-            <HeartMark className="pull__heart" />
-            <p>
-              Next up: bringing the same approach to larger mission-driven institutions, including public media.
-            </p>
-          </div>
-        </div>
-      </section>
-
       <CtaBand />
     </>
   );
