@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { CtaBand, PageHero } from "@/components/Blocks";
 import { SkylineMark } from "@/components/Marks";
-import { OWN_WORK, SITE } from "@/content/site";
+import { SITE } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "About",
@@ -9,10 +9,32 @@ export const metadata: Metadata = {
     "Allie Esslinger: a decade in product and content organizations at Netflix, Google, and Obvious, now building AI tools that fit how clients already work.",
 };
 
-// Brief states "a decade in product and content orgs" across these companies;
-// it does not give per-company titles, so none are invented here.
-const BACKGROUND = [
-  { name: "Netflix · Google · Obvious", detail: "A decade in product and content organizations" },
+type BackgroundSegment = { label: string; url: string };
+type BackgroundEntry = { segments: readonly BackgroundSegment[]; detail: string };
+
+// Background/credentials list, per Copyedit Review sheet (wb_xX7wcmOV/sh_QUBD9S6D,
+// About/Background list row). Brief states "a decade in product and content orgs"
+// across Netflix/Google/Obvious; it does not give per-company titles, so none are invented.
+const BACKGROUND: readonly BackgroundEntry[] = [
+  {
+    segments: [
+      {
+        label: "Netflix",
+        url: "https://www.latimes.com/entertainment-arts/business/story/2024-05-30/why-netflix-is-featuring-its-reality-stars-in-games",
+      },
+      { label: "Google", url: "https://families.google/familylink/" },
+      { label: "Obvious", url: "https://obvious.ai/blog/the-work-behind-the-work" },
+    ],
+    detail: "A decade leading innovation teams inside of product & content organizations.",
+  },
+  {
+    segments: [{ label: "Shut the Box", url: "https://1hkqjvs18b-8091.hosted.obvious.ai/" }],
+    detail: "Built from scratch",
+  },
+  {
+    segments: [{ label: "Oneday", url: "https://oneday.org" }],
+    detail: "Entrepreneur in Residence",
+  },
 ] as const;
 
 export default function AboutPage() {
@@ -44,16 +66,19 @@ export default function AboutPage() {
             <SkylineMark className="about-skyline" />
             <p className="eyebrow">Background</p>
             <ul className="fact-list">
-              {BACKGROUND.map((b) => (
-                <li key={b.name}>
-                  <strong>{b.name}</strong>
-                  <span>{b.detail}</span>
-                </li>
-              ))}
-              {OWN_WORK.map((w) => (
-                <li key={w.name}>
-                  <strong>{w.name}</strong>
-                  <span>{w.role}</span>
+              {BACKGROUND.map((entry) => (
+                <li key={entry.segments.map((s) => s.label).join("-")}>
+                  <strong>
+                    {entry.segments.map((segment, i) => (
+                      <span key={segment.label}>
+                        {i > 0 ? " · " : ""}
+                        <a href={segment.url} target="_blank" rel="noopener noreferrer">
+                          {segment.label}
+                        </a>
+                      </span>
+                    ))}
+                  </strong>
+                  <span>{entry.detail}</span>
                 </li>
               ))}
             </ul>
