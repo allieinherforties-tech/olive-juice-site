@@ -23,7 +23,6 @@ const BACKGROUND: readonly BackgroundEntry[] = [
         url: "https://www.latimes.com/entertainment-arts/business/story/2024-05-30/why-netflix-is-featuring-its-reality-stars-in-games",
       },
       { label: "Google", url: "https://families.google/familylink/" },
-      { label: "Obvious", url: "https://obvious.ai/blog/the-work-behind-the-work" },
     ],
     detail: "A decade leading innovation teams inside of product & content organizations.",
   },
