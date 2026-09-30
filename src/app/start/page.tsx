@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/Blocks";
 import { HeartMark } from "@/components/Marks";
 import { SITE } from "@/content/site";
-import { buildInquiryMailto } from "@/lib/inquiry";
+import { InquiryForm } from "@/components/InquiryForm";
 
 export const metadata: Metadata = {
   title: "Start a project",
@@ -33,7 +33,6 @@ const FAQ = [
 ];
 
 export default function StartPage() {
-  const mailto = buildInquiryMailto(SITE.email);
   return (
     <>
       <PageHero
@@ -73,9 +72,7 @@ export default function StartPage() {
               <li>We talk through whether it&rsquo;s a fit</li>
               <li>If it is, we&rsquo;ll get the start date scheduled</li>
             </ol>
-            <a href={mailto} className="btn btn--primary">
-              Email to start
-            </a>
+            <InquiryForm />
             <p className="offer__terms offer__terms--after">
               Or write directly: <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
             </p>

@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { PLACEHOLDERS, START_CTA, type CaseStudy, type Step } from "@/content/site";
 import { HeartMark } from "./Marks";
+import { InquiryForm } from "./InquiryForm";
 
 const PLACEHOLDER_VALUES: ReadonlySet<string> = new Set(Object.values(PLACEHOLDERS));
 
@@ -62,21 +63,28 @@ export function StepList({ steps }: { steps: readonly Step[] }) {
 export function CtaBand({
   title = "Tell me what's eating your week.",
   body = "Start with a paid discovery sprint: a defined scope, a defined end date, and a clear answer on where AI actually helps — and where it doesn't.",
+  withForm = false,
 }: {
   title?: string;
   body?: string;
+  /** Render the inquiry form in place of the "Start a project" link. */
+  withForm?: boolean;
 }) {
   return (
-    <section className="cta-band">
+    <section className={`cta-band${withForm ? " cta-band--form" : ""}`}>
       <HeartMark className="cta-band__heart" />
       <div className="container">
         <h2>{title}</h2>
         <p>{body}</p>
-        <div className="btn-row">
-          <Link href={START_CTA.href} className="btn btn--primary">
-            {START_CTA.label}
-          </Link>
-        </div>
+        {withForm ? (
+          <InquiryForm tone="dark" />
+        ) : (
+          <div className="btn-row">
+            <Link href={START_CTA.href} className="btn btn--primary">
+              {START_CTA.label}
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );

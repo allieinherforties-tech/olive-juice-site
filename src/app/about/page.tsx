@@ -89,6 +89,7 @@ export default function AboutPage() {
       <CtaBand
         title="Let's see if we're a fit."
         body="Start with a paid discovery sprint: a defined scope, a defined end date, and a clear answer on where AI can help you."
+        withForm
       />
     </>
   );

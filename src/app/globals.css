@@ -898,6 +898,171 @@ p {
   }
 }
 
+/* ---------- inquiry form ---------- */
+
+.inquiry {
+  margin-top: var(--space-6);
+}
+
+.cta-band .inquiry {
+  max-width: 720px;
+  margin-top: var(--space-8);
+}
+
+.inquiry__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.cta-band .inquiry__grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.inquiry__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.cta-band .inquiry__field--wide {
+  grid-column: 1 / -1;
+}
+
+.inquiry label {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.inquiry__optional,
+.inquiry__hint {
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.inquiry input,
+.inquiry textarea {
+  width: 100%;
+  font: inherit;
+  font-size: 1rem;
+  color: var(--text-primary);
+  background: var(--white);
+  border: 0;
+  border-radius: var(--radius-md);
+  box-shadow: inset 0 0 0 1.5px rgba(42, 34, 48, 0.18);
+  padding: var(--space-3) var(--space-4);
+  transition: box-shadow var(--transition);
+}
+
+.inquiry textarea {
+  resize: vertical;
+  min-height: 84px;
+}
+
+.inquiry input:focus-visible,
+.inquiry textarea:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 2px var(--olive-deep);
+}
+
+.inquiry [aria-invalid="true"] {
+  box-shadow: inset 0 0 0 2px var(--red);
+}
+
+.inquiry input:disabled,
+.inquiry textarea:disabled {
+  opacity: 0.6;
+}
+
+.inquiry__error {
+  font-size: 0.85rem;
+  color: var(--red-deep);
+}
+
+.inquiry .inquiry__alert {
+  background: #fbeaec;
+  color: var(--red-deep);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  font-size: 0.95rem;
+}
+
+.inquiry .btn:disabled {
+  opacity: 0.7;
+  cursor: progress;
+}
+
+.inquiry__success {
+  background: var(--olive-wash);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  box-shadow: inset 4px 0 0 var(--olive);
+}
+
+.inquiry__success p {
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+.inquiry__success .inquiry__success-title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+}
+
+/* Off-screen rather than display:none, which some bots detect and skip. */
+.inquiry__trap {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Dark variant: sits on the teal CTA band. */
+.inquiry--dark label {
+  color: var(--white);
+}
+
+.inquiry--dark .inquiry__optional,
+.inquiry--dark .inquiry__hint {
+  color: var(--text-on-dark-muted);
+}
+
+.inquiry--dark input,
+.inquiry--dark textarea {
+  box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.25);
+}
+
+.inquiry--dark input:focus-visible,
+.inquiry--dark textarea:focus-visible {
+  box-shadow: inset 0 0 0 2px var(--olive);
+}
+
+.inquiry--dark .inquiry__error {
+  color: #ffc9cf;
+}
+
+.cta-band .inquiry--dark .inquiry__success p {
+  color: var(--text-secondary);
+}
+
+/* The decorative heart would collide with the wider form. */
+.cta-band--form .cta-band__heart {
+  top: var(--space-20);
+  transform: rotate(-8deg);
+}
+
+@media (max-width: 760px) {
+  .cta-band .inquiry__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ---------- footer ---------- */
 
 .site-footer {

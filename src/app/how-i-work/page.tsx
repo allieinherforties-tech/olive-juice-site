@@ -62,6 +62,7 @@ export default function HowIWorkPage() {
       <CtaBand
         title="Let's make a plan."
         body="Start with a paid discovery sprint: a defined scope, a defined end date, and a clear answer on where AI workflows can help your business."
+        withForm
       />
     </>
   );

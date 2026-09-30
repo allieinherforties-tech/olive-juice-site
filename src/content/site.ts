@@ -21,6 +21,12 @@ export const SITE = {
     "Olive Juice Digital builds AI-powered tools and workflows for mission-driven organizations and craft-led local businesses — shaped around how you already think and work, not the other way around.",
 } as const;
 
+/**
+ * Contact-form endpoint. The site is a static export, so submissions go to a small
+ * hosted service that logs the lead for the Pipeline CRM and emails SITE.email.
+ */
+export const INQUIRY_ENDPOINT = "https://1v7en6pjqm-8787.hosted.obvious.ai/inquiry";
+
 export type NavItem = { href: string; label: string };
 
 export const NAV: readonly NavItem[] = [
