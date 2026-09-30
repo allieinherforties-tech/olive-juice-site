@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { CaseCard, CtaBand, StepList } from "@/components/Blocks";
 import { HeartMark, SkylineMark } from "@/components/Marks";
-import { CASE_STUDIES, ENGAGEMENT_STEPS, OWN_WORK, START_CTA } from "@/content/site";
+import { CASE_STUDIES, ENGAGEMENT_STEPS, OWN_WORK, PRINCIPLES, START_CTA } from "@/content/site";
 
 const WHAT_YOU_GET_SOLD = [
   "A chatbot nobody asked for",
@@ -86,6 +86,23 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="section section--tint">
+        <div className="container">
+          <div className="section-head">
+            <p className="eyebrow">Principles</p>
+            <h2>What I believe about AI for small, serious teams.</h2>
+          </div>
+          <div className="grid grid--3">
+            {PRINCIPLES.map((p) => (
+              <div key={p.title} className="card">
+                <h3>{p.title}</h3>
+                <p>{p.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="section">
         <div className="container">
           <div className="section-head">
@@ -115,10 +132,18 @@ export default function HomePage() {
             </p>
           </div>
           <StepList steps={ENGAGEMENT_STEPS} />
-          <div className="btn-row">
-            <Link href="/how-i-work/" className="btn btn--ghost">
-              How I work
-            </Link>
+        </div>
+      </section>
+
+      <section className="section section--tight">
+        <div className="container">
+          <div className="pull">
+            <HeartMark className="pull__heart" />
+            <p>
+              The strategy and the implementation develop together. That means the plan is constrained by
+              what&rsquo;s buildable, and the build reflects the strategy. And it all happens while you keep doing
+              the work you&rsquo;re good at.
+            </p>
           </div>
         </div>
       </section>

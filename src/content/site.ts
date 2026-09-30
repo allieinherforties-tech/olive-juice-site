@@ -30,7 +30,6 @@ export const INQUIRY_ENDPOINT = "https://1v7en6pjqm-8787.hosted.obvious.ai/inqui
 export type NavItem = { href: string; label: string };
 
 export const NAV: readonly NavItem[] = [
-  { href: "/how-i-work/", label: "How I work" },
   { href: "/case-studies/", label: "Case studies" },
   { href: "/about/", label: "About" },
 ];
