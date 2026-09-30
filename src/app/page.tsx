@@ -155,13 +155,27 @@ export default function HomePage() {
             <h2>Building AI products, and helping founders build theirs.</h2>
           </div>
           <div className="grid grid--2">
-            {OWN_WORK.map((item) => (
-              <div key={item.name} className="card">
-                <p className="card__meta">{item.role}</p>
-                <h3>{item.name}</h3>
-                <p>{item.detail}</p>
-              </div>
-            ))}
+            {OWN_WORK.map((item) =>
+              item.url ? (
+                <a
+                  key={item.name}
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="card card--link"
+                >
+                  <p className="card__meta">{item.role}</p>
+                  <h3>{item.name}</h3>
+                  <p>{item.detail}</p>
+                </a>
+              ) : (
+                <div key={item.name} className="card">
+                  <p className="card__meta">{item.role}</p>
+                  <h3>{item.name}</h3>
+                  <p>{item.detail}</p>
+                </div>
+              )
+            )}
           </div>
         </div>
       </section>

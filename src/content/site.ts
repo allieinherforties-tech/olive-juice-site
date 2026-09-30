@@ -87,19 +87,27 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
   },
 ];
 
-export type Credential = { name: string; role: string; detail: string };
+export type Credential = {
+  name: string;
+  role: string;
+  detail: string;
+  /** External link, when there's somewhere to send the click. */
+  url?: string;
+};
 
 /** Work Allie owns outright — cleared to name with specifics. */
 export const OWN_WORK: readonly Credential[] = [
   {
-    name: "LGBTQueue",
+    name: "Shut the Box",
     role: "Built from scratch",
+    url: "https://1hkqjvs18b-8091.hosted.obvious.ai/",
     detail:
-      "A daily newsletter covering LGBTQ+ pop culture, built with AI from scratch — plus Shut the Box, its companion game. Proof of building a consumer product end to end.",
+      "A daily pub game, built for night friends staying in touch during the day. A fun consumer product build, end to end.",
   },
   {
     name: "Oneday",
     role: "Entrepreneur in Residence",
+    url: "https://oneday.org",
     detail:
       "Working with founders as they shape their businesses; through Olive Juice, helping them make AI product decisions and build AI products.",
   },
