@@ -12,6 +12,13 @@ import {
   type InlineSegment,
 } from "@/content/site";
 
+const WHAT_YOU_GET_SOLD = [
+  "A chatbot nobody asked for",
+  "A new dashboard to learn",
+  "A six-month transformation program",
+  "Speeches about the post-human future",
+];
+
 /** Renders copy segments, linking out where a segment carries a URL. */
 function InlineSegments({ segments }: { segments: readonly InlineSegment[] }) {
   return (
@@ -26,6 +33,14 @@ function InlineSegments({ segments }: { segments: readonly InlineSegment[] }) {
         ),
       )}
     </>
+  );
+}
+
+function ArrowRight() {
+  return (
+    <svg viewBox="0 0 56 24" aria-hidden="true">
+      <path d="M2 12h48M40 3l10 9-10 9" fill="none" stroke="var(--olive)" strokeWidth="2.5" strokeLinecap="round" />
+    </svg>
   );
 }
 
@@ -60,17 +75,31 @@ export default function HomePage() {
             <p className="eyebrow">The difference</p>
             <h2>I&rsquo;m really good at speaking your language.</h2>
             <p>
-              We&rsquo;ll start with how you already make decisions. Then I&rsquo;ll build the tool to fit the way you
-              work — and we&rsquo;ll talk through trade-offs and long-term goals without sounding like a robot.
+              We&rsquo;ll start with how you already make decisions. Then I&rsquo;ll build out ways to make it faster,
+              easier and more valuable. We&rsquo;ll talk through the trade-offs of a tool v a system and pull in your
+              long-term goals without sounding like a robot.
             </p>
           </div>
-          <div className="what-you-get">
-            <h3>What you get:</h3>
-            <ul>
-              {WHAT_YOU_GET.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
+          <div className="translation">
+            <div className="translation__col translation__col--muted">
+              <h3>What most AI pitches sell you</h3>
+              <ul>
+                {WHAT_YOU_GET_SOLD.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="translation__arrow">
+              <ArrowRight />
+            </div>
+            <div className="translation__col">
+              <h3>What you get:</h3>
+              <ul>
+                {WHAT_YOU_GET.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </section>
@@ -98,14 +127,42 @@ export default function HomePage() {
             <p className="eyebrow">Proof</p>
             <h2>Two engagements, one method.</h2>
             <p className="lede">
-              The back office at Oliver&rsquo;s, a Chicago restaurant, and the Usher III Initiative&rsquo;s research pipeline. Very
-              different work — the same starting point: learn how the client already thinks, then build to fit.
+              The back office at Oliver&rsquo;s, a Chicago restaurant, and the Usher III Initiative&rsquo;s research pipeline.
             </p>
           </div>
           <div className="grid grid--2">
             {CASE_STUDIES.map((study) => (
               <CaseCard key={study.slug} study={study} />
             ))}
+          </div>
+          <div className="section-head section-head--sub">
+            <h3>Beyond a sprint</h3>
+          </div>
+          <div className="grid grid--2">
+            {OWN_WORK.map((item) => (
+              <div key={item.name} className="card">
+                <p className="card__meta">{item.role}</p>
+                <h3>
+                  {item.url ? (
+                    <a href={item.url} target="_blank" rel="noopener noreferrer">
+                      {item.name}
+                    </a>
+                  ) : (
+                    item.name
+                  )}
+                </h3>
+                <p>
+                  <InlineSegments segments={item.detail} />
+                </p>
+              </div>
+            ))}
+          </div>
+          <div className="pull pull--in-section">
+            <HeartMark className="pull__heart" />
+            <p>
+              Next up: bringing the same hands-on strategy to larger mission-driven institutions, including public
+              media and sports organizations.
+            </p>
           </div>
         </div>
       </section>
@@ -129,49 +186,8 @@ export default function HomePage() {
           <div className="pull">
             <HeartMark className="pull__heart" />
             <p>
-              The strategy and the implementation develop together. That means the plan is constrained by
-              what&rsquo;s buildable, and the build reflects the strategy. And it all happens while you keep doing
-              the work you&rsquo;re good at.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="section section--tight">
-        <div className="container">
-          <div className="section-head">
-            <p className="eyebrow">Beyond a sprint</p>
-            <h2>I build my own. I help you build yours.</h2>
-          </div>
-          <div className="grid grid--2">
-            {OWN_WORK.map((item) => (
-              <div key={item.name} className="card">
-                <p className="card__meta">{item.role}</p>
-                <h3>
-                  {item.url ? (
-                    <a href={item.url} target="_blank" rel="noopener noreferrer">
-                      {item.name}
-                    </a>
-                  ) : (
-                    item.name
-                  )}
-                </h3>
-                <p>
-                  <InlineSegments segments={item.detail} />
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section section--tight">
-        <div className="container">
-          <div className="pull">
-            <HeartMark className="pull__heart" />
-            <p>
-              Next up: bringing the same hands-on strategy to larger mission-driven institutions, including public
-              media and sports organizations.
+              The strategy and the implementation develop together. And it all happens while you keep doing the work
+              you&rsquo;re good at.
             </p>
           </div>
         </div>
