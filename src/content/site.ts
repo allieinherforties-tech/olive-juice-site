@@ -109,7 +109,7 @@ export const OWN_WORK: readonly Credential[] = [
     url: "https://parentpeptalks.com",
     detail: [
       "A daily pep talk for parents in the thick of it — with personalized tips based on the age and stage of their kids, when they're ready. Plus ",
-      { label: "Shut the Box", url: "https://shutthebox.olivejuice.digital" },
+      { label: "Shut the Box", url: "https://1hkqjvs18b-8090.hosted.obvious.ai/" },
       ", ",
       { label: "LGBTQueue (Coming Soon)", url: "https://queue.lgbt" },
       ", and ",
