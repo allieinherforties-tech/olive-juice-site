@@ -87,21 +87,43 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
   },
 ];
 
-export type Credential = { name: string; role: string; detail: string };
+/**
+ * A run of body copy that may embed inline links. Plain strings render as text;
+ * `{ label, url }` segments render as external anchors.
+ */
+export type InlineSegment = string | { label: string; url: string };
+
+export type Credential = {
+  name: string;
+  role: string;
+  /** Link for the card title itself (the product's own site), when it has one. */
+  url?: string;
+  detail: readonly InlineSegment[];
+};
 
 /** Work Allie owns outright — cleared to name with specifics. */
 export const OWN_WORK: readonly Credential[] = [
   {
-    name: "LGBTQueue",
-    role: "Built from scratch",
-    detail:
-      "A daily newsletter covering LGBTQ+ pop culture, built with AI from scratch — plus Shut the Box, its companion game. Proof of building a consumer product end to end.",
+    name: "Parent Pep Talks",
+    role: "0–1 Ideation & Execution",
+    url: "https://parentpeptalks.com",
+    detail: [
+      "A daily pep talk for parents in the thick of it — with personalized tips based on the age and stage of their kids, when they're ready. Plus ",
+      { label: "Shut the Box", url: "https://shutthebox.olivejuice.digital" },
+      ", ",
+      { label: "LGBTQueue (Coming Soon)", url: "https://queue.lgbt" },
+      ", and ",
+      { label: "Comfort & Vice", url: "https://comfort-vice.myshopify.com" },
+      ": end-to-end consumer products with revenue, built collaboratively from the ground up.",
+    ],
   },
   {
     name: "Oneday",
     role: "Entrepreneur in Residence",
-    detail:
-      "Working with founders as they shape their businesses; through Olive Juice, helping them make AI product decisions and build AI products.",
+    url: "https://www.oneday.org",
+    detail: [
+      "Working 1:1 with founders as they shape their businesses — through Olive Juice, helping them make AI product decisions, build AI products, and generate $1,000,000 before graduation.",
+    ],
   },
 ];
 
@@ -111,18 +133,26 @@ export const ENGAGEMENT_STEPS: readonly Step[] = [
   {
     label: "01",
     title: "Paid discovery",
-    body: "We start by learning how you already think and work — the routines, the tools you already pay for, the decisions that eat your week. You get a clear map of where AI would actually lighten the load, and where it wouldn't.",
+    body: "We'll start by learning how you already think and work. You'll get a clear map of where AI can improve your workflows — based on your routines and the tools you already use.",
   },
   {
     label: "02",
     title: "Project sprint",
-    body: "A contained build against the one problem worth solving first. Defined scope, defined end date, a working tool at the finish — not a transformation roadmap.",
+    body: "Our first job is a solution to a nagging problem: a defined scope, set against a turnaround timeline, that gets you results before you're asked to evaluate a transformation roadmap.",
   },
   {
     label: "03",
     title: "Retainer",
-    body: "If the tool earns its keep, we keep it running quietly in the background and build the next piece. If it doesn't, you've spent a sprint, not a year.",
+    body: "If the tool earns its keep, we keep it running quietly in the background and build the next piece. Either way, you walk away with a map of your tools and workflows; insights about how to build new systems for yourself; and the markdown files to share with your team if you decide to rebuild later.",
   },
+];
+
+/** "The difference" section's single centered list. */
+export const WHAT_YOU_GET: readonly string[] = [
+  "Calmer mornings",
+  "A faster, repeatable workflow",
+  "Decisions made earlier",
+  "More time for the work you're good at",
 ];
 
 export type Principle = { title: string; body: string };

@@ -1,27 +1,31 @@
+import { Fragment } from "react";
 import Link from "next/link";
 import { CaseCard, CtaBand, StepList } from "@/components/Blocks";
 import { HeartMark, SkylineMark } from "@/components/Marks";
-import { CASE_STUDIES, ENGAGEMENT_STEPS, OWN_WORK, PRINCIPLES, START_CTA } from "@/content/site";
+import {
+  CASE_STUDIES,
+  ENGAGEMENT_STEPS,
+  OWN_WORK,
+  PRINCIPLES,
+  START_CTA,
+  WHAT_YOU_GET,
+  type InlineSegment,
+} from "@/content/site";
 
-const WHAT_YOU_GET_SOLD = [
-  "A chatbot nobody asked for",
-  "A new dashboard to learn",
-  "A six-month transformation program",
-  "Speeches about the post-human future",
-];
-
-const WHAT_YOU_ACTUALLY_NEED = [
-  "Calmer mornings",
-  "A faster, repeatable search",
-  "Decisions made earlier",
-  "More time for the work you're good at",
-];
-
-function ArrowRight() {
+/** Renders copy segments, linking out where a segment carries a URL. */
+function InlineSegments({ segments }: { segments: readonly InlineSegment[] }) {
   return (
-    <svg viewBox="0 0 56 24" aria-hidden="true">
-      <path d="M2 12h48M40 3l10 9-10 9" fill="none" stroke="var(--olive)" strokeWidth="2.5" strokeLinecap="round" />
-    </svg>
+    <>
+      {segments.map((segment, i) =>
+        typeof segment === "string" ? (
+          <Fragment key={i}>{segment}</Fragment>
+        ) : (
+          <a key={i} href={segment.url} target="_blank" rel="noopener noreferrer">
+            {segment.label}
+          </a>
+        ),
+      )}
+    </>
   );
 }
 
@@ -35,9 +39,8 @@ export default function HomePage() {
             Built for how you <em>already</em> work.
           </h1>
           <p className="lede">
-            You didn&rsquo;t get into this to run software. Olive Juice Digital builds AI-powered tools and workflows
-            that fit the way you already think — so you keep doing the work you&rsquo;re good at, and the operational
-            and research grind around it gets lighter.
+            You&rsquo;d rather spend your time doing the work you love than learning a new AI tool. Olive Juice Digital
+            makes AI to support your mission, your passion, and your way of life.
           </p>
           <div className="btn-row">
             <Link href={START_CTA.href} className="btn btn--primary">
@@ -55,33 +58,19 @@ export default function HomePage() {
         <div className="container">
           <div className="section-head">
             <p className="eyebrow">The difference</p>
-            <h2>I don&rsquo;t sell AI. I translate it.</h2>
+            <h2>I&rsquo;m really good at speaking your language.</h2>
             <p>
-              Almost every AI consultant says some version of &ldquo;I help you use AI.&rdquo; I start somewhere else:
-              with how you already make decisions. Then I build the tool to fit that — AI-shaped on the inside,
-              outcome-shaped on the outside.
+              We&rsquo;ll start with how you already make decisions. Then I&rsquo;ll build the tool to fit the way you
+              work — and we&rsquo;ll talk through trade-offs and long-term goals without sounding like a robot.
             </p>
           </div>
-          <div className="translation">
-            <div className="translation__col translation__col--muted">
-              <h3>What most AI pitches sell you</h3>
-              <ul>
-                {WHAT_YOU_GET_SOLD.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
-            <div className="translation__arrow">
-              <ArrowRight />
-            </div>
-            <div className="translation__col">
-              <h3>What you actually needed</h3>
-              <ul>
-                {WHAT_YOU_ACTUALLY_NEED.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
+          <div className="what-you-get">
+            <h3>What you get:</h3>
+            <ul>
+              {WHAT_YOU_GET.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
@@ -127,8 +116,8 @@ export default function HomePage() {
             <p className="eyebrow">How it starts</p>
             <h2>A small, paid first yes.</h2>
             <p className="lede">
-              Not a transformation program. A contained discovery and build that proves itself fast, then keeps running
-              quietly in the background.
+              A contained discovery and build is the best way to prove value fast. It keeps running in the background
+              while we work on strategy and systems change.
             </p>
           </div>
           <StepList steps={ENGAGEMENT_STEPS} />
@@ -151,15 +140,25 @@ export default function HomePage() {
       <section className="section section--tight">
         <div className="container">
           <div className="section-head">
-            <p className="eyebrow">Beyond client work</p>
-            <h2>Building AI products, and helping founders build theirs.</h2>
+            <p className="eyebrow">Beyond a sprint</p>
+            <h2>I build my own. I help you build yours.</h2>
           </div>
           <div className="grid grid--2">
             {OWN_WORK.map((item) => (
               <div key={item.name} className="card">
                 <p className="card__meta">{item.role}</p>
-                <h3>{item.name}</h3>
-                <p>{item.detail}</p>
+                <h3>
+                  {item.url ? (
+                    <a href={item.url} target="_blank" rel="noopener noreferrer">
+                      {item.name}
+                    </a>
+                  ) : (
+                    item.name
+                  )}
+                </h3>
+                <p>
+                  <InlineSegments segments={item.detail} />
+                </p>
               </div>
             ))}
           </div>
@@ -171,7 +170,8 @@ export default function HomePage() {
           <div className="pull">
             <HeartMark className="pull__heart" />
             <p>
-              Next up: bringing the same approach to larger mission-driven institutions, including public media.
+              Next up: bringing the same hands-on strategy to larger mission-driven institutions, including public
+              media and sports organizations.
             </p>
           </div>
         </div>
