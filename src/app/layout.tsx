@@ -28,6 +28,13 @@ export const metadata: Metadata = {
     url: SITE.url,
     title: `${SITE.name} — ${SITE.tagline}`,
     description: SITE.description,
+    // Brand share card, 1200x630 (technical audit, finding 5). Replace public/og-card.png
+    // to update every page's social-share image.
+    images: [{ url: "/og-card.png", width: 1200, height: 630, alt: `${SITE.name}: ${SITE.tagline}` }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/og-card.png"],
   },
   icons: { icon: "/heart.svg" },
 };

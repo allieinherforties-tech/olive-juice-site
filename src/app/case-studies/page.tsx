@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Case studies",
   description:
     "A foot-traffic forecast for Oliver\u2019s, a Chicago restaurant, and an AI-assisted research process for the Usher III Initiative.",
+  alternates: { canonical: "/case-studies/" },
 };
 
 export default function CaseStudiesPage() {

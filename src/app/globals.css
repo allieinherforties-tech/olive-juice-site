@@ -10,6 +10,7 @@
  */
 :root {
   --olive: #a3a341;
+  --olive-bright: #c1c55e; /* olive lightened for AA-contrast text on dark surfaces (6.2:1 on --teal) */
   --olive-deep: #5f5f1e; /* olive darkened for AA-contrast text on light surfaces */
   --olive-mist: #d0d09e;
   --olive-wash: #f4f4e6;
@@ -215,7 +216,7 @@ p {
 }
 
 .section--dark .eyebrow {
-  color: var(--olive);
+  color: var(--olive-bright);
 }
 
 .lede {
@@ -646,7 +647,7 @@ p {
 }
 
 .section--dark .step__label {
-  color: var(--olive);
+  color: var(--olive-bright);
 }
 
 /* ---------- case study detail ---------- */
@@ -1128,6 +1129,124 @@ p {
 
 .olive-juice-note {
   font-style: italic;
+}
+
+/* ---------- articles ---------- */
+
+/* Draft badge: same amber semantics as the placeholder highlight, so
+   "not final" looks the same everywhere on the site. */
+.draft-badge {
+  display: inline-block;
+  margin-left: var(--space-2);
+  padding: 0 var(--space-2);
+  background: #fff1c2;
+  color: #6b4a00;
+  border-radius: var(--radius-sm);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  vertical-align: 2px;
+}
+
+.article-hero h1 {
+  max-width: 24ch;
+}
+
+.article-body {
+  max-width: var(--prose-width);
+}
+
+.article-body h2 {
+  font-size: clamp(1.5rem, 2.4vw, 1.9rem);
+  margin-top: var(--space-12);
+}
+
+.article-body ul,
+.article-body ol {
+  padding-left: var(--space-6);
+  margin: 0 0 var(--space-4);
+}
+
+.article-body li {
+  margin-bottom: var(--space-2);
+}
+
+.article-body blockquote {
+  margin: var(--space-8) 0;
+  padding-left: var(--space-6);
+  box-shadow: inset 4px 0 0 var(--olive);
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  line-height: 1.4;
+  color: var(--text-primary);
+}
+
+.article-body blockquote p {
+  margin: 0;
+}
+
+.article-body hr {
+  border: 0;
+  height: 1px;
+  background: rgba(42, 34, 48, 0.1);
+  margin: var(--space-12) 0;
+}
+
+.article-body code {
+  font-size: 0.9em;
+  background: var(--olive-wash);
+  padding: 0.1em 0.35em;
+  border-radius: var(--radius-sm);
+}
+
+.article-body pre {
+  background: var(--teal);
+  color: var(--text-on-dark);
+  padding: var(--space-6);
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+}
+
+.article-body pre code {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+}
+
+.draft-note {
+  max-width: var(--prose-width);
+  background: #fff1c2;
+  color: #6b4a00;
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-6);
+  font-size: 0.95rem;
+  margin-bottom: var(--space-8);
+}
+
+.article-faq {
+  max-width: var(--prose-width);
+  margin-top: var(--space-16);
+  padding-top: var(--space-8);
+  box-shadow: 0 -1px 0 rgba(42, 34, 48, 0.1);
+}
+
+.article-faq h2 {
+  font-size: 1.6rem;
+}
+
+.article-backlink {
+  margin-top: var(--space-12);
+  font-weight: 600;
+}
+
+.article-backlink a {
+  color: var(--red);
+  text-decoration: none;
+}
+
+.article-backlink a:hover {
+  text-decoration: underline;
 }
 
 @media (prefers-reduced-motion: reduce) {

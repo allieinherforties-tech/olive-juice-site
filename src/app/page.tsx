@@ -1,7 +1,9 @@
 import { Fragment } from "react";
 import Link from "next/link";
+import type { Metadata } from "next";
 import { CaseCard, CtaBand, StepList } from "@/components/Blocks";
 import { HeartMark, SkylineMark } from "@/components/Marks";
+import { organizationJsonLd, websiteJsonLd } from "@/lib/schema";
 import {
   CASE_STUDIES,
   ENGAGEMENT_STEPS,
@@ -11,6 +13,10 @@ import {
   WHAT_YOU_GET,
   type InlineSegment,
 } from "@/content/site";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 const WHAT_YOU_GET_SOLD = [
   "A chatbot nobody asked for",
@@ -47,6 +53,10 @@ function ArrowRight() {
 export default function HomePage() {
   return (
     <>
+      {/* Site-level entities (technical audit, finding 4). */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: organizationJsonLd() }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: websiteJsonLd() }} />
+
       <section className="hero">
         <div className="container hero__inner">
           <p className="eyebrow">AI for mission-driven organizations &amp; craft-led local businesses</p>

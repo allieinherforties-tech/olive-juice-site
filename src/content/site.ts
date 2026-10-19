@@ -17,8 +17,9 @@ export const SITE = {
   email: "hello@olivejuice.digital",
   owner: "Allie Esslinger",
   tagline: "AI tools built for how you already work.",
+  // Under 155 characters so search results keep the closing pitch (technical audit, finding 9).
   description:
-    "Olive Juice Digital builds AI-powered tools and workflows for mission-driven organizations and craft-led local businesses, shaped around how you already think and work, not the other way around.",
+    "AI tools and workflows for mission-driven organizations and craft-led local businesses, shaped around how you already work, not the other way around.",
 } as const;
 
 /**
@@ -31,6 +32,7 @@ export type NavItem = { href: string; label: string };
 
 export const NAV: readonly NavItem[] = [
   { href: "/case-studies/", label: "Case studies" },
+  { href: "/articles/", label: "Articles" },
   { href: "/about/", label: "About" },
 ];
 

@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "Start a project",
   description:
     "Start with a paid discovery sprint: a defined scope, a defined end date, and a working answer on where AI helps your organization.",
+  alternates: { canonical: "/start/" },
 };
 
 const WALK_AWAY_WITH = [
