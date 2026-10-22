@@ -22,6 +22,16 @@ export type ArticleMeta = {
   /** Drafts render with a visible badge, stay out of the sitemap, and are noindexed. */
   draft: boolean;
   faq: readonly ArticleFaq[];
+  /**
+   * Who wrote it. The founder's own name ("Allie Esslinger") reserves the hero
+   * tier of the index; every other value (or an omitted key, resolved to the
+   * studio) is a studio note that flows into the carousels.
+   */
+  author: string;
+  /** Optional series name; articles sharing one are grouped into a named carousel. */
+  series?: string;
+  /** Card art path under /public (e.g. "/articles/my-hero.png"). Falls back to the first body image. */
+  image?: string;
 };
 
 export type Article = ArticleMeta & { contentHtml: string };
@@ -50,10 +60,18 @@ function scalarValue(raw: string, file: string, lineNo: number): string {
   return value;
 }
 
-type FrontmatterScalars = { title?: string; date?: string; summary?: string; draft?: string };
+type FrontmatterScalars = {
+  title?: string;
+  date?: string;
+  summary?: string;
+  draft?: string;
+  author?: string;
+  series?: string;
+  image?: string;
+};
 
 /** Accepted top-level keys. Anything else fails the build with the file and line number. */
-const KNOWN_KEYS: readonly string[] = ["title", "date", "summary", "draft"];
+const KNOWN_KEYS: readonly string[] = ["title", "date", "summary", "draft", "author", "series", "image"];
 
 function parseFrontmatter(raw: string, file: string): Omit<ArticleMeta, "slug"> {
   const scalars: FrontmatterScalars = {};
@@ -140,6 +158,9 @@ function parseFrontmatter(raw: string, file: string): Omit<ArticleMeta, "slug"> 
     summary: scalars.summary as string,
     draft: scalars.draft === "true",
     faq,
+    author: scalars.author ?? SITE.name,
+    series: scalars.series,
+    image: scalars.image,
   };
 }
 
@@ -154,18 +175,26 @@ function readFile(slug: string): Article {
   const meta = parseFrontmatter(fence[1], file);
 
   const html = marked(fence[2].trim(), { async: false });
-  return { slug, ...meta, contentHtml: html };
+  // Card art: explicit frontmatter image, else the first image embedded in the body.
+  const bodyImage = html.match(/<img[^>]+src="([^"]+)"/)?.[1];
+  return { slug, ...meta, contentHtml: html, image: meta.image ?? bodyImage };
 }
 
 /** Every article, newest first. Reads the filesystem at build time. */
 export function listArticles(): readonly ArticleMeta[] {
   const slugs = fs
     .readdirSync(ARTICLES_DIR)
-    .filter((f) => f.endsWith(".md"))
+    // README.md is folder documentation (GitHub renders it), not an article.
+    .filter((f) => f.endsWith(".md") && !f.startsWith("README"))
     .map((f) => f.replace(/\.md$/, ""));
   return slugs
     .map((slug) => readFile(slug) as ArticleMeta)
     .sort((a, b) => b.date.localeCompare(a.date) || a.title.localeCompare(b.title));
+}
+
+/** True when the article is authored by the founder herself; those posts own the index hero tier. */
+export function isByFounder(article: Pick<ArticleMeta, "author">): boolean {
+  return article.author === SITE.owner;
 }
 
 /** One article by slug, or undefined when no file matches. */

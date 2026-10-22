@@ -60,7 +60,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
       <section className="page-hero article-hero">
         <div className="container">
           <p className="eyebrow">
-            {date}
+            {date} · By {article.author}
             {article.draft ? <span className="draft-badge">Draft</span> : null}
           </p>
           <h1>{article.title}</h1>

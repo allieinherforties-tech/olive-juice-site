@@ -3,7 +3,7 @@
 // by the pages that own each entity:
 //   home → Organization + WebSite, about → Person, articles → Article + FAQPage.
 import { SITE } from "@/content/site";
-import { articleUrl, type ArticleFaq, type ArticleMeta } from "./articles";
+import { articleUrl, isByFounder, type ArticleFaq, type ArticleMeta } from "./articles";
 
 /** Entity for the studio itself. Rendered on the homepage. */
 export function organizationJsonLd(): string {
@@ -48,10 +48,15 @@ export function articleJsonLd(article: ArticleMeta): string {
     headline: article.title,
     description: article.summary,
     datePublished: article.date,
-    author: { "@type": "Person", name: SITE.owner },
+    // Authorship is honest by design: the founder's own posts name her as a
+    // Person; studio notes name the studio as author.
+    author: isByFounder(article)
+      ? { "@type": "Person", name: SITE.owner, jobTitle: "Founder", url: `${SITE.url}/about/` }
+      : { "@type": "Organization", name: SITE.name, url: SITE.url },
     publisher: { "@type": "Organization", name: SITE.name, url: SITE.url },
     mainEntityOfPage: { "@type": "WebPage", "@id": articleUrl(article.slug) },
     url: articleUrl(article.slug),
+    ...(article.image ? { image: `${SITE.url}${article.image}` } : {}),
   });
 }
 
