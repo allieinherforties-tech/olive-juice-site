@@ -53,14 +53,17 @@ export default function ArticlesPage() {
   return (
     <>
       <PageHero
-        eyebrow="Articles"
-        title="Allie Intelligence."
+        eyebrow="Ideas"
+        title="Ideas."
         lede="Essays written by Allie sit up top; studio notes, researched and drafted with AI support and edited before they ship, fill the shelves below. No hype, no futurism, just what holds up on a Tuesday morning."
       />
 
       {/* The hero tier is reserved for the founder's own writing. */}
       <section className="section section--tight">
         <div className="container">
+          <div className="section-head">
+            <h2>Allie Intelligence</h2>
+          </div>
           {leadPost ? (
             <Link
               href={`/articles/${leadPost.slug}/`}
@@ -68,7 +71,7 @@ export default function ArticlesPage() {
               style={{ backgroundImage: cardImage(leadPost.image) }}
             >
               <p className="ai-hero__kicker">
-                Latest from Allie · {formatArticleDate(leadPost.date)}
+                {formatArticleDate(leadPost.date)}
                 {leadPost.draft ? <DraftBadge /> : null}
               </p>
               <h2>{leadPost.title}</h2>
