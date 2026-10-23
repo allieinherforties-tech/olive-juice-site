@@ -4,6 +4,7 @@ date: 2026-02-19
 summary: The best outcomes look simple, but the thinking that produced them never was. On seeds, thickets, and pruning — and why the messy middle matters.
 draft: false
 author: Allie Esslinger
+image: /articles/the-work-behind-the-work-hero.png
 ---
 
 Every idea starts as a seed.
