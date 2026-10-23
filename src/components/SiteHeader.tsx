@@ -8,7 +8,7 @@ import { SkylineMark } from "./Marks";
 
 /**
  * Trailing-slash-insensitive match so "/about" and "/about/" both mark the nav item,
- * and prefix-based so section subpages (e.g. an article under /articles/) keep the
+ * and prefix-based so section subpages (e.g. an essay under /ideas/) keep the
  * section's nav item active.
  */
 export function isActivePath(pathname: string, href: string): boolean {

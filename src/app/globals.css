@@ -1362,6 +1362,29 @@ a.ai-hero:hover {
   color: rgba(242, 244, 240, 0.75);
 }
 
+/* Ink scrim under card copy: the founder and studio-note art is busy across the
+   whole card, so white text needs a dark layer beneath it. Two gradient layers
+   compose on one ::before: a to-top ramp strongest at the copy's base, plus a
+   left-weighted ramp where the copy column starts. The teal empty-state card
+   carries no image, so it opts out. */
+.ai-hero:not(.ai-hero--empty)::before,
+.ai-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgba(41, 35, 48, 0.82) 0%, rgba(41, 35, 48, 0.45) 45%, rgba(41, 35, 48, 0.1) 100%),
+    linear-gradient(to right, rgba(41, 35, 48, 0.6) 0%, rgba(41, 35, 48, 0.35) 50%, rgba(41, 35, 48, 0.08) 100%);
+  pointer-events: none;
+}
+
+/* Positioned children paint above the ::before scrim (static children would sit under it). */
+.ai-hero > *,
+.ai-card > * {
+  position: relative;
+  z-index: 1;
+}
+
 /* Carousel mechanics: native horizontal scroll + snap, arrows as enhancement. */
 
 .carousel__track {

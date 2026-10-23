@@ -216,5 +216,5 @@ export function formatArticleDate(iso: string): string {
 }
 
 export function articleUrl(slug: string): string {
-  return `${SITE.url}/articles/${slug}/`;
+  return `${SITE.url}/ideas/${slug}/`;
 }
