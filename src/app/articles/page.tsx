@@ -13,9 +13,9 @@ export const metadata: Metadata = {
 
 const CARD_FALLBACK = "/og-card.png";
 
-/** Layered background: a brand-darkened image so white card text stays legible. */
+/** Card art URL for a scrimmed card; the ink scrim itself lives in CSS (.ai-hero/.ai-card::before). */
 function cardImage(image?: string): string {
-  return `linear-gradient(180deg, rgba(23, 45, 54, 0.08) 30%, rgba(23, 45, 54, 0.86) 100%), url('${image ?? CARD_FALLBACK}')`;
+  return `url('${image ?? CARD_FALLBACK}')`;
 }
 
 function DraftBadge() {
