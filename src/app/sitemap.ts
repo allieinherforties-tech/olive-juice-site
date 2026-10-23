@@ -8,7 +8,7 @@ import { articleUrl, listArticles } from "@/lib/articles";
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticPaths: readonly string[] = ["/", "/case-studies/", "/about/", "/start/", "/articles/"];
+  const staticPaths: readonly string[] = ["/", "/case-studies/", "/about/", "/start/", "/ideas/"];
 
   const published = listArticles()
     .filter((article) => !article.draft)

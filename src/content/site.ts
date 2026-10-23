@@ -32,7 +32,7 @@ export type NavItem = { href: string; label: string };
 
 export const NAV: readonly NavItem[] = [
   { href: "/case-studies/", label: "Case studies" },
-  { href: "/articles/", label: "Ideas" },
+  { href: "/ideas/", label: "Ideas" },
   { href: "/about/", label: "About" },
 ];
 

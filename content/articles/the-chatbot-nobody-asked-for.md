@@ -54,6 +54,6 @@ Quiet, mostly. A defined first project against one nagging problem. A scope you 
 
 That shape is not modesty. A contained, paid first build is the cheapest way for both sides to find out whether the fit is real, and it is the only kind of first project this studio offers.
 
-The starting point is never the model, either. It is the same test the demo failed: start from how you already make decisions, then aim a small, well-chosen slice of the model at the problem eating your week. That argument, and how to find your slice in an afternoon, is in [5% of the model is enough](/articles/you-only-need-5-percent-of-the-model/).
+The starting point is never the model, either. It is the same test the demo failed: start from how you already make decisions, then aim a small, well-chosen slice of the model at the problem eating your week. That argument, and how to find your slice in an afternoon, is in [5% of the model is enough](/ideas/you-only-need-5-percent-of-the-model/).
 
 Run the four questions on the next pitch you hear. If the answers hold, the tool might be worth your Tuesday. If they wobble, a [paid discovery](/start/) maps where AI would fit first.

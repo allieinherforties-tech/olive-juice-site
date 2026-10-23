@@ -1,9 +1,16 @@
 # How to publish an article
 
-Everything on **Allie Intelligence** (`/articles/`) is a markdown file in this
+Everything on **Allie Intelligence** (`/ideas/`) is a markdown file in this
 folder. The filename becomes the URL slug: `my-post.md` publishes at
-`/articles/my-post/`. There is no CMS and no database: a file here is the
+`/ideas/my-post/`. There is no CMS and no database: a file here is the
 whole post.
+
+> The page routes moved from `/articles/` to `/ideas/` while the site was
+> young (nothing indexed yet). The two essays published before the move keep
+> redirect shims at their old `/articles/` URLs. Hero images are the one
+> exception that did not move: card art stays in `public/articles/` and is
+> served at `/articles/*.png`, so og:image URLs already shared or cached by
+> crawlers keep resolving.
 
 ## The two tiers (how the index decides where a post goes)
 
@@ -22,7 +29,8 @@ Optional `series: <name>` groups studio notes into a named carousel row.
 1. Start from the template at the bottom of this file.
 2. Save it as `content/articles/<your-slug>.md` (lowercase, hyphens, no dates
    in the filename; the slug is permanent once published).
-3. Add a hero image to `public/articles/<your-slug>-hero.png` and point the
+3. Add a hero image to `public/articles/<your-slug>-hero.png` (this folder
+   keeps the `articles` name on purpose — see the note above) and point the
    `image` key at it (see below).
 4. Either edit the file directly on GitHub (open
    `content/articles/`, click **Add file**, paste, commit to `main`), or

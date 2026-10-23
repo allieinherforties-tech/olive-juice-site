@@ -56,4 +56,4 @@ Because the frontier is a demo, and a demo does not plan your week. The metrics 
 
 That sequence lives on the [Start a project](/start/) page, and the engagements it produced are in the [case studies](/case-studies/).
 
-The flashiest demo of the month will not be the thing that changes your week. A small, well-chosen slice, pointed at the right problem, will. And if you are currently sitting through pitches that promise the frontier instead, run them through the four questions in [The chatbot nobody asked for](/articles/the-chatbot-nobody-asked-for/).
+The flashiest demo of the month will not be the thing that changes your week. A small, well-chosen slice, pointed at the right problem, will. And if you are currently sitting through pitches that promise the frontier instead, run them through the four questions in [The chatbot nobody asked for](/ideas/the-chatbot-nobody-asked-for/).
