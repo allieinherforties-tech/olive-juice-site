@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { CtaBand, Fill, PageHero } from "@/components/Blocks";
 import { CASE_STUDIES } from "@/content/site";
+import { FEED_ALTERNATE_TYPES } from "@/lib/feed";
 
 export const metadata: Metadata = {
   title: "Case studies",
   description:
     "A foot-traffic forecast for Oliver\u2019s, a Chicago restaurant, and an AI-assisted research process for the Usher III Initiative.",
-  alternates: { canonical: "/case-studies/" },
+  alternates: { canonical: "/case-studies/", types: FEED_ALTERNATE_TYPES },
 };
 
 export default function CaseStudiesPage() {

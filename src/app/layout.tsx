@@ -36,6 +36,13 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     images: ["/og-card.png"],
   },
+  // Feed auto-discovery. Pages that set their own `alternates` (all of them do)
+  // replace this object wholesale — Next merges segments shallowly — so they
+  // also spread FEED_ALTERNATE_TYPES; this entry covers any future page that
+  // doesn't set its own alternates.
+  alternates: {
+    types: { "application/rss+xml": "/feed.xml" },
+  },
   icons: { icon: "/heart.svg" },
 };
 

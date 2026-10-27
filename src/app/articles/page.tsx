@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { FEED_ALTERNATE_TYPES } from "@/lib/feed";
 
 // The page moved to /ideas/. This shim keeps the old /articles/ URL working for
 // anyone who shared it before the rename; it canonicalizes to the new URL.
 export const metadata: Metadata = {
   title: "Ideas",
   description: "Essays written by Allie Esslinger, plus studio notes researched and drafted with AI support.",
-  alternates: { canonical: "/ideas/" },
+  alternates: { canonical: "/ideas/", types: FEED_ALTERNATE_TYPES },
 };
 
 export default function ArticlesRedirect() {

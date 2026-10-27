@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { CaseCard, CtaBand, StepList } from "@/components/Blocks";
 import { HeartMark, SkylineMark } from "@/components/Marks";
 import { organizationJsonLd, websiteJsonLd } from "@/lib/schema";
+import { FEED_ALTERNATE_TYPES } from "@/lib/feed";
 import {
   CASE_STUDIES,
   ENGAGEMENT_STEPS,
@@ -15,7 +16,7 @@ import {
 } from "@/content/site";
 
 export const metadata: Metadata = {
-  alternates: { canonical: "/" },
+  alternates: { canonical: "/", types: FEED_ALTERNATE_TYPES },
 };
 
 const WHAT_YOU_GET_SOLD = [

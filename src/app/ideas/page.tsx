@@ -3,12 +3,13 @@ import Link from "next/link";
 import { CtaBand, PageHero } from "@/components/Blocks";
 import Carousel from "@/components/Carousel";
 import { formatArticleDate, isByFounder, listArticles, type ArticleMeta } from "@/lib/articles";
+import { FEED_ALTERNATE_TYPES } from "@/lib/feed";
 
 export const metadata: Metadata = {
   title: "Allie Intelligence",
   description:
     "Essays written by Allie Esslinger, plus studio notes researched and drafted with AI support. No hype, no futurism, just what holds up on a Tuesday morning.",
-  alternates: { canonical: "/ideas/" },
+  alternates: { canonical: "/ideas/", types: FEED_ALTERNATE_TYPES },
 };
 
 const CARD_FALLBACK = "/og-card.png";
@@ -63,6 +64,10 @@ export default function ArticlesPage() {
         <div className="container">
           <div className="section-head">
             <h2>Allie Intelligence</h2>
+            {/* The one visible piece of feed copy, flagged for line review in the PR. */}
+            <p>
+              <a href="/feed.xml">Subscribe via RSS</a>
+            </p>
           </div>
           {leadPost ? (
             <Link

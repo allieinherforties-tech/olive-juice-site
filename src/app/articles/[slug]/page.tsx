@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { FEED_ALTERNATE_TYPES } from "@/lib/feed";
 
 // The essay routes moved to /ideas/. Only the essays that were public before
 // the rename get a shim: the chatbot draft never had a public URL, and
@@ -20,7 +21,7 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
   const { slug } = await params;
   return {
     title: "Ideas",
-    alternates: { canonical: `/ideas/${slug}/` },
+    alternates: { canonical: `/ideas/${slug}/`, types: FEED_ALTERNATE_TYPES },
   };
 }
 

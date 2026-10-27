@@ -5,6 +5,7 @@ import { CtaBand } from "@/components/Blocks";
 import { articleUrl, formatArticleDate, getArticle, listArticles } from "@/lib/articles";
 import { articleJsonLd, faqJsonLd } from "@/lib/schema";
 import { SITE } from "@/content/site";
+import { FEED_ALTERNATE_TYPES } from "@/lib/feed";
 
 export const dynamicParams = false;
 
@@ -27,7 +28,7 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
   return {
     title: article.title,
     description: article.summary,
-    alternates: { canonical: `/ideas/${article.slug}/` },
+    alternates: { canonical: `/ideas/${article.slug}/`, types: FEED_ALTERNATE_TYPES },
     // Drafts are review copies: reachable by direct link, invisible to search engines.
     robots: article.draft ? { index: false, follow: false } : undefined,
     openGraph: {
