@@ -3,12 +3,13 @@ import { PageHero } from "@/components/Blocks";
 import { HeartMark } from "@/components/Marks";
 import { SITE } from "@/content/site";
 import { InquiryForm } from "@/components/InquiryForm";
+import { FEED_ALTERNATE_TYPES } from "@/lib/feed";
 
 export const metadata: Metadata = {
   title: "Start a project",
   description:
     "Start with a paid discovery sprint: a defined scope, a defined end date, and a working answer on where AI helps your organization.",
-  alternates: { canonical: "/start/" },
+  alternates: { canonical: "/start/", types: FEED_ALTERNATE_TYPES },
 };
 
 const WALK_AWAY_WITH = [

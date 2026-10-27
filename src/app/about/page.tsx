@@ -3,12 +3,13 @@ import { CtaBand, PageHero } from "@/components/Blocks";
 import { SkylineMark } from "@/components/Marks";
 import { SITE } from "@/content/site";
 import { personJsonLd } from "@/lib/schema";
+import { FEED_ALTERNATE_TYPES } from "@/lib/feed";
 
 export const metadata: Metadata = {
   title: "About",
   description:
     "Allie Esslinger: a decade in product and content organizations at Netflix, Google, and Obvious, now building AI tools that fit how clients already work.",
-  alternates: { canonical: "/about/" },
+  alternates: { canonical: "/about/", types: FEED_ALTERNATE_TYPES },
 };
 
 type BackgroundSegment = { label: string; url: string };
