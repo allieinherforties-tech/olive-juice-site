@@ -6,10 +6,14 @@ import { useState } from "react";
 import { NAV, SITE, START_CTA } from "@/content/site";
 import { SkylineMark } from "./Marks";
 
-/** Trailing-slash-insensitive match so "/about" and "/about/" both mark the nav item. */
+/**
+ * Trailing-slash-insensitive match so "/about" and "/about/" both mark the nav item,
+ * and prefix-based so section subpages (e.g. an essay under /ideas/) keep the
+ * section's nav item active.
+ */
 export function isActivePath(pathname: string, href: string): boolean {
   const normalize = (p: string) => (p.endsWith("/") ? p : `${p}/`);
-  return normalize(pathname) === normalize(href);
+  return normalize(pathname).startsWith(normalize(href));
 }
 
 export function SiteHeader() {

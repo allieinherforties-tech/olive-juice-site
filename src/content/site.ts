@@ -17,8 +17,9 @@ export const SITE = {
   email: "hello@olivejuice.digital",
   owner: "Allie Esslinger",
   tagline: "AI tools built for how you already work.",
+  // Under 155 characters so search results keep the closing pitch (technical audit, finding 9).
   description:
-    "Olive Juice Digital builds AI-powered tools and workflows for mission-driven organizations and craft-led local businesses — shaped around how you already think and work, not the other way around.",
+    "AI tools and workflows for mission-driven organizations and craft-led local businesses, shaped around how you already work, not the other way around.",
 } as const;
 
 /**
@@ -31,6 +32,7 @@ export type NavItem = { href: string; label: string };
 
 export const NAV: readonly NavItem[] = [
   { href: "/case-studies/", label: "Case studies" },
+  { href: "/ideas/", label: "Ideas" },
   { href: "/about/", label: "About" },
 ];
 
@@ -63,9 +65,9 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
     summary:
       "Connected the restaurant's point-of-sale, reservations, weather, and hotel-occupancy data into a foot-traffic forecast, so the GM could plan staffing and events instead of reacting to them.",
     problem:
-      "The general manager didn't need to understand a data pipeline. He needed to know how busy the week was going to be — early enough to staff it and plan around it. The signals already existed, scattered across the systems the restaurant ran on every day and a couple of outside sources.",
+      "The general manager didn't need to understand a data pipeline. He needed to know how busy the week was going to be, early enough to staff it and plan around it. The signals already existed, scattered across the systems the restaurant ran on every day and a couple of outside sources.",
     build:
-      "A foot-traffic forecast that pulls from the tools the restaurant already used — Toast and OpenTable — alongside a weather feed and a hotel-occupancy tracker. The output was shaped around the GM's existing planning routine, not a new dashboard he'd have to learn.",
+      "A foot-traffic forecast that pulls from the tools the restaurant already used (Toast and OpenTable), alongside a weather feed and a hotel-occupancy tracker. The output was shaped around the GM's existing planning routine, not a new dashboard he'd have to learn.",
     outcome:
       "The GM plans events and staffing ahead of demand instead of reacting to it on the day. AI-shaped on the inside, outcome-shaped on the outside.",
     stack: ["Toast", "OpenTable", "Weather feed", "Hotel-occupancy tracker"],
@@ -78,7 +80,7 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
     summary:
       "Built an AI-assisted search process that helps the team identify other diseases their compound might treat.",
     problem:
-      "The Usher III Initiative is a rare-disease research nonprofit working toward a cure. A compound that can treat more than one disease reaches more patients, draws more funding, and has a faster path to a treatment — but finding those adjacent diseases is slow, specialized research. The team didn't need a chatbot. They needed a way to run that search again and again.",
+      "The Usher III Initiative is a rare-disease research nonprofit working toward a cure. A compound that can treat more than one disease reaches more patients, draws more funding, and has a faster path to a treatment. But finding those adjacent diseases is slow, specialized research. The team didn't need a chatbot. They needed a way to run that search again and again.",
     build:
       "As an outside consultant, Allie designed and built a repeatable, AI-assisted search process for identifying other diseases the same compound might treat. The goal was a method the team could own and repeat, not a one-time answer handed over at the end.",
     outcome:
@@ -87,29 +89,43 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
   },
 ];
 
+/**
+ * A run of body copy that may embed inline links. Plain strings render as text;
+ * `{ label, url }` segments render as external anchors.
+ */
+export type InlineSegment = string | { label: string; url: string };
+
 export type Credential = {
   name: string;
   role: string;
-  detail: string;
-  /** External link, when there's somewhere to send the click. */
+  /** Link for the card title itself (the product's own site), when it has one. */
   url?: string;
+  detail: readonly InlineSegment[];
 };
 
 /** Work Allie owns outright — cleared to name with specifics. */
 export const OWN_WORK: readonly Credential[] = [
   {
-    name: "Shut the Box",
-    role: "Built from scratch",
-    url: "https://1hkqjvs18b-8091.hosted.obvious.ai/",
-    detail:
-      "A daily pub game, built for night friends staying in touch during the day. A fun consumer product build, end to end.",
+    name: "Parent Pep Talks",
+    role: "0–1 Ideation & Execution",
+    url: "https://parentpeptalks.com",
+    detail: [
+      "A daily pep talk for parents in the thick of it, with personalized tips based on the age and stage of their kids, when they're ready. Plus ",
+      { label: "Shut the Box", url: "https://1hkqjvs18b-8090.hosted.obvious.ai/" },
+      ", ",
+      { label: "LGBTQueue (Coming Soon)", url: "https://queue.lgbt" },
+      ", and ",
+      { label: "Comfort & Vice", url: "https://comfort-vice.myshopify.com" },
+      ": end-to-end consumer products with revenue, built collaboratively from the ground up.",
+    ],
   },
   {
     name: "Oneday",
     role: "Entrepreneur in Residence",
-    url: "https://oneday.org",
-    detail:
-      "Working with founders as they shape their businesses; through Olive Juice, helping them make AI product decisions and build AI products.",
+    url: "https://www.oneday.org",
+    detail: [
+      "Working 1:1 with founders as they shape their businesses (through Olive Juice), helping them make AI product decisions, build AI products, and generate $1,000,000 before graduation.",
+    ],
   },
 ];
 
@@ -119,18 +135,26 @@ export const ENGAGEMENT_STEPS: readonly Step[] = [
   {
     label: "01",
     title: "Paid discovery",
-    body: "We start by learning how you already think and work — the routines, the tools you already pay for, the decisions that eat your week. You get a clear map of where AI would actually lighten the load, and where it wouldn't.",
+    body: "We'll start by learning how you already think and work. You'll get a clear map of where AI can improve your workflows, based on your routines and the tools you already use.",
   },
   {
     label: "02",
     title: "Project sprint",
-    body: "A contained build against the one problem worth solving first. Defined scope, defined end date, a working tool at the finish — not a transformation roadmap.",
+    body: "Our first job is a solution to a nagging problem: a defined scope, set against a turnaround timeline, that gets you results before you're asked to evaluate a transformation roadmap.",
   },
   {
     label: "03",
     title: "Retainer",
-    body: "If the tool earns its keep, we keep it running quietly in the background and build the next piece. If it doesn't, you've spent a sprint, not a year.",
+    body: "If the tool earns its keep, we keep it running quietly in the background and build the next piece. Either way, you walk away with a map of your tools and workflows; insights about how to build new systems for yourself; and the markdown files to share with your team if you decide to rebuild later.",
   },
+];
+
+/** "The difference" section's single centered list. */
+export const WHAT_YOU_GET: readonly string[] = [
+  "Calmer mornings",
+  "A faster, repeatable workflow",
+  "Decisions made earlier",
+  "More time for the work you're good at",
 ];
 
 export type Principle = { title: string; body: string };

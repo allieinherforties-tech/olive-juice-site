@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import { CtaBand, PageHero } from "@/components/Blocks";
 import { SkylineMark } from "@/components/Marks";
 import { SITE } from "@/content/site";
+import { personJsonLd } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "About",
   description:
     "Allie Esslinger: a decade in product and content organizations at Netflix, Google, and Obvious, now building AI tools that fit how clients already work.",
+  alternates: { canonical: "/about/" },
 };
 
 type BackgroundSegment = { label: string; url: string };
@@ -39,6 +41,9 @@ const BACKGROUND: readonly BackgroundEntry[] = [
 export default function AboutPage() {
   return (
     <>
+      {/* Person entity (technical audit, finding 4). */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: personJsonLd() }} />
+
       <PageHero
         eyebrow="About"
         title={`Hi, I'm ${SITE.owner.split(" ")[0]}.`}
