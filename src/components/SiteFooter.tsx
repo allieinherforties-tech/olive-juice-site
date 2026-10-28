@@ -22,6 +22,11 @@ export function SiteFooter() {
                 <Link href={item.href}>{item.label}</Link>
               </li>
             ))}
+            <li>
+              <a href={SITE.bookingUrl} target="_blank" rel="noopener noreferrer">
+                Book a call
+              </a>
+            </li>
           </ul>
         </div>
         <div className="site-footer__bottom">

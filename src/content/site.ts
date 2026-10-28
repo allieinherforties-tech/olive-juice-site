@@ -20,6 +20,8 @@ export const SITE = {
   // Under 155 characters so search results keep the closing pitch (technical audit, finding 9).
   description:
     "AI tools and workflows for mission-driven organizations and craft-led local businesses, shaped around how you already work, not the other way around.",
+  // Allie's scheduling link. Linked, not embedded — no third-party script on the static export.
+  bookingUrl: "https://calendly.com/allie-esslinger/new-meeting",
 } as const;
 
 /**

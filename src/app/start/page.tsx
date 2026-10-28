@@ -74,6 +74,12 @@ export default function StartPage() {
               <li>We talk through whether it&rsquo;s a fit</li>
               <li>If it is, we&rsquo;ll get the start date scheduled</li>
             </ol>
+            <p className="offer__booking">
+              Prefer to skip the form?{" "}
+              <a href={SITE.bookingUrl} target="_blank" rel="noopener noreferrer">
+                Book a call
+              </a>
+            </p>
             <InquiryForm />
             <p className="offer__terms offer__terms--after">
               Or write directly: <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
