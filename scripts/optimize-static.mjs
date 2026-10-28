@@ -28,7 +28,16 @@ import { join } from "node:path";
 const OUT = new URL("../out", import.meta.url).pathname;
 
 /** Routes that ship client components and must keep their React runtime. */
-const HYDRATED = new Set(["/start/", "/ideas/", "/about/"]);
+const HYDRATED = new Set([
+  "/start/",
+  "/ideas/",
+  "/about/",
+  "/ai-consulting-nonprofits/",
+  "/ai-training-nonprofits/",
+  "/ai-policy-nonprofits/",
+  "/ai-consulting-small-business/",
+  "/ai-restaurants/",
+]);
 
 /** Collect every generated HTML page as a route path ("/", "/about/", ...). */
 function listHtmlPages(dir = OUT, prefix = "") {
