@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { CtaBand, PageHero } from "@/components/Blocks";
 import Carousel from "@/components/Carousel";
 import { formatArticleDate, isByFounder, listArticles, type ArticleMeta } from "@/lib/articles";
@@ -26,7 +25,7 @@ function DraftBadge() {
 /** One studio note in the carousel: date chip, AI label, title, image in background. */
 function StudioCard({ article }: { article: ArticleMeta }) {
   return (
-    <Link
+    <a
       data-carousel-card
       href={`/ideas/${article.slug}/`}
       className="ai-card"
@@ -38,7 +37,7 @@ function StudioCard({ article }: { article: ArticleMeta }) {
         {formatArticleDate(article.date)}
         {article.draft ? <DraftBadge /> : null}
       </p>
-    </Link>
+    </a>
   );
 }
 
@@ -70,7 +69,7 @@ export default function ArticlesPage() {
             </p>
           </div>
           {leadPost ? (
-            <Link
+            <a
               href={`/ideas/${leadPost.slug}/`}
               className="ai-hero"
               style={{ backgroundImage: cardImage(leadPost.image) }}
@@ -82,7 +81,7 @@ export default function ArticlesPage() {
               <h2>{leadPost.title}</h2>
               <p className="ai-hero__sub">{leadPost.summary}</p>
               <span className="card__more">Read the essay →</span>
-            </Link>
+            </a>
           ) : (
             <div className="ai-hero ai-hero--empty">
               <p className="ai-hero__kicker">Latest from Allie</p>
@@ -115,7 +114,7 @@ export default function ArticlesPage() {
       {secondPost && (
         <section className="section section--tight">
           <div className="container">
-            <Link href={`/ideas/${secondPost.slug}/`} className="ai-feature">
+            <a href={`/ideas/${secondPost.slug}/`} className="ai-feature">
               <div>
                 <p className="ai-hero__kicker ai-hero__kicker--ink">
                   Also by Allie · {formatArticleDate(secondPost.date)}
@@ -129,7 +128,7 @@ export default function ArticlesPage() {
                 className="ai-feature__media"
                 style={{ backgroundImage: `url('${secondPost.image ?? CARD_FALLBACK}')` }}
               />
-            </Link>
+            </a>
           </div>
         </section>
       )}

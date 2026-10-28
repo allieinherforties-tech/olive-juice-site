@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { FEED_ALTERNATE_TYPES } from "@/lib/feed";
 
 // The page moved to /ideas/. This shim keeps the old /articles/ URL working for
@@ -18,7 +17,7 @@ export default function ArticlesRedirect() {
             exported HTML; the visible link covers no-JS readers and crawlers. */}
         <meta httpEquiv="refresh" content="0; url=/ideas/" />
         <p className="lede">
-          This page moved. Read it at <Link href="/ideas/">olivejuice.digital/ideas/</Link>.
+          This page moved. Read it at <a href="/ideas/">olivejuice.digital/ideas/</a>.
         </p>
       </div>
     </section>

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { FEED_ALTERNATE_TYPES } from "@/lib/feed";
 
 // The essay routes moved to /ideas/. Only the essays that were public before
@@ -34,7 +33,7 @@ export default async function ArticleRedirect({ params }: ArticlePageProps) {
             exported HTML; the visible link covers no-JS readers and crawlers. */}
         <meta httpEquiv="refresh" content={`0; url=/ideas/${slug}/`} />
         <p className="lede">
-          This essay moved. Read it at <Link href={`/ideas/${slug}/`}>olivejuice.digital/ideas/{slug}/</Link>.
+          This essay moved. Read it at <a href={`/ideas/${slug}/`}>olivejuice.digital/ideas/{slug}/</a>.
         </p>
       </div>
     </section>
