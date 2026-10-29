@@ -31,7 +31,7 @@ const BACKGROUND: readonly BackgroundEntry[] = [
     detail: "A decade leading innovation teams inside of product & content organizations.",
   },
   {
-    segments: [{ label: "Shut the Box", url: "https://1hkqjvs18b-8091.hosted.obvious.ai/" }],
+    segments: [{ label: "Shut the Box", url: "/shut-the-box/" }],
     detail: "Built from scratch",
   },
   {

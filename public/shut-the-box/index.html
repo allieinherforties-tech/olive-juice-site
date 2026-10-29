@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="theme-color" content="#1F4D3D" />
+<title>Shut the Box · Challenge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --cream:#F2EDE1;
+  --cream-2:#E9E2D2;
+  --forest:#1F4D3D;
+  --teal:#1B4B4F;
+  --navy:#1C3144;
+  --orange:#D9752B;
+  --mustard:#D9A02A;
+  --warm-gray:#8B8072;
+  --ink:#20211C;
+  --line:rgba(32,33,28,.12);
+  --brass:#C9A24B;
+  --brass-dark:#8A6B22;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{margin:0;height:100%;}
+body{
+  font-family:'Nunito',system-ui,-apple-system,sans-serif;
+  background:var(--cream);
+  color:var(--ink);
+  overflow-x:hidden;
+}
+#app{
+  max-width:480px;margin:0 auto;min-height:100dvh;
+  display:flex;flex-direction:column;position:relative;
+  background:var(--cream);
+}
+.screen{display:none;flex:1;flex-direction:column;}
+.screen.active{display:flex;animation:fade .4s ease;}
+@keyframes fade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+h1,h2,h3,.display{font-family:'Zilla Slab',serif;letter-spacing:.2px;}
+
+/* ---------- FLAT CHROME ---------- */
+.chrome-header{
+  display:flex;align-items:center;gap:10px;
+  padding:16px 20px 8px;
+}
+.chrome-header .back{
+  border:none;background:none;font-size:22px;color:var(--ink);
+  cursor:pointer;padding:4px 6px;line-height:1;opacity:.7;
+}
+.chrome-title{font-family:'Zilla Slab',serif;font-weight:700;font-size:18px;color:var(--forest);}
+.icon-btn{
+  border:none;background:#fff;color:var(--forest);width:32px;height:32px;border-radius:50%;
+  font-weight:800;font-size:15px;cursor:pointer;border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;flex:0 0 auto;
+}
+
+/* ---------- INTRO ---------- */
+.intro{padding:34px 26px 30px;text-align:center;flex:1;display:flex;flex-direction:column;}
+.brandmark{
+  font-family:'Zilla Slab',serif;font-weight:700;
+  font-size:40px;line-height:1.02;color:var(--forest);
+  letter-spacing:.5px;margin:18px 0 4px;
+}
+.brandmark .pip{color:var(--mustard);}
+.tagline{color:var(--warm-gray);font-weight:700;font-size:14px;letter-spacing:.4px;text-transform:uppercase;margin-bottom:26px;}
+.day-badge{
+  display:inline-block;background:var(--teal);color:#F4EFE3;
+  font-weight:800;font-size:13px;letter-spacing:.6px;
+  padding:7px 15px;border-radius:999px;margin:0 auto 22px;text-transform:uppercase;
+}
+.rules-card{
+  background:#fff;border:1px solid var(--line);border-radius:18px;
+  padding:20px 20px 6px;text-align:left;margin-bottom:26px;
+}
+.rules-card h3{margin:0 0 12px;font-size:15px;color:var(--navy);font-weight:700;text-transform:uppercase;letter-spacing:.5px;}
+.rule{display:flex;gap:12px;align-items:flex-start;margin-bottom:14px;}
+.rule .num{
+  flex:0 0 26px;height:26px;border-radius:8px;background:var(--forest);color:#F4EFE3;
+  font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;margin-top:1px;
+}
+.rule p{margin:0;font-size:14.5px;line-height:1.45;color:#3a3a32;}
+.rule p b{color:var(--ink);}
+.spacer{flex:1;}
+.btn{
+  font-family:'Nunito',sans-serif;font-weight:800;font-size:17px;
+  border:none;border-radius:14px;padding:16px;cursor:pointer;width:100%;
+  letter-spacing:.3px;transition:transform .08s ease,filter .15s ease;
+}
+.btn:active{transform:translateY(1px) scale(.995);}
+.btn-primary{background:var(--forest);color:#F4EFE3;box-shadow:0 6px 16px rgba(31,77,61,.28);}
+.btn-primary:hover{filter:brightness(1.06);}
+.btn-ghost{background:transparent;color:var(--forest);border:2px solid var(--forest);}
+.btn-text{background:none;border:none;color:var(--warm-gray);font-weight:700;font-size:14px;cursor:pointer;padding:12px;width:100%;}
+.btn-row{display:flex;gap:10px;}
+.btn-row .btn{width:auto;flex:1;}
+.btn[disabled]{opacity:.45;cursor:default;}
+.btn-small{padding:11px;font-size:14px;border-radius:11px;}
+
+/* ---------- GAME BOARD (TACTILE CENTERPIECE) ---------- */
+#screen-game{background:var(--cream);}
+.status-pill{
+  align-self:center;margin:6px auto 2px;
+  background:#fff;border:1px solid var(--line);border-radius:999px;
+  padding:9px 18px;font-weight:800;font-size:15px;color:var(--navy);
+  min-height:40px;display:flex;align-items:center;gap:8px;
+  transition:background .2s,color .2s;
+}
+.status-pill.match{background:var(--forest);color:#F4EFE3;border-color:var(--forest);}
+.status-pill.warn{background:#F6E7D6;color:var(--orange);border-color:#EBC9A6;}
+.status-pill .need{opacity:.72;font-weight:700;}
+.board-wrap{flex:1;display:flex;flex-direction:column;justify-content:center;padding:8px 16px 4px;}
+.board{
+  position:relative;border-radius:20px;padding:20px 16px 22px;
+  background-image:url('assets/wood-board.png');
+  background-size:cover;background-position:center;
+  box-shadow:
+    0 18px 40px rgba(20,14,6,.42),
+    inset 0 2px 3px rgba(255,240,214,.22),
+    inset 0 -14px 30px rgba(0,0,0,.4);
+  border:2px solid rgba(0,0,0,.35);
+}
+.board::before{
+  content:"";position:absolute;inset:8px;border-radius:14px;
+  border:2px solid rgba(201,162,75,.55);
+  box-shadow:inset 0 0 12px rgba(0,0,0,.35);pointer-events:none;
+}
+.board-label{
+  text-align:center;font-family:'Zilla Slab',serif;font-weight:700;
+  color:#EBD9AE;letter-spacing:5px;font-size:11px;text-transform:uppercase;
+  margin:2px 0 16px;text-shadow:0 1px 2px rgba(0,0,0,.6);opacity:.85;
+}
+.tiles{display:flex;gap:7px;justify-content:center;position:relative;z-index:2;}
+.tile{
+  flex:1;aspect-ratio:.62;max-width:38px;border-radius:6px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Zilla Slab',serif;font-weight:700;font-size:22px;cursor:pointer;
+  position:relative;
+  background:linear-gradient(158deg,#F1DFB4 0%,#E4C889 42%,#C99E56 100%);
+  color:#5A3C15;
+  box-shadow:0 3px 0 #916A2C,0 5px 7px rgba(0,0,0,.4),inset 0 1px 1px rgba(255,255,255,.5);
+  text-shadow:0 1px 0 rgba(255,255,255,.35);
+  transition:transform .16s ease,box-shadow .16s ease,filter .3s ease,opacity .4s ease;
+  -webkit-user-select:none;user-select:none;
+}
+.tile .peg{position:absolute;bottom:3px;width:5px;height:5px;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#F3E4B0,#B98E3C 60%,#7A5A1E);opacity:.65;}
+.tile.selectable:hover{filter:brightness(1.05);}
+.tile.selected{
+  transform:translateY(-6px);
+  background:linear-gradient(158deg,#FBEFC9 0%,#EBD08A 45%,#D9A83F 100%);
+  box-shadow:0 8px 0 #916A2C,0 12px 14px rgba(0,0,0,.45),
+    inset 0 1px 1px rgba(255,255,255,.6),0 0 0 2px rgba(201,162,75,.9),0 0 16px rgba(217,160,42,.55);
+}
+.tile.closed{
+  cursor:default;
+  transform:translateY(2px) rotateX(6deg);
+  background:linear-gradient(158deg,#6b4a24 0%,#4d3417 60%,#3a2711 100%);
+  color:#8f7038;
+  box-shadow:0 1px 0 #2b1d0c,inset 0 2px 6px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.06);
+  text-shadow:0 1px 1px rgba(0,0,0,.5);
+  opacity:.92;
+}
+.tile.disabled{opacity:.5;cursor:default;filter:grayscale(.3);}
+.tile.shake{animation:shake .4s ease;}
+@keyframes shake{0%,100%{transform:translateX(0);}20%{transform:translateX(-5px);}40%{transform:translateX(5px);}60%{transform:translateX(-4px);}80%{transform:translateX(4px);}}
+.tile.settle{animation:settle .5s ease;}
+@keyframes settle{0%{box-shadow:0 1px 0 #2b1d0c,inset 0 0 0 rgba(0,0,0,0),0 0 22px rgba(217,160,42,.9);}100%{box-shadow:0 1px 0 #2b1d0c,inset 0 2px 6px rgba(0,0,0,.65);}}
+.tile.alone{
+  animation:alone 1.1s ease infinite;
+  box-shadow:0 3px 0 #916A2C,0 6px 12px rgba(0,0,0,.4),0 0 0 3px rgba(217,160,42,.85),0 0 26px rgba(217,160,42,.7);
+}
+@keyframes alone{0%,100%{transform:translateY(-4px);}50%{transform:translateY(-9px);}}
+.tile.perfect-pulse{animation:perfectPulse .55s ease;}
+@keyframes perfectPulse{0%{transform:scale(1);}50%{transform:scale(1.16);box-shadow:0 8px 0 #916A2C,0 0 30px rgba(255,225,150,1);}100%{transform:scale(1);}}
+
+.dice-area{display:flex;flex-direction:column;align-items:center;gap:14px;padding:22px 20px 10px;position:relative;}
+.dice{display:flex;gap:16px;min-height:58px;align-items:center;}
+.die{
+  width:56px;height:56px;border-radius:12px;
+  background:linear-gradient(150deg,#FBF6EA,#E4D8BE);
+  box-shadow:0 6px 12px rgba(0,0,0,.28),inset 0 2px 2px rgba(255,255,255,.8),inset 0 -3px 5px rgba(139,110,50,.35);
+  display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);
+  padding:9px;gap:1px;
+  transition:opacity .3s ease,filter .3s ease;
+}
+.die.fade{opacity:.28;filter:grayscale(.6);}
+.die .pip{
+  border-radius:50%;align-self:center;justify-self:center;width:9px;height:9px;
+  background:radial-gradient(circle at 35% 30%,#B98E3C,#7A5A1E 70%,#4a3510);
+  box-shadow:inset 0 1px 1px rgba(255,255,255,.35);
+}
+.die.rolling{animation:roll .12s linear infinite;}
+@keyframes roll{0%{transform:rotate(-8deg) translateY(-2px);}50%{transform:rotate(8deg) translateY(2px);}100%{transform:rotate(-8deg) translateY(-2px);}}
+.controls{width:100%;display:flex;flex-direction:column;gap:10px;min-height:58px;}
+#tip-singledie{position:relative;width:100%;}
+.hint{text-align:center;color:var(--warm-gray);font-size:13px;font-weight:700;min-height:18px;}
+
+/* ---------- CONTEXTUAL TOOLTIP (single-die) ---------- */
+.tooltip-bubble{
+  position:absolute;left:16px;right:16px;top:100%;margin-top:10px;
+  background:var(--navy);color:#F4EFE3;border-radius:14px;padding:14px 16px;
+  box-shadow:0 10px 24px rgba(28,49,68,.35);z-index:20;
+  animation:tipIn .3s ease;
+}
+@keyframes tipIn{from{opacity:0;transform:translateY(-8px);}to{opacity:1;transform:none;}}
+.tooltip-bubble::after{
+  content:"";position:absolute;top:-7px;left:32px;width:14px;height:14px;
+  background:var(--navy);transform:rotate(45deg);
+}
+.tooltip-bubble p{margin:0 0 10px;font-size:13.5px;line-height:1.4;font-weight:600;}
+.tooltip-bubble button{
+  background:rgba(255,255,255,.14);color:#F4EFE3;border:none;border-radius:9px;
+  padding:7px 14px;font-weight:800;font-size:12.5px;cursor:pointer;
+}
+
+/* ---------- RESULT ---------- */
+.result{padding:26px 24px 24px;flex:1;display:flex;flex-direction:column;text-align:center;}
+.result-eyebrow{color:var(--warm-gray);font-weight:800;font-size:13px;letter-spacing:.6px;text-transform:uppercase;}
+.result-headline{font-family:'Zilla Slab',serif;font-weight:700;font-size:38px;margin:6px 0 2px;line-height:1.05;}
+.result-headline.almost{color:var(--orange);}
+.result-headline.perfect{color:var(--forest);}
+.result-headline.normal{color:var(--navy);}
+.result-sub{color:#4a4a40;font-size:15px;font-weight:600;margin-bottom:20px;line-height:1.4;}
+.share-card{
+  background:var(--navy);color:#F4EFE3;border-radius:18px;
+  padding:22px 20px;margin:0 auto 8px;width:100%;max-width:340px;
+  border:1px solid rgba(255,255,255,.08);box-shadow:0 10px 26px rgba(28,49,68,.32);
+}
+.share-card .sc-title{font-family:'Zilla Slab',serif;font-weight:700;font-size:17px;letter-spacing:.3px;}
+.share-card .sc-sub{font-size:12.5px;color:#C9CFD6;font-weight:700;margin-top:2px;}
+.share-grid{display:flex;justify-content:center;gap:5px;margin:14px 0 12px;}
+.share-grid .sq{width:22px;height:22px;border-radius:5px;}
+.share-grid .sq.cl{background:#9C6B3B;box-shadow:inset 0 2px 0 rgba(255,255,255,.18),inset 0 -2px 3px rgba(0,0,0,.30);}
+.share-grid.small .sq{width:16px;height:16px;}
+.share-grid .sq.op{background:rgba(0,0,0,.30);box-shadow:inset 0 1px 2px rgba(0,0,0,.45);}
+.share-card .sc-score{font-weight:800;font-size:16px;}
+.share-card .sc-score b{color:var(--mustard);}
+.share-note{color:var(--warm-gray);font-size:12.5px;font-weight:700;margin:10px 0 20px;}
+.result-actions{margin-top:auto;display:flex;flex-direction:column;gap:10px;}
+.perfect-crown{font-size:44px;margin-bottom:2px;animation:pop .6s ease;}
+@keyframes pop{0%{transform:scale(0);}70%{transform:scale(1.25);}100%{transform:scale(1);}}
+
+/* ---------- CHALLENGE INTRO (recipient landing) ---------- */
+.challenge-avatar{
+  width:64px;height:64px;border-radius:50%;background:var(--mustard);color:#4a3510;
+  font-family:'Zilla Slab',serif;font-weight:700;font-size:26px;
+  display:flex;align-items:center;justify-content:center;margin:0 auto 14px;
+  box-shadow:0 6px 16px rgba(217,160,42,.35);
+}
+.challenge-headline{font-family:'Zilla Slab',serif;font-weight:700;font-size:26px;color:var(--navy);margin:0 0 6px;line-height:1.15;}
+.challenge-sub{color:var(--warm-gray);font-size:14.5px;font-weight:600;margin-bottom:22px;line-height:1.4;}
+.beat-card{
+  background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 18px 16px;
+  margin-bottom:24px;
+}
+.beat-card .bc-label{font-size:12px;font-weight:800;color:var(--warm-gray);text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px;}
+.beat-card .bc-score{font-family:'Zilla Slab',serif;font-weight:700;font-size:28px;color:var(--forest);}
+
+/* ---------- COMPARISON SCREEN ---------- */
+.compare-wrap{padding:26px 22px 24px;flex:1;display:flex;flex-direction:column;text-align:center;}
+.compare-vs{font-size:12px;font-weight:800;color:var(--warm-gray);letter-spacing:.6px;text-transform:uppercase;margin-bottom:4px;}
+.compare-headline{font-family:'Zilla Slab',serif;font-weight:700;font-size:26px;color:var(--navy);margin:0 0 20px;}
+.compare-card{
+  background:var(--navy);color:#F4EFE3;border-radius:18px;padding:20px 18px;
+  margin-bottom:10px;border:1px solid rgba(255,255,255,.08);box-shadow:0 10px 26px rgba(28,49,68,.32);
+}
+.compare-row{display:flex;align-items:center;gap:12px;padding:10px 0;}
+.compare-row + .compare-row{border-top:1px solid rgba(255,255,255,.1);}
+.compare-name{flex:0 0 84px;text-align:left;font-weight:800;font-size:13.5px;color:#F4EFE3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.compare-name.you{color:var(--mustard);}
+.compare-mid{flex:1;}
+.compare-score{flex:0 0 auto;font-weight:800;font-size:15px;}
+.stats-table{background:#fff;border:1px solid var(--line);border-radius:16px;padding:6px 18px;margin:14px 0 22px;text-align:left;}
+.stat-row{display:flex;align-items:center;justify-content:space-between;padding:12px 0;}
+.stat-row + .stat-row{border-top:1px solid var(--line);}
+.stat-label{font-size:13.5px;font-weight:700;color:#4a4a40;}
+.stat-vals{display:flex;gap:16px;align-items:center;}
+.stat-val{font-weight:800;font-size:14.5px;min-width:34px;text-align:center;}
+.stat-val.win{color:var(--forest);}
+.stat-val.you-tag{color:var(--mustard);}
+
+/* ---------- NAME MODAL ---------- */
+.modal-overlay{
+  position:fixed;inset:0;background:rgba(20,20,16,.55);z-index:80;
+  display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .25s ease;
+}
+.modal-overlay.show{opacity:1;pointer-events:auto;}
+.modal-sheet{
+  background:var(--cream);width:100%;max-width:480px;border-radius:22px 22px 0 0;
+  padding:26px 24px 28px;transform:translateY(16px);transition:transform .25s ease;
+  max-height:82vh;overflow-y:auto;
+}
+.modal-overlay.show .modal-sheet{transform:none;}
+.modal-title{font-family:'Zilla Slab',serif;font-weight:700;font-size:21px;color:var(--navy);margin:0 0 6px;}
+.modal-desc{color:var(--warm-gray);font-size:13.5px;font-weight:600;margin-bottom:16px;line-height:1.4;}
+.name-input{
+  width:100%;border:2px solid var(--line);border-radius:12px;padding:14px 16px;
+  font-family:'Nunito',sans-serif;font-size:16px;font-weight:700;color:var(--ink);
+  margin-bottom:14px;background:#fff;
+}
+.name-input:focus{outline:none;border-color:var(--forest);}
+
+/* ---------- HOW TO PLAY MODAL ---------- */
+.howto-sheet{padding-bottom:12px;}
+.howto-rules{margin-bottom:18px;}
+.howto-rule{display:flex;gap:10px;align-items:flex-start;margin-bottom:10px;font-size:13.5px;color:#3a3a32;font-weight:600;line-height:1.4;}
+.howto-rule b{color:var(--navy);}
+.howto-rule .num{
+  flex:0 0 20px;height:20px;border-radius:6px;background:var(--forest);color:#F4EFE3;
+  font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;margin-top:1px;
+}
+.carousel-wrap{position:relative;}
+.carousel{
+  display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;
+  padding-bottom:6px;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+}
+.carousel::-webkit-scrollbar{display:none;}
+.example-card{
+  flex:0 0 100%;scroll-snap-align:center;background:#fff;border:1px solid var(--line);
+  border-radius:16px;padding:16px;
+}
+.ex-label{font-size:11px;font-weight:800;color:var(--warm-gray);text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px;}
+.ex-board{
+  background:#2b1d0e;border-radius:10px;padding:12px 8px;margin-bottom:12px;
+}
+.ex-tiles{display:flex;gap:5px;justify-content:center;}
+.ex-tile{
+  flex:1;max-width:30px;aspect-ratio:.62;border-radius:5px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Zilla Slab',serif;font-weight:700;font-size:15px;
+  background:linear-gradient(158deg,#F1DFB4 0%,#E4C889 42%,#C99E56 100%);
+  color:#5A3C15;box-shadow:0 2px 0 #916A2C;position:relative;
+}
+.ex-tile.x-closed{
+  background:linear-gradient(158deg,#6b4a24 0%,#4d3417 60%,#3a2711 100%);color:#8f7038;
+  box-shadow:0 1px 0 #2b1d0c,inset 0 1px 4px rgba(0,0,0,.6);transform:translateY(1px);
+}
+.ex-tile.x-marked{box-shadow:0 2px 0 #916A2C,0 0 0 2px var(--mustard),0 0 10px rgba(217,160,42,.7);}
+.ex-caption{font-size:13.5px;font-weight:700;color:var(--ink);line-height:1.4;margin:0;}
+.ex-caption .accent{color:var(--forest);}
+.ex-mini-dice{display:flex;gap:10px;justify-content:center;margin-bottom:12px;}
+.ex-die{
+  width:34px;height:34px;border-radius:8px;background:linear-gradient(150deg,#FBF6EA,#E4D8BE);
+  display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);padding:6px;gap:1px;
+  box-shadow:0 3px 6px rgba(0,0,0,.28);transition:opacity .3s;
+}
+.ex-die.dim{opacity:.3;}
+.ex-die .p{border-radius:50%;align-self:center;justify-self:center;width:5px;height:5px;background:#7A5A1E;}
+.carousel-dots{display:flex;justify-content:center;gap:6px;margin-top:12px;}
+.cdot{width:7px;height:7px;border-radius:50%;background:var(--line);transition:background .2s;}
+.cdot.on{background:var(--forest);}
+
+/* confetti */
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:50;}
+.conf{position:absolute;width:9px;height:14px;opacity:.95;will-change:transform;}
+
+/* toast */
+#toast{
+  position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);
+  background:var(--ink);color:#fff;padding:11px 20px;border-radius:12px;
+  font-weight:700;font-size:14px;opacity:0;transition:all .25s ease;z-index:60;pointer-events:none;
+}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+.proto-flag{text-align:center;color:var(--warm-gray);font-size:11px;padding:8px 0 14px;letter-spacing:.3px;}
+</style>
+    <meta property="og:title" content="Shut the Box · Challenge" />
+    <meta property="og:description" content="The Daily Dice Challenge" />
+    <meta property="og:url" content="https://olivejuice.digital/shut-the-box/" />
+    <meta property="og:image" content="https://olivejuice.digital/og-card.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+<body>
+<div id="app">
+
+  <!-- INTRO -->
+  <section id="screen-intro" class="screen active">
+    <div class="intro">
+      <div class="day-badge" id="intro-day">Daily Challenge</div>
+      <div class="brandmark">Shut the<span class="pip"> </span>Box</div>
+      <div class="tagline">The Daily Dice Challenge</div>
+      <div class="rules-card">
+        <h3>How it works</h3>
+        <div class="rule"><div class="num">1</div><p><b>Roll the dice.</b> Add them up.</p></div>
+        <div class="rule"><div class="num">2</div><p><b>Close any tiles</b> that sum to your roll. Tap them, then hit Close.</p></div>
+        <div class="rule"><div class="num">3</div><p>Keep rolling. Your turn ends when <b>no tiles can make your roll.</b></p></div>
+        <div class="rule"><div class="num">4</div><p>Score is the <b>tiles left over</b> — lower is better. Close them all to <b>Shut the Box.</b></p></div>
+      </div>
+      <div class="spacer"></div>
+      <button class="btn btn-primary" id="btn-play">Play Today&rsquo;s Challenge</button>
+      <div style="height:10px"></div>
+      <button class="btn btn-ghost" id="btn-challenge-friend">Challenge a Friend</button>
+      <div class="proto-flag">Daily: same dice for everyone, once a day</div>
+    </div>
+  </section>
+
+  <!-- CHALLENGE INTRO (recipient landing) -->
+  <section id="screen-challenge-intro" class="screen">
+    <div class="intro">
+      <div class="spacer" style="flex:.3"></div>
+      <div class="challenge-avatar" id="ci-avatar">?</div>
+      <div class="challenge-headline" id="ci-headline">So-and-so challenges you</div>
+      <div class="challenge-sub">Same dice, same board. Whoever scores lower wins.</div>
+      <div class="beat-card">
+        <div class="bc-label">Score to beat</div>
+        <div class="bc-score" id="ci-score">—</div>
+        <div class="share-grid small" id="ci-grid" style="margin-top:10px;justify-content:flex-start"></div>
+      </div>
+      <div class="spacer"></div>
+      <button class="btn btn-primary" id="btn-play-challenge">Play the Challenge</button>
+      <button class="btn-text" id="btn-skip-challenge">Play Daily Challenge instead</button>
+    </div>
+  </section>
+
+  <!-- GAME -->
+  <section id="screen-game" class="screen">
+    <div class="chrome-header">
+      <button class="back" id="btn-back" aria-label="Back">&larr;</button>
+      <div class="chrome-title">Shut the Box</div>
+      <div style="flex:1"></div>
+      <button class="icon-btn" id="btn-howto" aria-label="How to play">?</button>
+      <div class="day-badge" id="game-day" style="margin:0">Day</div>
+    </div>
+    <div id="status" class="status-pill">Roll to begin</div>
+    <div class="board-wrap">
+      <div class="board">
+        <div class="board-label">Shut the Box</div>
+        <div class="tiles" id="tiles"></div>
+      </div>
+    </div>
+    <div class="dice-area">
+      <div class="dice" id="dice"></div>
+      <div class="hint" id="hint"></div>
+      <div class="controls" id="controls"></div>
+      <div id="tip-singledie" style="display:none"></div>
+    </div>
+  </section>
+
+  <!-- RESULT (solo: daily / practice) -->
+  <section id="screen-result" class="screen">
+    <div class="result">
+      <div id="perfect-crown" class="perfect-crown" style="display:none">&#127942;</div>
+      <div class="result-eyebrow" id="result-day">Daily Challenge</div>
+      <div class="result-headline" id="result-headline">Nice game</div>
+      <div class="result-sub" id="result-sub"></div>
+      <div class="share-card">
+        <div class="sc-title" id="sc-title">Shut the Box</div>
+        <div class="share-grid" id="sc-grid"></div>
+        <div class="sc-score" id="sc-score"></div>
+      </div>
+      <div class="share-note">This card is spoiler-free &mdash; it never reveals which tiles.</div>
+      <div class="result-actions">
+        <button class="btn btn-primary" id="btn-share">Share Result</button>
+        <button class="btn btn-ghost" id="btn-replay">Play Another Game</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULT: challenge created (challenger's own playthrough) -->
+  <section id="screen-challenge-sent" class="screen">
+    <div class="result">
+      <div id="cs-crown" class="perfect-crown" style="display:none">&#127942;</div>
+      <div class="result-eyebrow">Challenge Ready</div>
+      <div class="result-headline normal" id="cs-headline">You set the bar</div>
+      <div class="result-sub" id="cs-sub"></div>
+      <div class="share-card">
+        <div class="sc-title" id="cs-title">Shut the Box</div>
+        <div class="sc-sub" id="cs-sub2">Can you beat their score?</div>
+        <div class="share-grid" id="cs-grid" style="margin-top:14px"></div>
+        <div class="sc-score" id="cs-score"></div>
+      </div>
+      <div class="share-note">Send the link below &mdash; it's spoiler-free and plays the identical board.</div>
+      <div class="result-actions">
+        <button class="btn btn-primary" id="btn-share-challenge">Send Challenge</button>
+        <button class="btn btn-ghost" id="btn-cs-done">Done</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARISON (recipient finishes a challenge) -->
+  <section id="screen-comparison" class="screen">
+    <div class="compare-wrap">
+      <div class="compare-vs" id="cmp-eyebrow">Head to Head</div>
+      <div class="compare-headline" id="cmp-headline">Results</div>
+      <div class="compare-card">
+        <div class="compare-row">
+          <div class="compare-name" id="cmp-name-a">Them</div>
+          <div class="compare-mid share-grid small" id="cmp-grid-a"></div>
+          <div class="compare-score" id="cmp-score-a">—</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-name you" id="cmp-name-b">You</div>
+          <div class="compare-mid share-grid small" id="cmp-grid-b"></div>
+          <div class="compare-score" id="cmp-score-b">—</div>
+        </div>
+      </div>
+      <div class="stats-table" id="cmp-stats"></div>
+      <div class="share-note">Spoiler-free &mdash; only each player's leftover tiles are shown, never the roll sequence.</div>
+      <div class="result-actions">
+        <button class="btn btn-primary" id="btn-share-comparison">Share Comparison</button>
+        <button class="btn btn-ghost" id="btn-cmp-challenge-back">Start Your Own Challenge</button>
+        <button class="btn-text" id="btn-cmp-done">Back to Start</button>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- NAME MODAL -->
+<div class="modal-overlay" id="name-modal">
+  <div class="modal-sheet">
+    <div class="modal-title">Challenge a Friend</div>
+    <div class="modal-desc">Add your name so they know who sent it. Totally optional.</div>
+    <input type="text" class="name-input" id="name-input" placeholder="Your name (optional)" maxlength="24" />
+    <button class="btn btn-primary" id="btn-name-continue">Play the Challenge Round</button>
+    <button class="btn-text" id="btn-name-cancel">Cancel</button>
+  </div>
+</div>
+
+<!-- HOW TO PLAY MODAL -->
+<div class="modal-overlay" id="howto-modal">
+  <div class="modal-sheet howto-sheet">
+    <div class="modal-title">How to Play</div>
+    <div class="howto-rules">
+      <div class="howto-rule"><div class="num">1</div><div><b>Roll the dice</b> and add them up.</div></div>
+      <div class="howto-rule"><div class="num">2</div><div><b>Close tiles</b> that sum to your roll.</div></div>
+      <div class="howto-rule"><div class="num">3</div><div>Turn ends when <b>no open tiles</b> can make your roll.</div></div>
+    </div>
+    <div class="carousel-wrap">
+      <div class="carousel" id="howto-carousel">
+        <div class="example-card">
+          <div class="ex-label">The Core Loop</div>
+          <div class="ex-board">
+            <div class="ex-tiles">
+              <div class="ex-tile x-marked">3</div><div class="ex-tile">1</div><div class="ex-tile">2</div>
+              <div class="ex-tile">4</div><div class="ex-tile x-marked">5</div><div class="ex-tile">6</div>
+              <div class="ex-tile x-closed">7</div><div class="ex-tile x-closed">8</div><div class="ex-tile x-closed">9</div>
+            </div>
+          </div>
+          <p class="ex-caption">Rolled an <span class="accent">8</span>? Pick any open tiles that add up to it &mdash; here, <span class="accent">3 + 5</span>.</p>
+        </div>
+        <div class="example-card">
+          <div class="ex-label">Scoring</div>
+          <div class="ex-board">
+            <div class="ex-tiles">
+              <div class="ex-tile x-closed">1</div><div class="ex-tile x-closed">2</div><div class="ex-tile x-marked">3</div>
+              <div class="ex-tile x-closed">4</div><div class="ex-tile x-marked">5</div><div class="ex-tile x-closed">6</div>
+              <div class="ex-tile x-marked">7</div><div class="ex-tile x-closed">8</div><div class="ex-tile x-closed">9</div>
+            </div>
+          </div>
+          <p class="ex-caption">Turn's over &mdash; <span class="accent">3 + 5 + 7 = 15</span>. Your score is what's left open. Lower is better.</p>
+        </div>
+        <div class="example-card">
+          <div class="ex-label">Almost Shut</div>
+          <div class="ex-board">
+            <div class="ex-tiles">
+              <div class="ex-tile x-closed">1</div><div class="ex-tile x-closed">2</div><div class="ex-tile x-closed">3</div>
+              <div class="ex-tile x-closed">4</div><div class="ex-tile x-marked">5</div><div class="ex-tile x-closed">6</div>
+              <div class="ex-tile x-closed">7</div><div class="ex-tile x-closed">8</div><div class="ex-tile x-closed">9</div>
+            </div>
+          </div>
+          <p class="ex-caption">One tile left is <span class="accent">Almost Shut</span> &mdash; the whole game builds to this moment.</p>
+        </div>
+        <div class="example-card">
+          <div class="ex-label">The Single-Die Option</div>
+          <div class="ex-mini-dice">
+            <div class="ex-die dim"><span></span><span class="p"></span><span></span><span></span><span class="p"></span><span></span><span></span><span class="p"></span><span></span></div>
+            <div class="ex-die"><span class="p"></span><span></span><span></span><span></span><span class="p"></span><span></span><span></span><span></span><span class="p"></span></div>
+          </div>
+          <p class="ex-caption">When everything left is <span class="accent">6 or lower</span>, you can roll one die instead of two &mdash; a guaranteed 1&ndash;6 instead of a 2&ndash;12 spread.</p>
+        </div>
+      </div>
+      <div class="carousel-dots" id="howto-dots"></div>
+    </div>
+    <div style="height:6px"></div>
+    <button class="btn btn-ghost" id="btn-howto-close">Close</button>
+  </div>
+</div>
+
+<div id="confetti"></div>
+<div id="toast"></div>
+
+<script>
+/* ============================================================
+   SHUT THE BOX — Challenge Mode prototype (Prototype 2, Phase 1)
+   Built on top of the live Daily Challenge prototype's exact
+   design system and game engine. Adds:
+   1. Async challenge links (fresh random seed, never the daily seed)
+   2. Comparison screen (score / fewest rolls / most-rolls-without-losing)
+   3. Two new share card variants (challenge-sent, comparison)
+   4. Persistent "How to play" carousel + single-die contextual tooltip
+   5. Extended tracking incl. persistent anonymous player ID
+   Spec source: "Shut the Box — Prototype 2: Retention, Virality &
+   Social Progression" (art_F1ufI85l), Sections 1-4 and 6.
+   ============================================================ */
+
+// ---------- Deterministic seeded RNG (same engine as live prototype) ----------
+function mulberry32(seed){
+  return function(){
+    seed|=0; seed = seed + 0x6D2B79F5 | 0;
+    let t = Math.imul(seed ^ seed>>>15, 1 | seed);
+    t = t + Math.imul(t ^ t>>>7, 61 | t) ^ t;
+    return ((t ^ t>>>14) >>> 0) / 4294967296;
+  };
+}
+function hashString(str){
+  let h = 1779033703 ^ str.length;
+  for(let i=0;i<str.length;i++){
+    h = Math.imul(h ^ str.charCodeAt(i), 3432918353);
+    h = h<<13 | h>>>19;
+  }
+  return (h ^ h>>>16) >>> 0;
+}
+function getDailySeed(){ return new Date().toISOString().split('T')[0]; }
+
+const EPOCH = Date.UTC(2026,5,22);
+function dayNumber(dateStr){
+  const [y,m,d] = dateStr.split('-').map(Number);
+  return Math.floor((Date.UTC(y,m-1,d) - EPOCH)/86400000) + 1;
+}
+
+const SEED = getDailySeed();
+const DAY = dayNumber(SEED);
+const STORE_KEY = 'stb-daily-' + SEED;
+
+function buildStream(seedStr){
+  const rng = mulberry32(hashString(seedStr));
+  return Array.from({length:400}, () => [
+    1 + Math.floor(rng()*6),
+    1 + Math.floor(rng()*6)
+  ]);
+}
+let currentSeed = SEED;
+let currentMode = 'idle'; // 'daily' | 'practice' | 'challenge-create' | 'challenge-play'
+let DICE_STREAM = buildStream(currentSeed);
+
+// ---------- Compact challenge-link encoding ----------
+// URL schema: ?c=1&s=<seedBase36>&n=<name>&sc=<score>&rl=<rolls>&nl=<noLossRolls>&cm=<closedMaskBase36>
+// Seed is ALWAYS a fresh random integer per challenge — never the daily date
+// seed — so a challenge link can never leak today's Daily Challenge answer.
+function closedMaskToInt(mask){ let n=0; mask.forEach((c,i)=>{ if(c) n |= (1<<i); }); return n; }
+function intToClosedMask(n){ const arr=[]; for(let i=0;i<9;i++) arr.push(!!(n & (1<<i))); return arr; }
+
+function parseChallengeParams(){
+  const p = new URLSearchParams(location.search);
+  if(p.get('c') !== '1' || !p.get('s')) return null;
+  const seedNum = parseInt(p.get('s'), 36);
+  if(!Number.isFinite(seedNum)) return null;
+  return {
+    seedNum,
+    name: (p.get('n') ? decodeURIComponent(p.get('n')) : '') || 'A friend',
+    score: parseInt(p.get('sc'),10) || 0,
+    rolls: parseInt(p.get('rl'),10) || 0,
+    noLossRolls: parseInt(p.get('nl'),10) || 0,
+    closedMask: intToClosedMask(parseInt(p.get('cm'),36) || 0)
+  };
+}
+function buildChallengeLink(seedNum, name, result){
+  const base = location.origin + location.pathname;
+  const q = new URLSearchParams({
+    c:'1',
+    s: seedNum.toString(36),
+    n: encodeURIComponent(name || 'A friend'),
+    sc: String(result.score),
+    rl: String(result.rolls),
+    nl: String(result.noLossRolls),
+    cm: closedMaskToInt(result.closedMask).toString(36)
+  });
+  return base + '?' + q.toString();
+}
+
+const incomingChallenge = parseChallengeParams();
+
+// ---------- Analytics beacon (extends live prototype's /_e pattern) ----------
+// Ephemeral per-visit session id (unchanged from live prototype).
+const SID = (function(){
+  try{ let s=localStorage.getItem('stb_sid'); if(!s){ s=Math.random().toString(36).slice(2)+Date.now().toString(36); localStorage.setItem('stb_sid',s);} return s; }
+  catch(e){ return 'anon'; }
+})();
+// NEW: persistent anonymous player id — survives across sessions/devices-via-
+// localStorage so repeat-opponent pairs can be identified later (required for
+// the roadmap's Phase 1 -> Phase 3 gating metric to be measurable at all).
+const PID = (function(){
+  try{ let p=localStorage.getItem('stb_pid'); if(!p){ p='p_'+Math.random().toString(36).slice(2)+Date.now().toString(36); localStorage.setItem('stb_pid',p);} return p; }
+  catch(e){ return 'anon-pid'; }
+})();
+const VISIT_ORIGIN = incomingChallenge ? 'challenge' : 'organic';
+function track(ev, params){
+  try{
+    const q = new URLSearchParams(Object.assign({ev:ev, sid:SID, pid:PID, ref:VISIT_ORIGIN, _:Date.now()}, params||{}));
+    new Image().src = '/_e?' + q.toString();
+  }catch(e){}
+}
+
+// ---------- Game state ----------
+const state = {
+  tiles: [], rollIndex: 0, dice: [], rollTotal: 0, phase: 'idle',
+  selected: new Set(), usedSingleDie:false,
+  successfulRolls: 0 // "most rolls without losing": count of rolls that ended in a
+                      // successful tile-close, i.e. did NOT end the turn via a
+                      // no-valid-combination failure. Derived stat — see spec Section 4.
+};
+let pendingChallengerName = null; // name entered before a challenge-create playthrough
+let pendingChallengeSeed = null;  // seed generated for a challenge-create playthrough
+
+function resetGame(){
+  state.tiles = Array.from({length:9}, (_,i) => ({value:i+1, open:true}));
+  state.rollIndex = 0;
+  state.dice = [];
+  state.rollTotal = 0;
+  state.phase = 'idle';
+  state.selected = new Set();
+  state.usedSingleDie = false;
+  state.successfulRolls = 0;
+}
+
+// ---------- Rules helpers ----------
+function openValues(){ return state.tiles.filter(t=>t.open).map(t=>t.value); }
+function hasCombo(values, target){
+  if(target===0) return true;
+  function rec(i, remaining){
+    if(remaining===0) return true;
+    if(remaining<0 || i>=values.length) return false;
+    return rec(i+1, remaining-values[i]) || rec(i+1, remaining);
+  }
+  return rec(0, target);
+}
+function singleDieEligible(){
+  return ![7,8,9].some(v => state.tiles.find(t=>t.value===v).open);
+}
+
+// ---------- Rendering ----------
+const el = id => document.getElementById(id);
+function renderTiles(){
+  const wrap = el('tiles');
+  wrap.innerHTML = '';
+  state.tiles.forEach(t => {
+    const d = document.createElement('div');
+    d.className = 'tile';
+    d.dataset.value = t.value;
+    d.textContent = t.value;
+    const peg = document.createElement('span'); peg.className='peg'; d.appendChild(peg);
+    if(!t.open){ d.classList.add('closed'); }
+    else if(state.phase==='selecting'){
+      if(state.selected.has(t.value)) d.classList.add('selected');
+      d.classList.add('selectable');
+      d.addEventListener('click', () => toggleTile(t.value));
+    }
+    wrap.appendChild(d);
+  });
+}
+function pipLayout(n){
+  const M = {
+    1:[0,0,0,0,1,0,0,0,0],
+    2:[1,0,0,0,0,0,0,0,1],
+    3:[1,0,0,0,1,0,0,0,1],
+    4:[1,0,1,0,0,0,1,0,1],
+    5:[1,0,1,0,1,0,1,0,1],
+    6:[1,0,1,1,0,1,1,0,1]
+  };
+  return M[n] || M[1];
+}
+function renderDice(rolling){
+  const wrap = el('dice');
+  wrap.innerHTML = '';
+  const vals = state.dice.length ? state.dice : [];
+  vals.forEach(v => {
+    const die = document.createElement('div');
+    die.className = 'die' + (rolling ? ' rolling':'');
+    pipLayout(v).forEach(on => {
+      const cell = document.createElement('span');
+      if(on){ cell.className='pip'; }
+      die.appendChild(cell);
+    });
+    wrap.appendChild(die);
+  });
+}
+function sumSelected(){
+  let s=0; state.selected.forEach(v=>s+=v); return s;
+}
+function setStatus(text, mode){
+  const s = el('status');
+  s.className = 'status-pill' + (mode ? ' '+mode : '');
+  s.innerHTML = text;
+}
+
+// ---------- Turn flow ----------
+function startGame(mode, opts){
+  currentMode = mode;
+  opts = opts || {};
+  let seedStr;
+  if(mode === 'daily'){ seedStr = SEED; }
+  else if(mode === 'practice'){ seedStr = 'practice-' + Date.now() + '-' + Math.floor(Math.random()*1e9); }
+  else if(mode === 'challenge-create'){
+    const seedNum = Math.floor(Math.random()*1e9);
+    pendingChallengeSeed = seedNum;
+    seedStr = 'challenge-' + seedNum;
+  } else if(mode === 'challenge-play'){
+    seedStr = 'challenge-' + incomingChallenge.seedNum;
+  }
+  currentSeed = seedStr;
+  DICE_STREAM = buildStream(currentSeed);
+  resetGame();
+  showScreen('game');
+  track('start',{mode:mode});
+  if(mode==='daily') el('game-day').textContent = 'Day ' + DAY;
+  else if(mode==='practice') el('game-day').textContent = 'Practice';
+  else if(mode==='challenge-create') el('game-day').textContent = 'New Challenge';
+  else el('game-day').textContent = 'vs ' + incomingChallenge.name;
+  renderTiles();
+  renderDice(false);
+  el('hint').textContent = '';
+  el('tip-singledie').style.display = 'none';
+  setStatus('Roll to begin');
+  renderControls();
+}
+
+function renderControls(){
+  const c = el('controls');
+  c.innerHTML = '';
+  const tipHost = el('tip-singledie');
+  if(state.phase==='idle'){
+    const rollBtn = document.createElement('button');
+    rollBtn.className='btn btn-primary';
+    rollBtn.textContent = 'Roll';
+    rollBtn.onclick = () => doRoll(false);
+    c.appendChild(rollBtn);
+    if(singleDieEligible()){
+      const oneWrap = document.createElement('div');
+      oneWrap.style.position = 'relative';
+      const one = document.createElement('button');
+      one.className='btn btn-ghost';
+      one.textContent = 'Roll one die';
+      one.onclick = () => { dismissSingleDieTip(); doRoll(true); };
+      // tipHost goes AFTER the button in the DOM, and the bubble opens
+      // downward (top:100%) — there is genuine open space below this
+      // button, unlike above it where the Roll button sits directly.
+      oneWrap.appendChild(one);
+      oneWrap.appendChild(tipHost);
+      c.appendChild(oneWrap);
+      el('hint').textContent = 'Tiles 7-9 are down — you may roll a single die.';
+      maybeShowSingleDieTip();
+    } else {
+      el('hint').textContent = '';
+      tipHost.style.display = 'none';
+    }
+  } else if(state.phase==='selecting'){
+    tipHost.style.display = 'none';
+    const close = document.createElement('button');
+    close.className='btn btn-primary';
+    close.id='btn-close';
+    close.textContent = 'Close tiles';
+    const matched = sumSelected()===state.rollTotal && state.selected.size>0;
+    close.disabled = !matched;
+    close.style.opacity = matched ? '1' : '.45';
+    close.onclick = confirmClose;
+    c.appendChild(close);
+  }
+}
+
+// First time a player reaches the single-die decision point in a LIVE game,
+// explain the guaranteed 1-6 vs 2-12 range. Shown once, ever (localStorage flag).
+function maybeShowSingleDieTip(){
+  let seen = false;
+  try{ seen = localStorage.getItem('stb_tip_singledie') === '1'; }catch(e){}
+  if(seen) return;
+  const host = el('tip-singledie');
+  host.innerHTML = '<div class="tooltip-bubble"><p>Rolling one die guarantees a result of <b>1&ndash;6</b>, instead of a two-dice roll that could total anywhere from <b>2&ndash;12</b>.</p><button id="tip-gotit">Got it</button></div>';
+  host.style.display = 'block';
+  el('tip-gotit').onclick = dismissSingleDieTip;
+}
+function dismissSingleDieTip(){
+  try{ localStorage.setItem('stb_tip_singledie','1'); }catch(e){}
+  el('tip-singledie').style.display = 'none';
+}
+
+let rolling = false;
+function doRoll(single){
+  if(rolling) return;
+  rolling = true;
+  state.usedSingleDie = single;
+  el('hint').textContent='';
+  el('controls').innerHTML='';
+  el('tip-singledie').style.display='none';
+  setStatus('Rolling&hellip;');
+  const pair = DICE_STREAM[state.rollIndex] || [1,1];
+  state.rollIndex++;
+  track('roll',{mode:currentMode,single:single?1:0});
+  let ticks=0;
+  const anim = setInterval(()=>{
+    state.dice = single ? [1+Math.floor(Math.random()*6)]
+                        : [1+Math.floor(Math.random()*6),1+Math.floor(Math.random()*6)];
+    renderDice(true);
+    ticks++;
+  }, 70);
+  setTimeout(()=>{
+    clearInterval(anim);
+    state.dice = single ? [pair[0]] : [pair[0],pair[1]];
+    state.rollTotal = state.dice.reduce((a,b)=>a+b,0);
+    renderDice(false);
+    rolling=false;
+    afterRoll();
+  }, 750);
+}
+
+function afterRoll(){
+  const vals = openValues();
+  if(hasCombo(vals, state.rollTotal)){
+    state.phase='selecting';
+    state.selected = new Set();
+    setStatus('Rolled <b style="margin:0 4px">'+state.rollTotal+'</b> &middot; pick tiles');
+    el('hint').textContent = 'Tap tiles that add up to '+state.rollTotal+'.';
+    renderTiles();
+    renderControls();
+  } else {
+    setStatus('No tiles make '+state.rollTotal, 'warn');
+    el('hint').textContent = 'No combination left. Turn over.';
+    state.phase='ended';
+    setTimeout(endTurn, 1500);
+  }
+}
+
+function toggleTile(v){
+  if(state.phase!=='selecting') return;
+  if(state.selected.has(v)) state.selected.delete(v);
+  else state.selected.add(v);
+  const s = sumSelected();
+  if(s>state.rollTotal){
+    const node = document.querySelector('.tile[data-value="'+v+'"]');
+    if(node){ node.classList.add('shake'); setTimeout(()=>node.classList.remove('shake'),400); }
+  }
+  const matched = s===state.rollTotal && state.selected.size>0;
+  if(matched){
+    setStatus('Selected '+s+' / '+state.rollTotal+' &check;', 'match');
+  } else if(s>state.rollTotal){
+    setStatus('Selected '+s+' <span class="need">/ '+state.rollTotal+' &middot; too high</span>', 'warn');
+  } else {
+    setStatus('Selected '+s+' <span class="need">/ '+state.rollTotal+'</span>');
+  }
+  renderTiles();
+  renderControls();
+}
+
+function confirmClose(){
+  if(sumSelected()!==state.rollTotal || state.selected.size===0) return;
+  state.selected.forEach(v => { state.tiles.find(t=>t.value===v).open = false; });
+  state.selected = new Set();
+  state.successfulRolls++; // this roll closed tiles successfully — did not end the turn in failure
+  renderTiles();
+  if(openValues().length===0){
+    state.phase='ended';
+    setStatus('Shut the Box!', 'match');
+    setTimeout(endTurn, 500);
+    return;
+  }
+  state.phase='idle';
+  state.dice=[];
+  renderDice(false);
+  setStatus('Roll again');
+  renderControls();
+}
+
+// ---------- Ending + peak moments ----------
+function sleep(ms){ return new Promise(r=>setTimeout(r,ms)); }
+
+async function endTurn(){
+  const remaining = openValues();
+  const isPerfect = remaining.length===0;
+  const isAlmost = remaining.length===1;
+  const score = remaining.reduce((a,b)=>a+b,0);
+
+  const result = {
+    date: currentSeed, day: DAY, score,
+    remainingCount: remaining.length,
+    closedMask: state.tiles.map(t=>!t.open),
+    isPerfect, isAlmost,
+    rolls: state.rollIndex,
+    noLossRolls: state.successfulRolls,
+    mode: currentMode
+  };
+  if(currentMode==='daily'){ try{ localStorage.setItem(STORE_KEY, JSON.stringify(result)); }catch(e){} }
+  track('end',{mode:currentMode,score:score,almost:isAlmost?1:0,perfect:isPerfect?1:0,rolls:state.rollIndex,noloss:state.successfulRolls});
+
+  el('controls').innerHTML='';
+  el('hint').textContent='';
+  const tileNodes = [...document.querySelectorAll('#tiles .tile')];
+
+  if(isPerfect){
+    setStatus('Shut the Box!', 'match');
+    for(const n of tileNodes){ n.classList.add('perfect-pulse'); await sleep(90); }
+    await sleep(500);
+    burstConfetti();
+    await sleep(700);
+  } else {
+    for(const n of tileNodes){
+      if(n.classList.contains('closed')){ n.classList.add('settle'); await sleep(110); }
+    }
+    await sleep(300);
+    if(isAlmost){
+      const lone = tileNodes.find(n=>!n.classList.contains('closed'));
+      if(lone) lone.classList.add('alone');
+      setStatus('So close&hellip;', 'warn');
+      await sleep(1600);
+    } else {
+      await sleep(400);
+    }
+  }
+
+  if(currentMode === 'challenge-create'){
+    track('challenge_create', {score:result.score, rolls:result.rolls, noloss:result.noLossRolls});
+    showChallengeSent(result);
+  } else if(currentMode === 'challenge-play'){
+    track('challenge_complete', {score:result.score, rolls:result.rolls, noloss:result.noLossRolls});
+    showComparison(incomingChallenge, result);
+  } else {
+    showResult(result);
+  }
+}
+
+// ---------- Result screen (daily / practice, unchanged behavior) ----------
+function buildShareGrid(closedMask){
+  return closedMask.map(c => c ? '\uD83D\uDFEB' : '\u2B1C').join('');
+}
+function shareText(r){
+  const grid = buildShareGrid(r.closedMask);
+  const header = r.mode==='daily' ? ('Shut the Box \u00b7 Day '+r.day) : 'Shut the Box \u00b7 Practice';
+  let line3;
+  if(r.isPerfect) line3 = 'SHUT \u2713 \u00b7 Can you beat it?';
+  else if(r.isAlmost) line3 = 'One tile from perfect. Score: '+r.score+' \u00b7 Can you beat it?';
+  else line3 = 'Score: '+r.score+' \u00b7 Can you beat it?';
+  return header+'\n'+grid+'\n'+line3;
+}
+function showResult(r){
+  showScreen('result');
+  el('result-day').textContent = r.mode==='daily' ? ('Daily Challenge \u00b7 Day '+r.day) : 'Practice Round';
+  const hl = el('result-headline');
+  const sub = el('result-sub');
+  const crown = el('perfect-crown');
+  crown.style.display='none';
+  if(r.isPerfect){
+    hl.textContent = 'Shut the Box!';
+    hl.className='result-headline perfect';
+    sub.textContent = 'A perfect game. Every tile down. This almost never happens.';
+    crown.style.display='block';
+  } else if(r.isAlmost){
+    hl.textContent = 'Almost Shut!';
+    hl.className='result-headline almost';
+    sub.innerHTML = 'One tile from perfect. Score: <b>'+r.score+'</b>.';
+  } else {
+    hl.textContent = 'Score '+r.score;
+    hl.className='result-headline normal';
+    sub.textContent = r.remainingCount+' tiles left over. Lower is better' + (r.mode==='daily' ? ' — come back tomorrow.' : '. Keep practicing.');
+  }
+  el('sc-title').textContent = r.mode==='daily' ? ('Shut the Box \u00b7 Day '+r.day) : 'Shut the Box \u00b7 Practice';
+  el('sc-grid').innerHTML = r.closedMask.map(c => '<span class="sq '+(c?'cl':'op')+'"></span>').join('');
+  const sc = el('sc-score');
+  if(r.isPerfect) sc.innerHTML = 'SHUT <b>\u2713</b> \u00b7 Can you beat it?';
+  else if(r.isAlmost) sc.innerHTML = 'One tile from perfect \u00b7 Score: <b>'+r.score+'</b>';
+  else sc.innerHTML = 'Score: <b>'+r.score+'</b> \u00b7 Can you beat it?';
+  el('btn-share').onclick = () => doShare(shareText(r), 'result', r);
+}
+
+// ---------- Challenge-sent screen (challenger's own playthrough) ----------
+function challengeSentText(name, link, r){
+  const grid = buildShareGrid(r.closedMask);
+  const header = (name||'A friend') + ' challenges you \u2014 can you beat their score?';
+  const scoreLine = r.isPerfect ? 'SHUT \u2713' : ('Score: '+r.score);
+  return header+'\n'+grid+'\n'+scoreLine+'\n'+link;
+}
+function showChallengeSent(r){
+  showScreen('challenge-sent');
+  const name = pendingChallengerName || 'A friend';
+  const link = buildChallengeLink(pendingChallengeSeed, name, r);
+  el('cs-crown').style.display = r.isPerfect ? 'block' : 'none';
+  el('cs-headline').textContent = r.isPerfect ? 'Shut the Box! Challenge sent.' : 'You set the bar';
+  el('cs-sub').textContent = r.isPerfect
+    ? 'A perfect game to beat. Good luck to them.'
+    : (r.remainingCount+' tile'+(r.remainingCount===1?'':'s')+' left over. Send the link — can they do better?');
+  el('cs-title').textContent = name + ' challenges you';
+  el('cs-grid').innerHTML = r.closedMask.map(c => '<span class="sq '+(c?'cl':'op')+'"></span>').join('');
+  el('cs-score').innerHTML = r.isPerfect ? 'SHUT <b>\u2713</b>' : ('Score: <b>'+r.score+'</b>');
+  el('btn-share-challenge').onclick = () => doShare(challengeSentText(name, link, r), 'challenge_sent', r, link);
+  el('btn-cs-done').onclick = () => showScreen('intro');
+}
+
+// ---------- Comparison screen (recipient finishes a challenge) ----------
+function comparisonText(challenger, recipient){
+  const gA = buildShareGrid(challenger.closedMask);
+  const gB = buildShareGrid(recipient.closedMask);
+  const scoreA = challenger.score, scoreB = recipient.score;
+  const winner = scoreB < scoreA ? 'You won!' : (scoreB > scoreA ? challenger.name+' won.' : "It's a tie!");
+  return 'Shut the Box \u00b7 Head to Head\n'
+    + challenger.name+': '+gA+'  ('+scoreA+')\n'
+    + 'You: '+gB+'  ('+scoreB+')\n'
+    + winner;
+}
+function statRow(label, valA, valB, lowerIsBetter){
+  const aWins = lowerIsBetter ? valA < valB : valA > valB;
+  const bWins = lowerIsBetter ? valB < valA : valB > valA;
+  return '<div class="stat-row"><div class="stat-label">'+label+'</div><div class="stat-vals">'
+    + '<div class="stat-val'+(aWins?' win':'')+'">'+valA+'</div>'
+    + '<div class="stat-val you-tag'+(bWins?' win':'')+'">'+valB+'</div>'
+    + '</div></div>';
+}
+function showComparison(challenger, recipient){
+  showScreen('comparison');
+  const won = recipient.score < challenger.score;
+  const tied = recipient.score === challenger.score;
+  el('cmp-headline').textContent = tied ? "It's a tie!" : (won ? 'You won!' : challenger.name + ' won this one');
+  el('cmp-name-a').textContent = challenger.name;
+  el('cmp-name-b').textContent = 'You';
+  el('cmp-grid-a').innerHTML = challenger.closedMask.map(c => '<span class="sq '+(c?'cl':'op')+'"></span>').join('');
+  el('cmp-grid-b').innerHTML = recipient.closedMask.map(c => '<span class="sq '+(c?'cl':'op')+'"></span>').join('');
+  el('cmp-score-a').textContent = challenger.score;
+  el('cmp-score-b').textContent = recipient.score;
+  // Per spec Section 4: single-game stats on a shared seed generalize to a
+  // challenge card (score, fewest rolls, most-rolls-without-losing). Streak is
+  // explicitly excluded — it's a cross-day stat, not shown here or anywhere
+  // challenge-facing.
+  el('cmp-stats').innerHTML =
+    statRow('Lowest score', challenger.score, recipient.score, true) +
+    statRow('Fewest rolls', challenger.rolls, recipient.rolls, true) +
+    statRow('Most rolls without losing', challenger.noLossRolls, recipient.noLossRolls, false);
+  track('comparison_viewed', {won: won?1:(tied?0:-1)});
+  el('btn-share-comparison').onclick = () => doShare(comparisonText(challenger, recipient), 'comparison', recipient);
+  el('btn-cmp-challenge-back').onclick = () => openNameModal();
+  el('btn-cmp-done').onclick = () => showScreen('intro');
+}
+
+// ---------- Share mechanism (same navigator.share + clipboard fallback pattern) ----------
+async function doShare(text, kind, r, link){
+  track('share', Object.assign({kind:kind}, r ? {score:r.score} : {}));
+  try{
+    if(navigator.share){
+      await navigator.share({text: text, url: link || undefined});
+      return;
+    }
+  }catch(e){ /* fall through to clipboard */ }
+  try{
+    await navigator.clipboard.writeText(text);
+    toast('Copied to clipboard');
+  }catch(e){
+    const ta=document.createElement('textarea'); ta.value=text; document.body.appendChild(ta);
+    ta.select(); try{document.execCommand('copy'); toast('Copied');}catch(_){toast('Copy failed');}
+    document.body.removeChild(ta);
+  }
+}
+
+// ---------- Screens ----------
+function showScreen(name){
+  ['intro','challenge-intro','game','result','challenge-sent','comparison'].forEach(s=>{
+    el('screen-'+s).classList.toggle('active', s===name);
+  });
+  window.scrollTo(0,0);
+}
+
+// ---------- Confetti ----------
+function burstConfetti(){
+  const colors=['#D9A02A','#1F4D3D','#D9752B','#1B4B4F','#F2EDE1'];
+  const box=el('confetti');
+  for(let i=0;i<90;i++){
+    const c=document.createElement('div');
+    c.className='conf';
+    c.style.background=colors[i%colors.length];
+    c.style.left=(50+(Math.random()*40-20))+'%';
+    c.style.top='40%';
+    box.appendChild(c);
+    const dx=(Math.random()*2-1)*260;
+    const dy=-(150+Math.random()*260);
+    const rot=Math.random()*720-360;
+    c.animate([
+      {transform:'translate(0,0) rotate(0deg)',opacity:1},
+      {transform:`translate(${dx}px,${dy}px) rotate(${rot}deg)`,opacity:1,offset:.35},
+      {transform:`translate(${dx*1.3}px,${dy+520}px) rotate(${rot*1.6}deg)`,opacity:0}
+    ],{duration:1600+Math.random()*700,easing:'cubic-bezier(.2,.6,.3,1)'}).onfinish=()=>c.remove();
+  }
+}
+
+// ---------- Toast ----------
+let toastT;
+function toast(msg){
+  const t=el('toast'); t.textContent=msg; t.classList.add('show');
+  clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove('show'),1900);
+}
+
+// ---------- Name modal (challenge creation) ----------
+function openNameModal(){
+  el('name-input').value='';
+  el('name-modal').classList.add('show');
+  setTimeout(()=>el('name-input').focus(), 200);
+}
+function closeNameModal(){ el('name-modal').classList.remove('show'); }
+
+// ---------- How-to-play modal ----------
+function openHowto(){ el('howto-modal').classList.add('show'); }
+function closeHowto(){ el('howto-modal').classList.remove('show'); }
+function initHowtoDots(){
+  const carousel = el('howto-carousel');
+  const cards = carousel.querySelectorAll('.example-card');
+  const dotsWrap = el('howto-dots');
+  dotsWrap.innerHTML = '';
+  cards.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'cdot' + (i===0?' on':'');
+    dotsWrap.appendChild(d);
+  });
+  carousel.addEventListener('scroll', () => {
+    const idx = Math.round(carousel.scrollLeft / carousel.clientWidth);
+    [...dotsWrap.children].forEach((d,i)=>d.classList.toggle('on', i===idx));
+  });
+}
+
+// ---------- Wire up ----------
+function readSaved(){
+  try{
+    const raw = localStorage.getItem(STORE_KEY);
+    if(!raw) return null;
+    return JSON.parse(raw);
+  }catch(e){ return null; }
+}
+
+el('intro-day').textContent = 'Daily Challenge \u00b7 Day '+DAY;
+el('btn-back').addEventListener('click', () => showScreen(incomingChallenge ? 'challenge-intro' : 'intro'));
+el('btn-howto').addEventListener('click', openHowto);
+el('btn-howto-close').addEventListener('click', closeHowto);
+el('howto-modal').addEventListener('click', (e)=>{ if(e.target.id==='howto-modal') closeHowto(); });
+
+el('btn-play').addEventListener('click', () => {
+  const saved = readSaved();
+  if(saved){ saved.mode = 'daily'; showResult(saved); } else { startGame('daily'); }
+});
+el('btn-replay').addEventListener('click', () => startGame('practice'));
+
+el('btn-challenge-friend').addEventListener('click', openNameModal);
+el('btn-name-cancel').addEventListener('click', closeNameModal);
+el('name-modal').addEventListener('click', (e)=>{ if(e.target.id==='name-modal') closeNameModal(); });
+el('btn-name-continue').addEventListener('click', () => {
+  pendingChallengerName = (el('name-input').value || '').trim() || 'A friend';
+  closeNameModal();
+  startGame('challenge-create');
+});
+
+if(incomingChallenge){
+  el('ci-avatar').textContent = incomingChallenge.name.charAt(0).toUpperCase() || '?';
+  el('ci-headline').textContent = incomingChallenge.name + ' challenges you';
+  el('ci-score').textContent = incomingChallenge.score===0 ? 'SHUT \u2713' : String(incomingChallenge.score);
+  el('ci-grid').innerHTML = incomingChallenge.closedMask.map(c => '<span class="sq '+(c?'cl':'op')+'"></span>').join('');
+  showScreen('challenge-intro');
+  track('view',{day:DAY});
+} else {
+  track('view',{day:DAY});
+  (function initIntro(){
+    const saved = readSaved();
+    if(saved){ el('btn-play').textContent = 'See Today\u2019s Result'; }
+  })();
+}
+el('btn-play-challenge').addEventListener('click', () => startGame('challenge-play'));
+el('btn-skip-challenge').addEventListener('click', () => showScreen('intro'));
+
+initHowtoDots();
+</script>
+<script data-obvious-badge>
+(function() {
+  // Only show badge if NOT in iframe (external access only)
+  if (window.self === window.top) {
+    // Create badge as clickable link
+    var badge = document.createElement('a');
+    badge.href = 'https://obvious.ai/';
+    badge.target = '_blank';
+    badge.rel = 'noopener noreferrer';
+
+    // Apply fixed positioning styles inline (works even if app overrides CSS)
+    badge.style.cssText = 'position: fixed; bottom: 16px; right: 16px; display: flex; align-items: center; gap: 8px; padding: 8px 12px; background: rgba(255, 255, 255, 0.95); border-radius: 6px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13px; color: rgba(0, 0, 0, 0.72); text-decoration: none; opacity: 0.6; z-index: 9999; transition: opacity 0.2s; cursor: pointer;';
+
+    badge.innerHTML = '\x3csvg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 22 20\" width=\"16\" height=\"16\"\x3e\n  \x3cpath fill=\"currentColor\" fill-opacity=\".92\" fill-rule=\"evenodd\" d=\"M10.94.68c.04.02.08.02.12 0a5.08 5.08 0 0 1 5.15.04 5.38 5.38 0 0 1 2.6 4.57c0 .04.03.08.06.1A5.39 5.39 0 0 1 21.42 10a5.39 5.39 0 0 1-2.55 4.6.12.12 0 0 0-.06.1 5.38 5.38 0 0 1-2.6 4.58c-1.65.98-3.6.93-5.15.04a.12.12 0 0 0-.12 0c-1.55.89-3.5.94-5.15-.04a5.38 5.38 0 0 1-2.6-4.57.12.12 0 0 0-.06-.1A5.39 5.39 0 0 1 .58 10a5.39 5.39 0 0 1 2.55-4.6.12.12 0 0 0 .06-.1c.02-1.84.95-3.6 2.6-4.58a5.08 5.08 0 0 1 5.15-.04ZM8.4 14.85c0-.1-.1-.15-.18-.1a5.07 5.07 0 0 1-3.33.53.12.12 0 0 0-.14.13 3.83 3.83 0 0 0 1.79 2.55c.95.56 2.05.65 3.03.31.07-.02.1-.12.04-.18a5.4 5.4 0 0 1-1.21-3.24Zm5.38-.1c-.08-.05-.18 0-.18.1a5.45 5.45 0 0 1-1.21 3.24c-.06.06-.03.16.04.18.98.34 2.08.25 3.03-.31a3.81 3.81 0 0 0 1.79-2.55.12.12 0 0 0-.14-.13 5.1 5.1 0 0 1-3.33-.54Zm-2.7-2.76a.1.1 0 0 0-.16 0 3.91 3.91 0 0 0 0 5.3.1.1 0 0 0 .16 0 3.91 3.91 0 0 0 0-5.3Zm-1.71-.93a.11.11 0 0 0-.08-.14 3.68 3.68 0 0 0-4.47 2.66c-.02.06.02.12.08.14a3.74 3.74 0 0 0 4.47-2.65Zm7.46 1.67a3.68 3.68 0 0 0-4.12-1.8.11.11 0 0 0-.08.13 3.74 3.74 0 0 0 4.47 2.66c.06-.02.1-.08.08-.14a3.9 3.9 0 0 0-.35-.85Zm1.85-5.59a.11.11 0 0 0-.18.05 5.46 5.46 0 0 1-2.12 2.7.13.13 0 0 0 0 .22 5.27 5.27 0 0 1 2.12 2.7c.03.08.12.1.18.05A3.87 3.87 0 0 0 19.93 10c0-1.14-.48-2.16-1.25-2.86ZM3.5 7.19a.11.11 0 0 0-.18-.05A3.87 3.87 0 0 0 2.07 10c0 1.14.48 2.16 1.25 2.86.06.05.15.03.18-.05a5.47 5.47 0 0 1 2.12-2.7.13.13 0 0 0 0-.22A5.27 5.27 0 0 1 3.5 7.2Zm2.3-1.02c-.32 0-.61.04-.9.11a.11.11 0 0 0-.08.14A3.68 3.68 0 0 0 9.3 9.07c.06 0 .1-.07.08-.13A3.74 3.74 0 0 0 5.8 6.17Zm10.4 0a3.74 3.74 0 0 0-3.57 2.77c-.01.06.02.12.08.14a3.68 3.68 0 0 0 4.47-2.66.11.11 0 0 0-.08-.14 3.63 3.63 0 0 0-.9-.1Zm-5.12-3.46a.1.1 0 0 0-.16 0 3.91 3.91 0 0 0 0 5.3.1.1 0 0 0 .16 0 3.91 3.91 0 0 0 0-5.3ZM9.6 1.9c.06-.06.03-.16-.04-.18a3.62 3.62 0 0 0-3.03.31A3.81 3.81 0 0 0 4.75 4.6c-.01.08.06.15.14.13a5.1 5.1 0 0 1 3.33.54c.08.04.18-.02.18-.1A5.45 5.45 0 0 1 9.6 1.9Zm5.85.13a3.62 3.62 0 0 0-3.03-.31c-.07.02-.1.12-.04.18a5.4 5.4 0 0 1 1.21 3.24c0 .1.1.15.18.1a5.07 5.07 0 0 1 3.33-.53c.08.02.15-.05.14-.13a3.81 3.81 0 0 0-1.79-2.55Z\" clip-rule=\"evenodd\"/\x3e\n\x3c/svg\x3e <span>Created with Obvious</span>';
+
+    // Hover effect
+    badge.onmouseenter = function() { badge.style.opacity = '0.9'; };
+    badge.onmouseleave = function() { badge.style.opacity = '0.6'; };
+
+    // Inject on DOM ready
+    if (document.body) {
+      document.body.appendChild(badge);
+    } else {
+      document.addEventListener('DOMContentLoaded', function() {
+        document.body.appendChild(badge);
+      });
+    }
+  }
+})();
+</script><script data-obvious-analytics>
+(function(){
+  // Config from server
+  var T="eyJyZXNvdXJjZVR5cGUiOiJob3N0ZWRfYXBwIiwicmVzb3VyY2VJZCI6InByal9ndXlMOFVrRiIsImlhdCI6MTc5MzIxNjM0MjY0Mn0.JPSZQdWedgks2vWlezgSbYk8YXoHcVYO4wMCKCAn-Ek",R="hosted_app",I="prj_guyL8UkF",E="https://api.app.obvious.ai/prepare/a/e";
+
+  // For hosted apps: skip analytics when in an iframe (internal dashboard view)
+  // Direct access (window.self === window.top) is tracked, iframe embeds are not
+  if(R==="hosted_app"&&window.self!==window.top)return;
+
+  // Generate or retrieve visitor ID (cross-session, localStorage)
+  function gV(){
+    try{
+      var v=localStorage.getItem("_oa_v");
+      if(!v){v=rI();localStorage.setItem("_oa_v",v)}
+      return v
+    }catch(e){return rI()}
+  }
+
+  // Generate or retrieve session ID (per-tab, sessionStorage)
+  function gS(){
+    try{
+      var s=sessionStorage.getItem("_oa_s");
+      if(!s){s=rI();sessionStorage.setItem("_oa_s",s)}
+      return s
+    }catch(e){return rI()}
+  }
+
+  // Random ID generator (simple, no crypto dependency)
+  function rI(){
+    return "xxxxxxxxxxxx".replace(/x/g,function(){
+      return(Math.random()*16|0).toString(16)
+    })+Date.now().toString(36)
+  }
+
+  // Parse user agent for device info
+  function dI(){
+    var ua=navigator.userAgent||"";
+    var d="desktop",b="other",o="other";
+    
+    // Device type
+    if(/Mobile|Android.*Mobile|iPhone|iPod/.test(ua))d="mobile";
+    else if(/iPad|Android(?!.*Mobile)|Tablet/.test(ua))d="tablet";
+    
+    // Browser - lowercase for consistency
+    if(/Firefox\//.test(ua))b="firefox";
+    else if(/Edg\//.test(ua))b="edge";
+    else if(/Chrome\//.test(ua))b="chrome";
+    else if(/Safari\//.test(ua)&&!/Chrome/.test(ua))b="safari";
+    
+    // OS - lowercase for consistency
+    if(/Windows/.test(ua))o="windows";
+    else if(/Mac OS/.test(ua))o="macos";
+    else if(/Linux/.test(ua))o="linux";
+    else if(/Android/.test(ua))o="android";
+    else if(/iOS|iPhone|iPad/.test(ua))o="ios";
+    
+    return{deviceType:d,browser:b,os:o}
+  }
+
+  // Send event to server
+  function sE(t,n,d,dur){
+    var di=dI();
+    var p={
+      token:T,
+      resourceType:R,
+      resourceId:I,
+      eventType:t,
+      visitorId:gV(),
+      sessionId:gS(),
+      path:location.pathname,
+      referrer:document.referrer||undefined,
+      deviceType:di.deviceType,
+      browser:di.browser,
+      os:di.os
+    };
+    if(n)p.eventName=n;
+    if(d)p.eventData=d;
+    if(dur)p.duration=dur;
+
+    // Always use fetch with keepalive for reliable delivery during page unload
+    // (sendBeacon has CORS issues - it always sends credentials)
+    fetch(E,{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify(p),
+      keepalive:true,
+      mode:"cors",
+      credentials:"omit"
+    }).catch(function(e){if(console&&console.warn)console.warn("[OA] Event failed:",e)})
+  }
+
+  // Track page view on load
+  var st=Date.now();
+  var lS=false; // Guard to prevent duplicate page_leave events
+  sE("page_view");
+
+  // Track page leave with duration (guarded to prevent duplicates)
+  function oL(){
+    if(lS)return;
+    lS=true;
+    sE("page_leave",null,null,Date.now()-st)
+  }
+  
+  // Use multiple events for better coverage
+  window.addEventListener("pagehide",oL);
+  window.addEventListener("beforeunload",oL);
+  document.addEventListener("visibilitychange",function(){
+    if(document.visibilityState==="hidden")oL()
+  });
+
+  // SPA navigation support (for hosted apps)
+  var lp=location.pathname;
+  function cN(){
+    if(location.pathname!==lp){
+      oL(); // Send leave for old page
+      lp=location.pathname;
+      st=Date.now();
+      lS=false; // Reset guard for new page
+      sE("page_view"); // Send view for new page
+    }
+  }
+  
+  // Listen for navigation events
+  window.addEventListener("popstate",cN);
+  
+  // Intercept pushState/replaceState for SPA navigation
+  var oPS=history.pushState,oRS=history.replaceState;
+  history.pushState=function(){oPS.apply(this,arguments);cN()};
+  history.replaceState=function(){oRS.apply(this,arguments);cN()};
+
+  // Expose custom event tracking (optional)
+  window.__oa={
+    track:function(name,data){sE("custom",name,data)}
+  };
+})();
+</script></body>
+</html>
