@@ -1496,3 +1496,21 @@ a.ai-hero:hover {
   }
 }
 
+/* ---------- service pages (positioning pages, Copy v2) ---------- */
+
+.further-reading {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.further-reading li {
+  padding: var(--space-3) 0;
+  box-shadow: 0 1px 0 rgba(42, 34, 48, 0.08);
+}
+
+.further-reading a {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+}
+

@@ -28,7 +28,8 @@ export const SITE = {
  * Contact-form endpoint. The site is a static export, so submissions go to a small
  * hosted service that logs the lead for the Pipeline CRM and emails SITE.email.
  */
-export const INQUIRY_ENDPOINT = "https://1v7en6pjqm-8787.hosted.obvious.ai/inquiry";
+export const INQUIRY_ENDPOINT =
+  "https://1v7en6pjqm-8787.hosted.obvious.ai/inquiry";
 
 export type NavItem = { href: string; label: string };
 
@@ -39,6 +40,18 @@ export const NAV: readonly NavItem[] = [
 ];
 
 export const START_CTA: NavItem = { href: "/start/", label: "Start a project" };
+
+/** The five positioning pages (approved Copy v2), linked sitewide from the footer. */
+export const SERVICE_LINKS: readonly NavItem[] = [
+  { href: "/ai-consulting-nonprofits/", label: "AI consulting for nonprofits" },
+  { href: "/ai-training-nonprofits/", label: "AI training for nonprofits" },
+  { href: "/ai-policy-nonprofits/", label: "AI policy for nonprofits" },
+  {
+    href: "/ai-consulting-small-business/",
+    label: "AI consulting for small businesses",
+  },
+  { href: "/ai-restaurants/", label: "AI consulting for restaurants" },
+];
 
 export type CaseStudy = {
   slug: string;
