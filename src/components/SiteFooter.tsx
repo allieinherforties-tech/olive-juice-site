@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { NAV, SITE, START_CTA } from "@/content/site";
 import { SkylineMark } from "./Marks";
 
@@ -19,7 +18,7 @@ export function SiteFooter() {
           <ul className="site-footer__nav">
             {[...NAV, START_CTA].map((item) => (
               <li key={item.href}>
-                <Link href={item.href}>{item.label}</Link>
+                <a href={item.href}>{item.label}</a>
               </li>
             ))}
             <li>

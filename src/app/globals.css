@@ -317,6 +317,26 @@ p {
   display: none;
 }
 
+/* Both icons and both sr-only labels render; state toggles visibility
+   (zero-hydration header — see SiteHeader.tsx). */
+.nav-toggle [data-icon="close"],
+.nav-toggle [data-icon-label="close"] {
+  display: none;
+}
+
+.nav-toggle[data-open="true"] [data-icon="open"],
+.nav-toggle[data-open="true"] [data-icon-label="open"] {
+  display: none;
+}
+
+.nav-toggle[data-open="true"] [data-icon="close"] {
+  display: inline;
+}
+
+.nav-toggle[data-open="true"] [data-icon-label="close"] {
+  display: block;
+}
+
 @media (max-width: 820px) {
   .nav-toggle {
     display: inline-flex;

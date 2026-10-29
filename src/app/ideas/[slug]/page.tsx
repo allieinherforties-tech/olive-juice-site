@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CtaBand } from "@/components/Blocks";
 import { articleUrl, formatArticleDate, getArticle, listArticles } from "@/lib/articles";
@@ -98,7 +97,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           )}
 
           <p className="article-backlink">
-            <Link href="/ideas/">More articles →</Link>
+            <a href="/ideas/">More articles →</a>
           </p>
         </div>
       </section>

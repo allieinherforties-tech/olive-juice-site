@@ -1,5 +1,4 @@
 import { Fragment } from "react";
-import Link from "next/link";
 import type { Metadata } from "next";
 import { CaseCard, CtaBand, StepList } from "@/components/Blocks";
 import { HeartMark, SkylineMark } from "@/components/Marks";
@@ -69,12 +68,12 @@ export default function HomePage() {
             makes AI to support your mission, your passion, and your way of life.
           </p>
           <div className="btn-row">
-            <Link href={START_CTA.href} className="btn btn--primary">
+            <a href={START_CTA.href} className="btn btn--primary">
               {START_CTA.label}
-            </Link>
-            <Link href="/case-studies/" className="btn btn--ghost">
+            </a>
+            <a href="/case-studies/" className="btn btn--ghost">
               See the work
-            </Link>
+            </a>
           </div>
           <SkylineMark className="hero__skyline" />
         </div>

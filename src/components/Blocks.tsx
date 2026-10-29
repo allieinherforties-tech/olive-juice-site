@@ -1,8 +1,6 @@
-import Link from "next/link";
 import type { ReactNode } from "react";
 import { PLACEHOLDERS, START_CTA, type CaseStudy, type Step } from "@/content/site";
 import { HeartMark } from "./Marks";
-import { InquiryForm } from "./InquiryForm";
 
 const PLACEHOLDER_VALUES: ReadonlySet<string> = new Set(Object.values(PLACEHOLDERS));
 
@@ -34,7 +32,7 @@ export function PageHero({ eyebrow, title, lede }: { eyebrow: string; title: Rea
 
 export function CaseCard({ study }: { study: CaseStudy }) {
   return (
-    <Link href={`/case-studies/#${study.slug}`} className="card card--link">
+    <a href={`/case-studies/#${study.slug}`} className="card card--link">
       <p className="card__meta">{study.sector}</p>
       <p className="card__client">
         <Fill value={study.client} />
@@ -42,7 +40,7 @@ export function CaseCard({ study }: { study: CaseStudy }) {
       <h3>{study.headline}</h3>
       <p>{study.summary}</p>
       <span className="card__more">Read the case study →</span>
-    </Link>
+    </a>
   );
 }
 
@@ -63,26 +61,25 @@ export function StepList({ steps }: { steps: readonly Step[] }) {
 export function CtaBand({
   title = "Let's make a plan.",
   body = "Start with a paid discovery sprint: a defined scope, a defined end date, and a clear answer on where AI workflows can help your business.",
-  withForm = false,
+  children,
 }: {
   title?: string;
   body?: string;
-  /** Render the inquiry form in place of the "Start a project" link. */
-  withForm?: boolean;
+  /** Form or other content in place of the "Start a project" link. Passed as children
+   * so pages without a form don't pull the InquiryForm module into their client graph. */
+  children?: ReactNode;
 }) {
   return (
-    <section className={`cta-band${withForm ? " cta-band--form" : ""}`}>
+    <section className={`cta-band${children ? " cta-band--form" : ""}`}>
       <HeartMark className="cta-band__heart" />
       <div className="container">
         <h2>{title}</h2>
         <p>{body}</p>
-        {withForm ? (
-          <InquiryForm tone="dark" />
-        ) : (
+        {children ?? (
           <div className="btn-row">
-            <Link href={START_CTA.href} className="btn btn--primary">
+            <a href={START_CTA.href} className="btn btn--primary">
               {START_CTA.label}
-            </Link>
+            </a>
           </div>
         )}
       </div>
