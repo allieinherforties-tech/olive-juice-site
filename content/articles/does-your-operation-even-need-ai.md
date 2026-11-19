@@ -2,7 +2,7 @@
 title: Does your operation even need AI? A test for teams that did not sign up to run software
 date: 2026-10-27
 summary: Start from how you already make decisions before you open the tool catalog. If there is no nagging problem, the honest answer is not yet.
-draft: true
+draft: false
 faq:
   - question: How do I know if my business needs AI?
     answer: Look for a problem that keeps eating the week and a decision that keeps waiting on a signal. If both are present, a small tool aimed at them will pay for itself. If neither is, not yet is the honest answer, and it costs nothing.

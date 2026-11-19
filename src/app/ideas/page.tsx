@@ -55,7 +55,7 @@ export default function ArticlesPage() {
       <PageHero
         eyebrow="Ideas"
         title="Ideas."
-        lede="Essays written by Allie sit up top; studio notes, researched and drafted with AI support and edited before they ship, fill the shelves below. No hype, no futurism, just what holds up on a Tuesday morning."
+        lede="Essays written by Allie sit up top. Studio notes, researched and drafted with AI, fill the shelves below. No hype. Just some frameworks for how to think about AI when you're sifting through your inbox on any given Tuesday morning."
       />
 
       {/* The hero tier is reserved for the founder's own writing. */}
@@ -100,7 +100,7 @@ export default function ArticlesPage() {
           <div className="container">
             <div className="section-head">
               <h2>Studio notes</h2>
-              <p>AI-supported drafts, edited and approved by a human before they publish.</p>
+              <p>AI-supported insights about how we work.</p>
             </div>
             <Carousel label="Studio notes">
               {studioPosts.map((article) => (

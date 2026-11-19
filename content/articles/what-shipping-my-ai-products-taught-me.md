@@ -2,7 +2,7 @@
 title: What shipping my own AI products taught me about client work
 date: 2026-10-27
 summary: Parent Pep Talks, Shut the Box, Comfort & Vice: consumer products with revenue. What shipping them taught the consulting side of this studio.
-draft: true
+draft: false
 faq:
   - question: What is an AI product development consultant?
     answer: A consultant who builds and runs real products, so the advice comes from maintenance as much as launch. The cleanest check is to ask what they have shipped that you can click tonight. Three of mine are linked in this piece.
