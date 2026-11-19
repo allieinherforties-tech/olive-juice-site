@@ -170,10 +170,12 @@ export default function AppleTvShowFinderCaseStudyPage() {
             {/* TODO(spec beat 5): two honest limitations of the finder belong here,
                 written in the site's candid register. Needs firsthand input; no
                 placeholder ships in the visible page. */}
-            {/* TODO(content): the spec's beat 6 CTA links the essays that explain the
-                why and the what's-next. They are unpublished; link them here when they
-                go live. Until then, the only outbound links are the finder and the
-                case-studies index. */}
+            <p>
+              The finder came out of a bigger argument about what the paywall owes
+              parents. Allie makes it in{" "}
+              <a href="/ideas/the-streamers-sold-us-out/">The Streamers Sold Us Out</a>,
+              the first essay in the Apple TV+ portfolio.
+            </p>
           </div>
         </div>
       </section>

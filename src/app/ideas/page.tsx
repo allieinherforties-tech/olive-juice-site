@@ -22,8 +22,9 @@ function DraftBadge() {
   return <span className="draft-badge">Draft</span>;
 }
 
-/** One studio note in the carousel: date chip, AI label, title, image in background. */
-function StudioCard({ article }: { article: ArticleMeta }) {
+/** One card in a carousel: date chip, label, title, image in background. Studio
+ *  notes carry the AI label; series rows carry the series name instead. */
+function StudioCard({ article, tag = "AI blog post" }: { article: ArticleMeta; tag?: string }) {
   return (
     <a
       data-carousel-card
@@ -31,7 +32,7 @@ function StudioCard({ article }: { article: ArticleMeta }) {
       className="ai-card"
       style={{ backgroundImage: cardImage(article.image) }}
     >
-      <p className="ai-card__tag">AI blog post</p>
+      <p className="ai-card__tag">{tag}</p>
       <h3>{article.title}</h3>
       <p className="ai-card__meta">
         {formatArticleDate(article.date)}
@@ -143,7 +144,7 @@ export default function ArticlesPage() {
               {articles
                 .filter((article) => article.series === series)
                 .map((article) => (
-                  <StudioCard key={article.slug} article={article} />
+                  <StudioCard key={article.slug} article={article} tag={series} />
                 ))}
             </Carousel>
           </div>
