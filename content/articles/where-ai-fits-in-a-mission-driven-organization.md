@@ -2,7 +2,7 @@
 title: Where AI fits in a mission-driven organization (and where it does not)
 date: 2026-10-27
 summary: The mission-critical work stays human. The operational and research grind around it is where a small, well-chosen slice of a model pays for itself.
-draft: true
+draft: false
 faq:
   - question: Where does AI fit in a nonprofit?
     answer: In the operational and research grind around the mission: the reports, the schedules, the databases, the searches. The mission itself, the part your community shows up for, stays human.

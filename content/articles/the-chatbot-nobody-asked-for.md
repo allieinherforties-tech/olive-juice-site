@@ -2,7 +2,7 @@
 title: The chatbot nobody asked for: how to read an AI pitch without getting sold
 date: 2026-10-19
 summary: Four questions that tell you whether an AI tool fits how you already make decisions, or was built to impress someone at a conference.
-draft: true
+draft: false
 faq:
   - question: Who is this for?
     answer: Anyone who runs something real, a mission-driven organization or a craft-led business, and didn't sign up to evaluate software. You got into this work to do the work. The pitch should meet you there.

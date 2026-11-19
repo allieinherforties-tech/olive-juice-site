@@ -2,7 +2,7 @@
 title: Why your first AI project should be small, paid, and contained
 date: 2026-10-27
 summary: Free pilots and six-month transformations both get the math wrong. A small, paid, contained first project proves the value before anyone buys a roadmap.
-draft: true
+draft: false
 faq:
   - question: What is an AI discovery sprint?
     answer: A paid engagement with a defined scope and a defined end date that maps where AI fits your organization, based on the routines and tools you already run. You get the map either way.
