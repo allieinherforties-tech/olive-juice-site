@@ -8,18 +8,21 @@ import { caseStudyArticleJsonLd, finderJsonLd } from "@/lib/schema";
 const FINDER_URL = "https://finder.parentpeptalks.com/";
 const PREFILLED_EMBED = `${FINDER_URL}?q=stop%20the%20pre-dinner%20meltdown`;
 
-const TITLE = "Case study: the Apple TV+ show finder";
+// The rendered headline is the product name; the metadata <title> stays descriptive
+// so search results and browser tabs keep the fuller context.
+const HEADLINE = "Show Finder";
+const METADATA_TITLE = "Show Finder — case study: the Apple TV+ kids catalog finder";
 const DESCRIPTION =
   "How Olive Juice Digital built a finder that turns a parent moment into the right Apple TV+ episode: curation over algorithm, proven live.";
 const DATE_PUBLISHED = "2026-11-19";
 
 export const metadata: Metadata = {
-  title: "Case study: the Apple TV+ show finder",
+  title: METADATA_TITLE,
   description: DESCRIPTION,
   alternates: { canonical: "/case-studies/apple-tv-show-finder/" },
   openGraph: {
     type: "article",
-    title: TITLE,
+    title: METADATA_TITLE,
     description: DESCRIPTION,
     url: `${SITE.url}/case-studies/apple-tv-show-finder/`,
     publishedTime: DATE_PUBLISHED,
@@ -40,7 +43,7 @@ export default function AppleTvShowFinderCaseStudyPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: caseStudyArticleJsonLd({
-            headline: TITLE,
+            headline: HEADLINE,
             description: DESCRIPTION,
             url: `${SITE.url}/case-studies/apple-tv-show-finder/`,
             datePublished: DATE_PUBLISHED,
@@ -50,8 +53,8 @@ export default function AppleTvShowFinderCaseStudyPage() {
 
       <PageHero
         eyebrow="Case study · Apple TV+ show finder"
-        title="The right episode for the moment you're standing in."
-        lede="A kid asks for a show while dinner boils over, and the parent on duty has half an attention span to spend. The finder turns that moment into one episode. This page is how it was built, and why it runs on curation instead of an algorithm."
+        title={HEADLINE}
+        lede="The right episode for the moment you're standing in. A kid asks for a show while dinner boils over, and the parent on duty has half an attention span to spend. The finder turns that moment into one episode. This page is how it was built, and why it runs on curation instead of an algorithm."
       />
 
       <section className="section">
@@ -102,7 +105,7 @@ export default function AppleTvShowFinderCaseStudyPage() {
                 src="/case-studies/apple-tv-show-finder/rail.webp"
                 alt="The finder's Browse by show rail of Apple TV+ series posters, with a seasonal rail of episode cards beneath it"
                 width={1360}
-                height={819}
+                height={818}
                 loading="lazy"
               />
             </figure>
