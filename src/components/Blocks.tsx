@@ -32,7 +32,7 @@ export function PageHero({ eyebrow, title, lede }: { eyebrow: string; title: Rea
 
 export function CaseCard({ study }: { study: CaseStudy }) {
   return (
-    <a href={`/case-studies/#${study.slug}`} className="card card--link">
+    <a href={study.href ?? `/case-studies/#${study.slug}`} className="card card--link">
       <p className="card__meta">{study.sector}</p>
       <p className="card__client">
         <Fill value={study.client} />

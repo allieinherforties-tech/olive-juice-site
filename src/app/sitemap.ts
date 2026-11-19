@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticPaths: readonly string[] = [
     "/",
     "/case-studies/",
+    "/case-studies/apple-tv-show-finder/",
     "/about/",
     "/start/",
     "/ideas/",

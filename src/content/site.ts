@@ -67,6 +67,8 @@ export type CaseStudy = {
   clientUrl?: string;
   /** Local static asset path for the client's logo, when they've given sign-off to display it. */
   clientLogo?: string;
+  /** Dedicated case-study page, when one exists. Cards link to it instead of the index anchor. */
+  href?: string;
 };
 
 export const CASE_STUDIES: readonly CaseStudy[] = [
@@ -101,6 +103,22 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
     outcome:
       "A research method the team can rerun as the science moves, instead of a one-off report. A wider disease application means more patients, more funding, and a faster path to a treatment.",
     stack: ["AI-assisted search", "Repeatable research process"],
+  },
+  {
+    slug: "apple-tv-show-finder",
+    client: "Parent Pep Talks",
+    sector: "Self-initiated product · Kids-and-family curation",
+    headline: "A moment-to-moment map of the Apple TV+ kids catalog",
+    summary:
+      "Built a finder that turns a plain-language parent moment, like stopping a pre-dinner meltdown, into the exact episode to put on. Live at finder.parentpeptalks.com.",
+    problem:
+      "A parent at 5:45 has one hand on the stove and a kid asking for a show. Streaming menus answer with a poster wall ranked for watch time, and picking the right episode costs more attention than that parent has. The catalogs hold the right answer; the interface hides it.",
+    build:
+      "The finder takes the moment in the parent's own words and matches it against a curated map of the Apple TV+ kids catalog, where every episode is tagged by age range, feelings, and vibe. Results name the exact episode and the story it tells, so the parent reads one sentence and presses play.",
+    outcome:
+      "Live at finder.parentpeptalks.com: a parent types the moment, the map answers with the episode, and the build story is the page you're reading.",
+    stack: ["Apple TV+ Kids & Family catalog", "Curated moment map", "Parent-language search"],
+    href: "/case-studies/apple-tv-show-finder/",
   },
 ];
 

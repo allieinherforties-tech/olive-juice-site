@@ -6,7 +6,7 @@ import { FEED_ALTERNATE_TYPES } from "@/lib/feed";
 export const metadata: Metadata = {
   title: "Case studies",
   description:
-    "A foot-traffic forecast for Oliver\u2019s, a Chicago restaurant, and an AI-assisted research process for the Usher III Initiative.",
+    "A foot-traffic forecast for Oliver\u2019s, an AI-assisted research process for the Usher III Initiative, and a show finder built as our own product.",
   alternates: { canonical: "/case-studies/", types: FEED_ALTERNATE_TYPES },
 };
 
@@ -16,7 +16,7 @@ export default function CaseStudiesPage() {
       <PageHero
         eyebrow="Case studies"
         title="Problem, build, outcome."
-        lede="Two engagements with very different clients. Same method in both: start from how the team already works, then build the tool to fit."
+        lede="Two client engagements and one product of our own. Same method in all three: start from how the people already work, then build the tool to fit."
       />
 
       <section className="section">
@@ -64,7 +64,15 @@ export default function CaseStudiesPage() {
                 </ul>
               </div>
               <div>
-                <h3 className="case-headline">{study.headline}</h3>
+                <h3 className="case-headline">
+                  {study.href ? (
+                    <a href={study.href}>
+                      <Fill value={study.headline} />
+                    </a>
+                  ) : (
+                    <Fill value={study.headline} />
+                  )}
+                </h3>
                 <div className="case__block">
                   <h3>The problem</h3>
                   <p>{study.problem}</p>
