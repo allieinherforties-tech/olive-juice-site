@@ -1,6 +1,6 @@
 "use client";
 
-// Horizontal scroll row for the Allie Intelligence index. The page (a server
+// Horizontal scroll row for the Essays index. The page (a server
 // component) renders the cards; this wrapper only owns the arrow scrolling.
 // Without JavaScript the track still scrolls natively: touch, trackpad, and
 // drag all work, because the arrows are an enhancement, not the mechanism.

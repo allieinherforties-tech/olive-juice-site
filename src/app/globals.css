@@ -1287,7 +1287,7 @@ p {
   }
 }
 
-/* ---------- Allie Intelligence index (founder hero + studio-note carousels) ---------- */
+/* ---------- Essays index (featured essay rail + studio-note carousels) ---------- */
 
 .ai-hero {
   position: relative;
@@ -1446,51 +1446,21 @@ a.ai-hero:hover {
   background: var(--olive-wash);
 }
 
-/* The second founder feature: a wide block with image on the right. */
+/* The medium cards under the featured essay: a static row of up to three. */
 
-.ai-feature {
+.ai-row {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: var(--space-8);
-  align-items: center;
-  padding: var(--space-8);
-  border-radius: var(--radius-lg);
-  background: var(--surface-tint);
-  box-shadow: var(--shadow-card);
-  color: inherit;
-  text-decoration: none;
-  transition: box-shadow var(--transition), transform var(--transition);
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-5);
+  margin-top: var(--space-6);
 }
 
-.ai-feature:hover {
-  color: inherit;
-  box-shadow: var(--shadow-card-hover);
-  transform: translateY(-2px);
-}
-
-.ai-feature h2 {
-  font-size: clamp(1.5rem, 3vw, 2.1rem);
-  margin-bottom: var(--space-3);
-}
-
-.ai-feature .lede {
-  margin-bottom: var(--space-4);
-}
-
-.ai-feature__media {
-  min-height: 260px;
-  border-radius: var(--radius-md);
-  background-size: cover;
-  background-position: center;
-  background-color: var(--olive-mist);
+/* In the row a card fills its grid cell; the fixed carousel width comes off. */
+.ai-row .ai-card {
+  width: auto;
 }
 
 @media (max-width: 760px) {
-  .ai-feature {
-    grid-template-columns: 1fr;
-    padding: var(--space-6);
-  }
-
   .ai-hero {
     min-height: 340px;
     padding: var(--space-8) var(--space-5) var(--space-6);

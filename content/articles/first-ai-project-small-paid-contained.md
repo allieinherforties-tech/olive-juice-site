@@ -1,6 +1,6 @@
 ---
 title: Why your first AI project should be small, paid, and contained
-date: 2026-10-27
+date: 2026-10-19
 summary: Free pilots and six-month transformations both get the math wrong. A small, paid, contained first project proves the value before anyone buys a roadmap.
 draft: false
 faq:
