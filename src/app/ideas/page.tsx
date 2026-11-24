@@ -5,7 +5,7 @@ import { formatArticleDate, isByFounder, listArticles, type ArticleMeta } from "
 import { FEED_ALTERNATE_TYPES } from "@/lib/feed";
 
 export const metadata: Metadata = {
-  title: "Allie Intelligence",
+  title: "Essays",
   description:
     "Essays written by Allie Esslinger, plus studio notes researched and drafted with AI support. No hype, no futurism, just what holds up on a Tuesday morning.",
   alternates: { canonical: "/ideas/", types: FEED_ALTERNATE_TYPES },
