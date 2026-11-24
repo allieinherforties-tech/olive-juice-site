@@ -85,8 +85,7 @@ export default function HomePage() {
             <p className="eyebrow">The difference</p>
             <h2>I&rsquo;m really good at speaking your language.</h2>
             <p>
-              We&rsquo;ll start with how you already make decisions. Then I&rsquo;ll build out ways to make it faster,
-              easier and more valuable. We&rsquo;ll talk through the trade-offs of a tool vs. a system and pull in your
+              We&rsquo;ll start with how you already make decisions. Then I&rsquo;ll build out ways to make it faster and more valuable. We&rsquo;ll talk through the trade-offs of a tool vs. a system and pull in your
               long-term goals without sounding like a robot.
             </p>
           </div>

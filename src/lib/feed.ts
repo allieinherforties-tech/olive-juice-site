@@ -58,7 +58,7 @@ export function buildFeedXml(published: readonly ArticleMeta[]): string {
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">',
     "  <channel>",
-    `    <title>${escapeXml(`${SITE.name} — Ideas`)}</title>`,
+    `    <title>${escapeXml(`${SITE.name} · Ideas`)}</title>`,
     `    <link>${SITE.url}/ideas/</link>`,
     `    <description>${escapeXml(`Essays and studio notes from ${SITE.name}'s Ideas blog.`)}</description>`,
     "    <language>en-us</language>",
