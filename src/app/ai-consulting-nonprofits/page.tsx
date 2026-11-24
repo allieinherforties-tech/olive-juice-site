@@ -40,7 +40,7 @@ const STEPS: readonly Step[] = [
   {
     label: "02",
     title: "Project sprint",
-    body: "Our first job is a solution to a nagging problem: a defined scope, set against a turnaround timeline, that gets you results before you're asked to evaluate a transformation roadmap.",
+    body: "Our first job is a solution to a nagging problem: a defined scope, set against a turnaround timeline, that gets you results before you're asked to evaluate a transformation roadmap. The sprint is $8,000 flat, one rate for nonprofits and SMBs alike, with the start and end dates agreed before any work begins.",
   },
   {
     label: "03",
@@ -49,12 +49,13 @@ const STEPS: readonly Step[] = [
   },
 ];
 
-// The cleared walk-away list as published on /start/ (kept verbatim there; this
-// page carries its own copy of the approved strings — /start was not touched).
+// The cleared walk-away list. Revised Nov 24 2026 per client feedback (no em-
+// dashes, no "genuinely", $8,000 price stated); /start still carries the
+// pre-revision strings until the site-wide style pass reconciles it.
 const WALK_AWAY_WITH = [
-  "A map of how your team already works — the routines, tools, and decisions that eat the week",
-  "A short, ranked list of where AI would genuinely lighten the load (and where it wouldn't)",
-  "A scoped plan for the first project sprint, with a defined end date",
+  "A map of how your team already works: the routines, tools, and decisions that eat the week",
+  "A short, ranked list of where AI would lighten the load (and where it wouldn't)",
+  "A scoped plan for the first project sprint, $8,000 flat, with a defined end date",
   "A framework for how to prioritize the capabilities against your goals",
 ];
 
@@ -84,11 +85,11 @@ const FAQ = [
   },
   {
     q: "Who is this for?",
-    a: "Mission-driven nonprofits that already run something well and want to make sure AI keeps the work at the center of the workweek — not the other way around.",
+    a: "Mission-driven nonprofits that already run something well and want to make sure AI keeps the work at the center of the workweek, not the other way around.",
   },
   {
     q: "Not sure where AI fits yet?",
-    a: "That's exactly what discovery is for. You'll get the map — including where AI wouldn't lighten the load.",
+    a: "That's exactly what discovery is for. You'll get the map, including where AI would get in the way.",
   },
 ];
 
@@ -110,7 +111,7 @@ export default function AiConsultingNonprofitsPage() {
       <PageHero
         eyebrow="AI consulting for nonprofits"
         title="Make AI valuable without it becoming a tech project."
-        lede="You keep hearing your organization should be using AI. Your staff may already be experimenting (quietly, unevenly…). What's missing isn't another tool. It's a clear map of where AI can lighten the load, and where it probably won't. Every engagement starts by building that map, from how you already work. It's built with small nonprofits in mind — no tech hire to lean on — and nothing about the approach is limited to them."
+        lede="You keep hearing your organization should be using AI. Your staff may already be experimenting (quietly, unevenly…). The missing piece is a clear map of where AI can lighten the load, and where it probably won't. Every engagement starts by building that map, from how you already work."
       />
 
       <section className="section section--dark">
@@ -145,7 +146,7 @@ export default function AiConsultingNonprofitsPage() {
             <HeartMark className="pull__heart" />
             <p>
               A defined, paid starting point is a much smaller ask than
-              &ldquo;let&rsquo;s transform your business.&rdquo;
+              &ldquo;let&rsquo;s transform your organization.&rdquo;
             </p>
           </div>
         </div>
