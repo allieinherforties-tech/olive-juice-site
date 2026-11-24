@@ -22,8 +22,9 @@ function DraftBadge() {
   return <span className="draft-badge">Draft</span>;
 }
 
-/** One card in a carousel: date chip, label, title, image in background. Studio
- *  notes carry the AI label; series rows carry the series name instead. */
+/** One card in the Essays medium row or a studio-note carousel: date chip,
+ *  label, title, image in background. Founder essays carry the "Essay" label;
+ *  studio notes carry the AI label, and series rows the series name. */
 function StudioCard({ article, tag = "AI blog post" }: { article: ArticleMeta; tag?: string }) {
   return (
     <a
@@ -46,10 +47,11 @@ export default function ArticlesPage() {
   const articles = listArticles();
   const founderPosts = articles.filter((article) => isByFounder(article));
   const studioPosts = articles.filter((article) => !isByFounder(article));
-  const [leadPost, secondPost] = founderPosts;
-  const seriesNames = [
-    ...new Set(articles.map((article) => article.series).filter((series): series is string => Boolean(series))),
-  ];
+  // Essays rail: the newest founder essay owns the featured banner, the next
+  // three take the medium row, and anything beyond that scrolls in a carousel.
+  const [leadPost, ...earlierPosts] = founderPosts;
+  const rowPosts = earlierPosts.slice(0, 3);
+  const carouselPosts = earlierPosts.slice(3);
 
   return (
     <>
@@ -63,8 +65,7 @@ export default function ArticlesPage() {
       <section className="section section--tight">
         <div className="container">
           <div className="section-head">
-            <h2>Allie Intelligence</h2>
-            {/* The one visible piece of feed copy, flagged for line review in the PR. */}
+            <h2>Essays</h2>
             <p>
               <a href="/feed.xml">Subscribe via RSS</a>
             </p>
@@ -93,6 +94,20 @@ export default function ArticlesPage() {
               </p>
             </div>
           )}
+          {rowPosts.length > 0 && (
+            <div className="ai-row">
+              {rowPosts.map((article) => (
+                <StudioCard key={article.slug} article={article} tag="Essay" />
+              ))}
+            </div>
+          )}
+          {carouselPosts.length > 0 && (
+            <Carousel label="Essays">
+              {carouselPosts.map((article) => (
+                <StudioCard key={article.slug} article={article} tag="Essay" />
+              ))}
+            </Carousel>
+          )}
         </div>
       </section>
 
@@ -101,7 +116,7 @@ export default function ArticlesPage() {
           <div className="container">
             <div className="section-head">
               <h2>Studio notes</h2>
-              <p>AI-supported insights about how we work.</p>
+              <p>Insights about how I approach your work, drafted with AI.</p>
             </div>
             <Carousel label="Studio notes">
               {studioPosts.map((article) => (
@@ -111,45 +126,6 @@ export default function ArticlesPage() {
           </div>
         </section>
       )}
-
-      {secondPost && (
-        <section className="section section--tight">
-          <div className="container">
-            <a href={`/ideas/${secondPost.slug}/`} className="ai-feature">
-              <div>
-                <p className="ai-hero__kicker ai-hero__kicker--ink">
-                  Also by Allie · {formatArticleDate(secondPost.date)}
-                  {secondPost.draft ? <DraftBadge /> : null}
-                </p>
-                <h2>{secondPost.title}</h2>
-                <p className="lede">{secondPost.summary}</p>
-                <span className="card__more">Read the essay →</span>
-              </div>
-              <div
-                className="ai-feature__media"
-                style={{ backgroundImage: `url('${secondPost.image ?? CARD_FALLBACK}')` }}
-              />
-            </a>
-          </div>
-        </section>
-      )}
-
-      {seriesNames.map((series) => (
-        <section key={series} className="section section--tight">
-          <div className="container">
-            <div className="section-head">
-              <h2>{series}</h2>
-            </div>
-            <Carousel label={series}>
-              {articles
-                .filter((article) => article.series === series)
-                .map((article) => (
-                  <StudioCard key={article.slug} article={article} tag={series} />
-                ))}
-            </Carousel>
-          </div>
-        </section>
-      ))}
 
       {articles.length === 0 && (
         <section className="section">

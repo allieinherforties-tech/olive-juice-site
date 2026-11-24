@@ -1,6 +1,6 @@
 ---
 title: Where AI fits in a mission-driven organization (and where it does not)
-date: 2026-10-27
+date: 2026-08-03
 summary: The mission-critical work stays human. The operational and research grind around it is where a small, well-chosen slice of a model pays for itself.
 draft: false
 faq:

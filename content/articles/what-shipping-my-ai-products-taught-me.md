@@ -1,6 +1,6 @@
 ---
 title: What shipping my own AI products taught me about client work
-date: 2026-10-27
+date: 2026-08-31
 summary: Parent Pep Talks, Shut the Box, Comfort & Vice: consumer products with revenue. What shipping them taught the consulting side of this studio.
 draft: false
 faq:

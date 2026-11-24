@@ -1,6 +1,6 @@
 ---
 title: The chatbot nobody asked for: how to read an AI pitch without getting sold
-date: 2026-10-19
+date: 2026-10-12
 summary: Four questions that tell you whether an AI tool fits how you already make decisions, or was built to impress someone at a conference.
 draft: false
 faq:

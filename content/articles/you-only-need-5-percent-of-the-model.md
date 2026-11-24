@@ -1,6 +1,6 @@
 ---
 title: 5% of the model is enough: the only AI strategy a small team needs
-date: 2026-10-19
+date: 2026-09-21
 summary: The flashiest demo rarely wins. A small, well-chosen slice of AI, pointed at the right problem, is what changes a workweek.
 draft: false
 faq:
