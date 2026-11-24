@@ -10,7 +10,7 @@ const PLACEHOLDER_VALUES: ReadonlySet<string> = new Set(Object.values(PLACEHOLDE
  */
 export function Fill({ value }: { value: string }) {
   return PLACEHOLDER_VALUES.has(value) ? (
-    <mark className="placeholder" title="Placeholder — awaiting final copy">
+    <mark className="placeholder" title="Placeholder: awaiting final copy">
       {value}
     </mark>
   ) : (
@@ -60,7 +60,7 @@ export function StepList({ steps }: { steps: readonly Step[] }) {
 
 export function CtaBand({
   title = "Let's make a plan.",
-  body = "Start with a paid discovery sprint: a defined scope, a defined end date, and a clear answer on where AI workflows can help your business.",
+  body = "Start with a paid discovery sprint: a defined scope, a defined end date, and a clear answer on where AI can help you.",
   children,
 }: {
   title?: string;

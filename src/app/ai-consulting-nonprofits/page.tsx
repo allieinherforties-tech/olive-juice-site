@@ -13,7 +13,7 @@ import { FEED_ALTERNATE_TYPES } from "@/lib/feed";
 export const metadata: Metadata = {
   title: "AI Consulting for Nonprofits",
   description:
-    "AI consulting for nonprofits without the tech project: paid discovery maps your routines, one sprint fixes a nagging problem. No transformation roadmap",
+    "AI consulting for nonprofits without the tech project: paid discovery maps your routines, one sprint fixes a nagging problem. No transformation roadmap.",
   alternates: {
     canonical: "/ai-consulting-nonprofits/",
     types: FEED_ALTERNATE_TYPES,
@@ -74,7 +74,7 @@ const PRINCIPLES: readonly Principle[] = [
   },
   {
     title: "AI supports the business behind the art",
-    body: "The first jobs for AI are the ones around the work — the scheduling, the reporting, the admin — so more of the week goes to the work itself.",
+    body: "The first jobs for AI are the ones around the work (the scheduling, the reporting, the admin), so more of the week goes to the work itself.",
   },
 ];
 
@@ -124,8 +124,8 @@ export default function AiConsultingNonprofitsPage() {
               ))}
             </ul>
             <p>
-              My pitch isn't to modernize your organization. It's to hand your
-              team more time for the work you're already good at.
+              My pitch is more time for the work you're already good at, not a
+              modernization project.
             </p>
           </div>
         </div>
@@ -181,8 +181,8 @@ export default function AiConsultingNonprofitsPage() {
               compound that can treat more than one disease reaches more
               patients, draws more funding, and has a faster path to a
               treatment. But finding those adjacent diseases is slow,
-              specialized research. The team didn't need a chatbot. They needed
-              a way to run that search again and again.
+              specialized research. The team needed a way to run that search
+              again and again, not a chatbot.
             </p>
             <p>
               As an outside consultant, I designed and built a repeatable,

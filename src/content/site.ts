@@ -82,7 +82,7 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
     summary:
       "Connected the restaurant's point-of-sale, reservations, weather, and hotel-occupancy data into a foot-traffic forecast, so the GM could plan staffing and events instead of reacting to them.",
     problem:
-      "The general manager didn't need to understand a data pipeline. He needed to know how busy the week was going to be, early enough to staff it and plan around it. The signals already existed, scattered across the systems the restaurant ran on every day and a couple of outside sources.",
+      "The general manager didn't need to understand a data pipeline; he needed to know how busy the week was going to be, early enough to staff it and plan around it. The signals already existed, scattered across the systems the restaurant ran on every day and a couple of outside sources.",
     build:
       "A foot-traffic forecast that pulls from the tools the restaurant already used (Toast and OpenTable), alongside a weather feed and a hotel-occupancy tracker. The output was shaped around the GM's existing planning routine, not a new dashboard he'd have to learn.",
     outcome:
@@ -173,7 +173,7 @@ export const ENGAGEMENT_STEPS: readonly Step[] = [
   {
     label: "02",
     title: "Project sprint",
-    body: "Our first job is a solution to a nagging problem: a defined scope, set against a turnaround timeline, that gets you results before you're asked to evaluate a transformation roadmap.",
+    body: "Our first job is a solution to a nagging problem: a defined scope, set against a turnaround timeline, that gets you results before you're asked to evaluate a transformation roadmap. The sprint is $8,000 flat, one rate for nonprofits and SMBs alike, with the start and end dates agreed before any work begins.",
   },
   {
     label: "03",
