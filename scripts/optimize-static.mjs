@@ -32,6 +32,8 @@ const HYDRATED = new Set([
   "/start/",
   "/ideas/",
   "/about/",
+  "/quiz/",
+  "/is-this-a-task-for-ai/",
   "/ai-consulting-nonprofits/",
   "/ai-training-nonprofits/",
   "/ai-policy-nonprofits/",

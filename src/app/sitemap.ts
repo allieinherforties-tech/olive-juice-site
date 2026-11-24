@@ -21,6 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/ai-policy-nonprofits/",
     "/ai-consulting-small-business/",
     "/ai-restaurants/",
+    "/quiz/",
   ];
 
   const published = listArticles()
