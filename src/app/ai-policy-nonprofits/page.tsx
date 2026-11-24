@@ -11,7 +11,7 @@ import { FEED_ALTERNATE_TYPES } from "@/lib/feed";
 export const metadata: Metadata = {
   title: "AI Policy for Nonprofits",
   description:
-    "A plain-language AI policy for your nonprofit — governance without the binder: which tools are allowed, what data stays out, who reviews output",
+    "A plain-language AI policy for your nonprofit, governance without the binder: which tools are allowed, what data stays out, who reviews output.",
   alternates: {
     canonical: "/ai-policy-nonprofits/",
     types: FEED_ALTERNATE_TYPES,
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 const POLICY_QUESTIONS = [
   "Which tools are allowed, and for what.",
   "What data stays out.",
-  "Who reviews the output — and what happens when something looks wrong.",
+  "Who reviews the output, and what happens when something looks wrong.",
 ];
 
 // Published essays only — draft essays stay unlinked until they publish.
@@ -39,7 +39,7 @@ export default function AiPolicyNonprofitsPage() {
       <PageHero
         eyebrow="AI policy for nonprofits"
         title="An AI policy your staff will actually follow."
-        lede="If your board — or a funder — asked for an AI policy, that's normal now. Public guidance treats it as a standing governance need for nonprofits (Nonprofit Risk Management Center, 2026). The question isn't whether to have one. It's whether anyone will follow it. Call it policy or call it governance — the point is the same: rules sized to a team that has real work to do."
+        lede="If your board (or a funder) asked for an AI policy, that's normal now. Public guidance treats it as a standing governance need for nonprofits (Nonprofit Risk Management Center, 2026). Whether to have one is settled; the question is whether anyone will follow it. Call it policy or call it governance; the point is the same: rules sized to a team with work to do."
       />
 
       <section className="section">
@@ -68,8 +68,8 @@ export default function AiPolicyNonprofitsPage() {
             <p>
               Public guidance for nonprofits points to a one-to-three-page
               policy, not a binder (Nonprofit Risk Management Center;
-              GrantBoost). The length isn't the achievement. The follow-through
-              is.
+              GrantBoost). The achievement is the follow-through, not the
+              length.
             </p>
           </div>
         </div>
@@ -81,9 +81,9 @@ export default function AiPolicyNonprofitsPage() {
             <h2>How we'd write it together</h2>
             <p>
               The policy is drafted with you, in plain language, sized to a
-              small or mid-sized organization — its own engagement, starting
-              from paid discovery: the map of how your team actually works is
-              what keeps the policy real instead of generic.
+              small or mid-sized organization. Like every engagement here, it
+              starts from paid discovery: the map of how your team works is
+              what keeps the policy specific instead of generic.
             </p>
           </div>
         </div>
@@ -92,11 +92,11 @@ export default function AiPolicyNonprofitsPage() {
       <section className="section section--tint">
         <div className="container">
           <div className="prose">
-            <h2>What the policy is for — plain-language governance</h2>
+            <h2>What the policy is for: plain-language governance</h2>
             <p>
               A policy exists to protect the work, not to perform governance.
               The point is a team that can make good decisions without asking
-              permission for every prompt — and a board that can see the
+              permission for every prompt, and a board that can see the
               decisions were considered.
             </p>
           </div>

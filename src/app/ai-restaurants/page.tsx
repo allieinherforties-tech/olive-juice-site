@@ -11,7 +11,7 @@ import { FEED_ALTERNATE_TYPES } from "@/lib/feed";
 export const metadata: Metadata = {
   title: "AI Consulting for Restaurants",
   description:
-    "AI for independent restaurants: planning help built from your POS, reservations, and weather data — shaped around your routine. No new dashboard to learn.",
+    "AI for independent restaurants: planning help built from your POS, reservations, and weather data, shaped around your routine. No new dashboard to learn.",
   alternates: { canonical: "/ai-restaurants/", types: FEED_ALTERNATE_TYPES },
 };
 
@@ -30,7 +30,7 @@ export default function AiRestaurantsPage() {
       <PageHero
         eyebrow="AI consulting for restaurants"
         title="Calmer mornings, built on systems you already run."
-        lede="You've seen the vendor demos. You don't have a tech person, and you don't want another dashboard to learn. Here's the honest version: AI can't cook, and it can't run your restaurant. It can help you see the week coming — using the systems you already run."
+        lede="You've seen the vendor demos. You don't have a tech person, and you don't want another dashboard to learn. Here's the honest version: AI can't cook, and it can't run your restaurant, but it can help you see the week coming on the systems you already run."
       />
 
       <section className="section">
@@ -46,14 +46,14 @@ export default function AiRestaurantsPage() {
                 Oliver's
               </a>{" "}
               is a Chicago restaurant. Its general manager didn't need to
-              understand a data pipeline. He needed to know how busy the week
+              understand a data pipeline; he needed to know how busy the week
               was going to be, early enough to staff it and plan around it. The
               signals already existed, scattered across the systems the
               restaurant ran on every day and a couple of outside sources.
             </p>
             <p>
-              We connected them — Toast and OpenTable, alongside a weather feed
-              and a hotel-occupancy tracker — into a foot-traffic forecast
+              We connected them (Toast and OpenTable, alongside a weather feed
+              and a hotel-occupancy tracker) into a foot-traffic forecast
               shaped around the GM's existing planning routine, not a new
               dashboard he'd have to learn. Now the GM plans events and staffing
               ahead of demand instead of reacting to it on the day.
@@ -73,8 +73,8 @@ export default function AiRestaurantsPage() {
             <h2>Why this works without a tech hire</h2>
             <p>
               The forecast runs on systems Oliver's already paid for. That's the
-              whole pattern: your routines and the tools you already use — no
-              rip-and-replace, no new dashboard to learn, no &ldquo;AI
+              whole pattern: your routines and the tools you already use, with
+              no rip-and-replace, no new dashboard to learn, and no &ldquo;AI
               transformation.&rdquo;
             </p>
             <p>
@@ -91,9 +91,10 @@ export default function AiRestaurantsPage() {
             <h2>What you'd get first</h2>
             <p>
               Paid discovery maps your routines and your tools. The first sprint
-              solves one nagging problem — a defined scope, a defined end date.
-              If the tool earns its keep, a retainer keeps it running quietly in
-              the background.
+              solves one nagging problem: a defined scope, a defined end date.
+              The sprint is $8,000 flat, one rate for nonprofits and SMBs
+              alike. If the tool earns its keep, a retainer keeps it running
+              quietly in the background.
             </p>
           </div>
         </div>

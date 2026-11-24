@@ -48,7 +48,7 @@ function stateFromResponse(status: number, body: unknown): SubmitState {
   };
   if (status >= 200 && status < 300 && payload.ok) return { kind: "success" };
   if (status === 422 && payload.fields) {
-    return { kind: "error", message: "A few details are missing — see the highlighted fields.", fields: payload.fields };
+    return { kind: "error", message: "A few details are missing: see the highlighted fields.", fields: payload.fields };
   }
   return { kind: "error", message: payload.error && status !== 422 ? payload.error : GENERIC_ERROR, fields: {} };
 }
@@ -87,7 +87,7 @@ export function InquiryForm({ tone = "light" }: { tone?: "light" | "dark" }) {
     return (
       <div className={className} role="status" aria-live="polite">
         <div className="inquiry__success">
-          <p className="inquiry__success-title">Thanks — your note is in.</p>
+          <p className="inquiry__success-title">Thanks, your note is in.</p>
           <p>I&rsquo;ll reply by email so we can talk through whether it&rsquo;s a fit.</p>
         </div>
       </div>

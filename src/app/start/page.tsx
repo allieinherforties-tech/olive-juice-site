@@ -13,9 +13,9 @@ export const metadata: Metadata = {
 };
 
 const WALK_AWAY_WITH = [
-  "A map of how your team already works — the routines, tools, and decisions that eat the week",
-  "A short, ranked list of where AI would genuinely lighten the load (and where it wouldn't)",
-  "A scoped plan for the first project sprint, with a defined end date",
+  "A map of how your team already works: the routines, tools, and decisions that eat the week",
+  "A short, ranked list of where AI would lighten the load (and where it wouldn't)",
+  "A scoped plan for the first project sprint, $8,000 flat, with a defined end date",
   "A framework for how to prioritize the capabilities against your goals",
 ];
 
@@ -26,7 +26,7 @@ const FAQ = [
   },
   {
     q: "What happens after discovery?",
-    a: "If there's a problem worth solving, we scope a project sprint to build it. The tool is yours to keep. If you want to keep building, we'll roll into a retainer and start the next phase. Every step is designed to capitalize on the momentum of the completed work.",
+    a: "If there's a problem worth solving, we scope a project sprint to build it. The tool is yours to keep. If you want to keep building, we'll roll into a retainer and start the next phase. Every step builds on the completed work.",
   },
   {
     q: "Who is this for?",
@@ -40,7 +40,7 @@ export default function StartPage() {
       <PageHero
         eyebrow="Start a project"
         title="Start with a paid discovery sprint."
-        lede="A small, defined first step. No six-month commitment, no transformation roadmap — just a clear answer on where AI actually helps you, and a plan to build the first piece."
+        lede="A small, defined first step. No six-month commitment, no transformation roadmap: a clear answer on where AI helps you, and a plan to build the first piece."
       />
 
       <section className="section">
@@ -92,7 +92,7 @@ export default function StartPage() {
         <div className="container">
           <div className="pull">
             <HeartMark className="pull__heart" />
-            <p>A defined, paid starting point is a much smaller ask than &ldquo;let&rsquo;s transform your business.&rdquo;</p>
+            <p>A defined, paid starting point is a much smaller ask than &ldquo;let&rsquo;s transform your organization.&rdquo;</p>
           </div>
         </div>
       </section>

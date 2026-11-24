@@ -11,7 +11,7 @@ import { FEED_ALTERNATE_TYPES } from "@/lib/feed";
 export const metadata: Metadata = {
   title: "AI Training for Nonprofits",
   description:
-    "Hands-on AI training for nonprofit staff, built on your real workflows — grants, donor comms, program ops. Working habits that stick, not a binder",
+    "Hands-on AI training for nonprofit staff, built on your workflows (grants, donor comms, program ops). Working habits that stick, not a binder.",
   alternates: {
     canonical: "/ai-training-nonprofits/",
     types: FEED_ALTERNATE_TYPES,
@@ -40,21 +40,21 @@ export default function AiTrainingNonprofitsPage() {
       <PageHero
         eyebrow="AI training for nonprofits"
         title="Training built on the work your staff already does."
-        lede="Most of your staff already use AI a little — differently, unsafely, invisibly. Training doesn't fix that by introducing tools. It fixes it by building shared, confident habits on the workflows you already run: grants, donor communications, program operations."
+        lede="Most of your staff already use AI a little (differently, unsafely, invisibly). Training builds shared, confident habits on the workflows you already run: grants, donor communications, program operations."
       />
 
       <section className="section">
         <div className="container">
           <div className="prose">
-            <h2>The gap isn't awareness</h2>
+            <h2>The gap is practice</h2>
             <p>
               In 2026, 91% of organizations are using AI, but only 29% are
               operationalizing it. (Momentive Software, 2026)
             </p>
             <p>
-              Your team doesn't need to be told AI exists. It needs shared
-              practice: what's allowed, what's smart, what's worth automating —
-              and what isn't. That's the gap training closes.
+              Your team needs shared practice: what's allowed, what's smart,
+              what's worth automating, and what isn't. That's the gap training
+              closes.
             </p>
           </div>
         </div>
@@ -65,11 +65,11 @@ export default function AiTrainingNonprofitsPage() {
           <div className="prose">
             <h2>Training from someone who builds the tools</h2>
             <p>
-              A trainer who has never shipped anything teaches features. Allie
-              builds end-to-end consumer products with revenue, built
-              collaboratively from the ground up — and advises founders
+              A trainer who has never shipped anything teaches features. I
+              build end-to-end consumer products with revenue, built
+              collaboratively from the ground up, and advise founders
               one-to-one on AI product decisions. The training comes from
-              shipping and maintaining, not just the slides.
+              shipping and maintaining.
             </p>
           </div>
         </div>
@@ -81,10 +81,10 @@ export default function AiTrainingNonprofitsPage() {
             <h2>How a training engagement works</h2>
             <p>
               It starts the way everything does: paid discovery. We'll learn how
-              your people already think and work — the map comes first, the
+              your people already think and work, and the map comes first, the
               sessions second. Then the sessions are hands-on and specific to
               your organization: your grant pipeline, your donor communications,
-              your program ops. Not generic prompt worksheets.
+              your program ops.
             </p>
           </div>
         </div>
@@ -95,9 +95,9 @@ export default function AiTrainingNonprofitsPage() {
           <div className="prose">
             <h2>What your team leaves with</h2>
             <p>
-              Working habits they'll actually keep — and the judgment to know
+              Working habits they'll keep, and the judgment to know
               where AI helps their work and where it doesn't. Plus a short
-              working policy in plain language, one your staff will actually
+              working policy in plain language, one your staff will
               follow.
             </p>
           </div>
@@ -136,7 +136,7 @@ export default function AiTrainingNonprofitsPage() {
 
       <FurtherReading links={FURTHER_READING} />
 
-      <ServiceCta body="Tell me what your staff is already doing with AI — even the messy parts. We talk through whether it's a fit. If it is, we'll get the start date scheduled.">
+      <ServiceCta body="Tell me what your staff is already doing with AI, even the messy parts. We talk through whether it's a fit. If it is, we'll get the start date scheduled.">
         <InquiryForm tone="dark" />
       </ServiceCta>
     </>

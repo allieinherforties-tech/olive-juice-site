@@ -53,7 +53,7 @@ export function SiteHeader() {
           <span>
             Olive Juice <em>Digital</em>
           </span>
-          <span className="sr-only">{` — ${SITE.tagline}`}</span>
+          <span className="sr-only">{`, ${SITE.tagline}`}</span>
         </a>
 
         <button

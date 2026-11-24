@@ -20,8 +20,8 @@ export const metadata: Metadata = {
 
 // Approved Copy v2 ("Five Positioning Pages", Page 4).
 const WALK_AWAY_WITH = [
-  "A map of how your team already works — the routines, tools, and decisions that eat the week",
-  "A short, ranked list of where AI would genuinely lighten the load (and where it wouldn't)",
+  "A map of how your team already works: the routines, tools, and decisions that eat the week",
+  "A short, ranked list of where AI would lighten the load (and where it wouldn't)",
   "A scoped plan for the first project sprint, with a defined end date",
   "A framework for how to prioritize the capabilities against your goals",
 ];
@@ -40,7 +40,7 @@ export default function AiConsultingSmallBusinessPage() {
       <PageHero
         eyebrow="AI consulting for small businesses"
         title="One workflow, fixed scope, built on tools you already run."
-        lede="Is AI worth it for a business your size? Sometimes yes, sometimes no — and the honest answer starts with how your place already runs, not with a vendor demo. One nagging problem. A defined scope. A defined end date."
+        lede="Is AI worth it for a business your size? Sometimes yes, sometimes no, and the honest answer starts with how your place already runs, not with a vendor demo: one nagging problem, a defined scope, and a defined end date."
       />
 
       <section className="section">
@@ -50,7 +50,9 @@ export default function AiConsultingSmallBusinessPage() {
             <p>
               Our first job is a solution to a nagging problem: a defined scope,
               set against a turnaround timeline, that gets you results before
-              you're asked to evaluate a transformation roadmap.
+              you're asked to evaluate a transformation roadmap. The sprint is
+              $8,000 flat, one rate for nonprofits and SMBs alike, with the
+              start and end dates agreed before any work begins.
             </p>
             <p>
               A defined, paid starting point is a much smaller ask than
@@ -65,8 +67,8 @@ export default function AiConsultingSmallBusinessPage() {
           <div className="prose">
             <h2>Why fixed scope</h2>
             <p>
-              You're not buying a roadmap. You're buying one working thing — and
-              the judgment to know what's next. The offer reads: Fixed Scope ·
+              You're buying one working thing and the judgment to know what's
+              next, not a roadmap. The offer reads: Fixed Scope ·
               Defined End Date.
             </p>
           </div>
@@ -79,14 +81,14 @@ export default function AiConsultingSmallBusinessPage() {
             <h2>Who this is for</h2>
             <p>
               Local businesses that already run something well and want to make
-              sure AI keeps the work at the center of the workweek — not the
+              sure AI keeps the work at the center of the workweek, not the
               other way around. You don't need a tech person: I learn your work;
               you don't have to learn mine.
             </p>
             <p>
               That's what craft-led means here: owner-operated businesses where
-              the product is the owner's craft — restaurants, furniture makers,
-              designers, CPG brands.
+              the product is the owner's craft (restaurants, furniture makers,
+              designers, CPG brands).
             </p>
           </div>
         </div>
@@ -105,14 +107,14 @@ export default function AiConsultingSmallBusinessPage() {
                 Oliver's
               </a>{" "}
               is a Chicago restaurant. Its general manager didn't need to
-              understand a data pipeline. He needed to know how busy the week
+              understand a data pipeline; he needed to know how busy the week
               was going to be, early enough to staff it and plan around it. The
               signals already existed, scattered across the systems the
               restaurant ran on every day and a couple of outside sources.
             </p>
             <p>
-              We connected them — Toast and OpenTable, alongside a weather feed
-              and a hotel-occupancy tracker — into a foot-traffic forecast
+              We connected them (Toast and OpenTable, alongside a weather feed
+              and a hotel-occupancy tracker) into a foot-traffic forecast
               shaped around the GM's existing planning routine, not a new
               dashboard he'd have to learn. Now the GM plans events and staffing
               ahead of demand instead of reacting to it on the day.
