@@ -11,7 +11,7 @@ const PREFILLED_EMBED = `${FINDER_URL}?q=stop%20the%20pre-dinner%20meltdown`;
 // The rendered headline is the product name; the metadata <title> stays descriptive
 // so search results and browser tabs keep the fuller context.
 const HEADLINE = "Show Finder";
-const METADATA_TITLE = "Show Finder — case study: the Apple TV+ kids catalog finder";
+const METADATA_TITLE = "Show Finder · case study: the Apple TV+ kids catalog finder";
 const DESCRIPTION =
   "How Olive Juice Digital built a finder that turns a parent moment into the right Apple TV+ episode: curation over algorithm, proven live.";
 const DATE_PUBLISHED = "2026-11-19";

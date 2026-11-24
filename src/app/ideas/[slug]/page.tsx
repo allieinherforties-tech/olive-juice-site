@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
 
   // Per-article og:image when the article ships card art; og-card stays the site-wide fallback.
   const ogImage = article.image
-    ? { url: article.image, width: 1376, height: 768, alt: `${article.title} — ${SITE.name}` }
+    ? { url: article.image, width: 1376, height: 768, alt: `${article.title}, ${SITE.name}` }
     : { url: "/og-card.png", width: 1200, height: 630, alt: `${SITE.name}: ${SITE.tagline}` };
   return {
     title: article.title,
