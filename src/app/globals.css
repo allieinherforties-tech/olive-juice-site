@@ -1485,3 +1485,304 @@ a.ai-hero:hover {
   font-size: 1.1rem;
 }
 
+
+/* ---------- quiz: Is This a Task for AI? ---------- */
+/* One column, large tap targets, one-handed on a phone. */
+
+.quiz {
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.quiz__screen {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  padding: var(--space-8) var(--space-6);
+  background: var(--surface-raised);
+  border: 1px solid rgba(42, 34, 48, 0.08);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.quiz__screen h1,
+.quiz__screen h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  line-height: 1.15;
+}
+
+.quiz__screen p {
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+.quiz__step-count {
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.quiz__down-header {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--text-primary);
+}
+
+/* Tap targets: full-width buttons, 48px minimum height. */
+.quiz__choice {
+  display: block;
+  width: 100%;
+  min-height: 52px;
+  padding: var(--space-3) var(--space-4);
+  text-align: left;
+  font: inherit;
+  font-size: 1rem;
+  color: var(--text-primary);
+  background: var(--paper);
+  border: 2px solid rgba(42, 34, 48, 0.18);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: border-color var(--transition), background var(--transition);
+}
+
+.quiz__choice:hover {
+  border-color: var(--olive-deep);
+}
+
+.quiz__choice:focus-visible {
+  outline: 3px solid var(--olive-deep);
+  outline-offset: 2px;
+}
+
+.quiz__choice.is-selected {
+  background: var(--olive-wash);
+  border-color: var(--olive-deep);
+}
+
+.quiz__choices,
+.quiz__tapset,
+.quiz__lanes,
+.quiz__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.quiz__tapset {
+  padding: 0;
+  border: 0;
+  margin: 0;
+}
+
+.quiz__tapset legend {
+  font-weight: 600;
+  padding: 0 0 var(--space-2);
+}
+
+.quiz__go {
+  min-height: 52px;
+  font-size: 1.05rem;
+  margin-top: var(--space-2);
+}
+
+.quiz__go:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.quiz__other,
+.quiz__form input,
+.quiz__screen textarea {
+  width: 100%;
+  min-height: 48px;
+  padding: var(--space-3) var(--space-4);
+  font: inherit;
+  color: var(--text-primary);
+  background: var(--paper);
+  border: 1px solid rgba(42, 34, 48, 0.25);
+  border-radius: var(--radius-md);
+}
+
+.quiz__screen textarea {
+  min-height: 96px;
+  resize: vertical;
+}
+
+.quiz__form label {
+  font-weight: 600;
+}
+
+.quiz__optional-note {
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.quiz__trap {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.quiz__alert {
+  color: var(--red-deep);
+  font-weight: 600;
+}
+
+.quiz__consent {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* The map: three lanes, stacked in one column. */
+.quiz__lane {
+  padding: var(--space-4) var(--space-5);
+  border-radius: var(--radius-md);
+  background: var(--olive-wash);
+}
+
+.quiz__lane h3 {
+  margin: 0 0 var(--space-2);
+  font-family: var(--font-display);
+}
+
+.quiz__lane ul {
+  margin: 0;
+  padding-left: var(--space-5);
+}
+
+.quiz__lane--assists {
+  background: #eef3f4;
+}
+
+.quiz__lane--craft {
+  background: #f7ecee;
+}
+
+.quiz__lane-empty {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.quiz__teaser {
+  font-size: 1.02rem;
+  color: var(--text-primary);
+}
+
+/* Full readout */
+.quiz__reasons,
+.quiz__moves {
+  margin: 0;
+  padding-left: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.quiz__reason {
+  display: block;
+  color: var(--text-muted);
+}
+
+.quiz__situation {
+  color: var(--text-primary);
+}
+
+.quiz__closing {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--text-primary);
+}
+
+.quiz__ask {
+  padding: var(--space-5);
+  background: var(--olive-wash);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.quiz__ask p {
+  color: var(--text-primary);
+}
+
+/* One-pager: hidden on screen, the only thing that prints. */
+.quiz__onepager {
+  display: none;
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  .quiz__onepager,
+  .quiz__onepager * {
+    visibility: visible;
+    display: block;
+  }
+
+  .quiz__onepager {
+    position: absolute;
+    inset: 0 auto auto 0;
+    width: 100%;
+    padding: var(--space-6);
+    font-family: var(--font-body);
+  }
+
+  .quiz__onepager ul {
+    padding-left: var(--space-5);
+  }
+
+  .quiz__onepager-footer {
+    margin-top: var(--space-6);
+    color: var(--text-muted);
+  }
+
+  .quiz__print,
+  .quiz__onepager h1 {
+    display: none;
+  }
+}
+
+/* Static explainer under the interactive quiz. */
+.quiz-static {
+  max-width: 620px;
+  margin: var(--space-16) auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.quiz-static h2 {
+  margin: var(--space-8) 0 0;
+  font-family: var(--font-display);
+}
+
+.quiz-static__lanes div {
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid rgba(42, 34, 48, 0.08);
+}
+
+.quiz-static__lanes dt {
+  font-weight: 700;
+}
+
+.quiz-static__lanes dd {
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+.quiz-static__questions li {
+  margin-bottom: var(--space-3);
+}
+
+.quiz-static__questions ul {
+  margin: var(--space-1) 0 0;
+  color: var(--text-secondary);
+}

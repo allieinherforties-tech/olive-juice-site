@@ -31,6 +31,18 @@ export const SITE = {
 export const INQUIRY_ENDPOINT =
   "https://1v7en6pjqm-8787.hosted.obvious.ai/inquiry";
 
+/**
+ * Quiz submission endpoints. Same hosted-service pattern as the inquiry form:
+ * POST JSON, { ok: true } on success. The submit endpoint stores the submission
+ * for the review queue and emails Allie; it never creates a Pipeline row. The
+ * event endpoint is count-only analytics (start, complete, form) and holds no
+ * personal information.
+ */
+export const QUIZ_SUBMIT_ENDPOINT =
+  "https://0y07m6v6vd-8790.hosted.obvious.ai/quiz/submit";
+export const QUIZ_EVENT_ENDPOINT =
+  "https://0y07m6v6vd-8790.hosted.obvious.ai/quiz/event";
+
 export type NavItem = { href: string; label: string };
 
 export const NAV: readonly NavItem[] = [
